@@ -35,6 +35,7 @@ const currentPath = Astro.url.pathname;
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
     <a class="nav-logo" href="/">The B2B <span>Tinkerers</span></a>
@@ -58,7 +59,9 @@ const currentPath = Astro.url.pathname;
   </div>
 </nav>
 
-<slot/>
+<main id="main-content">
+  <slot/>
+</main>
 
 <section class="contact-section" id="contact">
   <div class="contact-inner">
