@@ -98,7 +98,7 @@ const posts = (await getCollection('blog'))
     <p class="section-body">Six ways we connect marketing to the business — and make it stick.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">01</span>
       <div class="service-title">Marketing Audit</div>
       <div class="service-body">Honest assessment of where you are: positioning, team, budget, and alignment with business goals.</div>
@@ -109,7 +109,7 @@ const posts = (await getCollection('blog'))
       </div>
       <span class="service-arrow">→</span>
     </div>
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">02</span>
       <div class="service-title">Brand Strategy & Positioning</div>
       <div class="service-body">Define what you stand for, who you're for, and why someone should choose you. The foundation.</div>
@@ -120,7 +120,7 @@ const posts = (await getCollection('blog'))
       </div>
       <span class="service-arrow">→</span>
     </div>
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">03</span>
       <div class="service-title">Go-To-Market Strategy</div>
       <div class="service-body">A clear GTM motion that connects your positioning to pipeline. Channels, messages, timing — aligned.</div>
@@ -131,7 +131,7 @@ const posts = (await getCollection('blog'))
       </div>
       <span class="service-arrow">→</span>
     </div>
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">04</span>
       <div class="service-title">Marketing Plan & Business Alignment</div>
       <div class="service-body">A marketing plan that reflects real business objectives — and that your team will actually follow.</div>
@@ -142,7 +142,7 @@ const posts = (await getCollection('blog'))
       </div>
       <span class="service-arrow">→</span>
     </div>
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">05</span>
       <div class="service-title">AI & Hybrid Marketing Strategy</div>
       <div class="service-body">The future marketing team is not fully human — nor fully automated. We help you define the hybrid model.</div>
@@ -153,7 +153,7 @@ const posts = (await getCollection('blog'))
       </div>
       <span class="service-arrow">→</span>
     </div>
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card">
       <span class="service-num">06</span>
       <div class="service-title">Fractional CMO</div>
       <div class="service-body">Senior marketing leadership without the full-time cost. We lead your team and maintain direction.</div>
@@ -296,7 +296,11 @@ const posts = (await getCollection('blog'))
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.services-grid{grid-template-columns:1fr}}
 .service-card{background:var(--mid);padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px);position:relative;transition:background .2s;cursor:pointer}
-.service-card:hover{background:rgba(42,107,84,0.8)}
+.service-card:hover{background:var(--lime)}
+.service-card:hover .service-num{color:var(--forest);opacity:.22}
+.service-card:hover .service-title{color:var(--forest)}
+.service-card:hover .service-body{color:rgba(28,74,58,.65)}
+.service-card:hover .service-arrow{color:var(--forest);opacity:.5}
 .service-card.open{background:var(--lime)}
 .service-num{font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;color:var(--cream);opacity:.22;display:block;line-height:1;margin-bottom:6px;transition:color .2s,opacity .2s}
 .service-card.open .service-num{color:var(--forest);opacity:.25}
@@ -391,6 +395,17 @@ const posts = (await getCollection('blog'))
 </style>
 
 <script>
+// Service accordion — use event delegation, works reliably in Astro
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    });
+  });
+});
+
 // Grain effect
 (function(){
   const canvas = document.getElementById('hero-grain');
@@ -426,10 +441,5 @@ const posts = (await getCollection('blog'))
   resize();
 })();
 
-// Service accordion
-function toggleService(card) {
-  const isOpen = card.classList.contains('open');
-  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('open'));
-  if(!isOpen) card.classList.add('open');
-}
+
 </script>
