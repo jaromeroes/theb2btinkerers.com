@@ -359,7 +359,7 @@ const posts = (await getCollection('blog'))
                 <text x="226" y="138" font-family="Inter,sans-serif" font-size="8" fill="rgba(210,70,70,0.55)">✗</text><text x="238" y="138" font-family="Inter,sans-serif" font-size="8" fill="rgba(245,240,232,0.28)">Automate broken flows</text>
                 <text x="226" y="156" font-family="Inter,sans-serif" font-size="8" fill="rgba(210,70,70,0.4)">✗</text><text x="238" y="156" font-family="Inter,sans-serif" font-size="8" fill="rgba(245,240,232,0.22)">Personalization w/o data</text>
               </svg>
-            )
+            )}
           </div>
           <div class="blog-card-secondary-body">
             <span class={`bcard-tag${i === 1 ? '' : ' bcard-tag-light'}`}>{post.data.tag}</span>
