@@ -3,6 +3,7 @@ title: "Why 65% of B2B marketing budgets don't generate measurable impact"
 excerpt: "The alignment problem isn't new. But it's getting more expensive — and most companies are still solving it wrong."
 date: 2026-02-24
 tag: "Strategy"
+image: "/blog/65-percent-b2b-marketing-budgets.svg"
 readTime: "8 min read"
 ---
 

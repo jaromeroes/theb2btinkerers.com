@@ -20,7 +20,9 @@ const posts = (await getCollection('blog'))
       {posts.map((post, i) => (
         <a class={`blog-list-card${i === 0 ? ' blc-featured' : ''}`} href={`/insights/${post.slug}`}>
           <div class="blc-illo">
-            {post.slug === '65-percent-b2b-marketing-budgets' ? (
+            {post.data.image ? (
+              <img src={post.data.image} alt={post.data.title} style="width:100%;height:100%;object-fit:cover;display:block;"/>
+            ) : post.slug === '65-percent-b2b-marketing-budgets' ? (
               <svg viewBox="0 0 360 120" fill="none" width="100%" height="100%">
                 <rect width="360" height="120" fill="#1C4A3A"/>
                 <line x1="0" y1="30" x2="360" y2="30" stroke="rgba(245,240,232,0.025)" stroke-width="1"/>
@@ -80,6 +82,7 @@ const posts = (await getCollection('blog'))
                 <text x="202" y="80" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(210,70,70,0.65)">✗</text><text x="212" y="80" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(245,240,232,0.3)">Zero-cost content</text>
                 <text x="202" y="95" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(210,70,70,0.55)">✗</text><text x="212" y="95" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(245,240,232,0.25)">Broken process automation</text>
               </svg>
+            )}
             )}
           </div>
           <span class="blc-tag">{post.data.tag}</span>

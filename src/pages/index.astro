@@ -210,7 +210,9 @@ const posts = (await getCollection('blog'))
     <div class="blog-teaser-grid">
       <a class="blog-card-featured" href={`/insights/${posts[0].slug}`}>
         <div class="blog-card-illo">
-          {posts[0].slug === 'ai-b2b-marketing-what-works' ? (
+          {posts[0].data.image ? (
+            <img src={posts[0].data.image} alt={posts[0].data.title} style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          ) : posts[0].slug === 'ai-b2b-marketing-what-works' ? (
             <svg viewBox="0 0 400 224" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
               <rect width="400" height="224" fill="#1C4A3A"/>
               <text x="-4" y="198" font-family="Bricolage Grotesque,sans-serif" font-size="80" font-weight="800" fill="rgba(212,232,74,0.042)" letter-spacing="-5">WORKS</text>
@@ -297,7 +299,9 @@ const posts = (await getCollection('blog'))
       {posts.slice(1).map((post, i) => (
         <a class={`blog-card-secondary${i === 1 ? ' blog-card-dark' : ''}`} href={`/insights/${post.slug}`}>
           <div class="blog-card-illo-sm">
-            {post.slug === '65-percent-b2b-marketing-budgets' ? (
+            {post.data.image ? (
+              <img src={post.data.image} alt={post.data.title} style="width:100%;height:100%;object-fit:cover;display:block;"/>
+            ) : post.slug === '65-percent-b2b-marketing-budgets' ? (
               <svg viewBox="0 0 400 224" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <rect width="400" height="224" fill="#1C4A3A"/>
                 <line x1="0" y1="56" x2="400" y2="56" stroke="rgba(245,240,232,0.025)" stroke-width="1"/>

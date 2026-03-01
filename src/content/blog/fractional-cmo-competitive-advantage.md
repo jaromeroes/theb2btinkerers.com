@@ -3,6 +3,7 @@ title: "The fractional CMO model isn't a compromise. It's a competitive advantag
 excerpt: "Most B2B companies that hire a fractional CMO do it because they can't afford a full-time one. That's the wrong reason — and it leads to the wrong outcome."
 date: 2026-02-27
 tag: "Fractional CMO"
+image: "/blog/fractional-cmo-competitive-advantage.svg"
 readTime: "6 min read"
 ---
 
