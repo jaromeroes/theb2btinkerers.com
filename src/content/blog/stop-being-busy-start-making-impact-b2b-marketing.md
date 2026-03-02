@@ -9,8 +9,6 @@ tag: "B2B marketing strategy"
 featured_image: "/images/blog/busy-vs-impact-b2b-marketing.svg"
 ---
 
-# Stop Being Busy, Start Making Impact: Why Most B2B Marketing Doesn't Move the Needle
-
 There's a strange paradox in B2B marketing right now. Teams are producing more content than ever. They're running campaigns across more channels, tracking more dashboards, attending more stand-ups, and filing more reports. Everyone is busy. Calendars are packed. Slack never sleeps.
 
 And yet, when the CFO asks the simple question — *"What did marketing contribute to revenue this quarter?"* — the room goes quiet.
