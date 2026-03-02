@@ -242,20 +242,21 @@ updateTOC();
 .art-toc{padding:clamp(44px,6vw,72px) 0}
 @media(max-width:900px){.art-toc{display:none}}
 .art-toc-inner{position:sticky;top:calc(68px + 32px);padding-right:32px;border-right:1px solid rgba(28,74,58,0.1)}
-.toc-label{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(28,74,58,0.4);margin-bottom:16px;display:block}
+.toc-label{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(28,74,58,0.55);margin-bottom:16px;display:block}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;margin-bottom:24px}
-.toc-link{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.45;color:rgba(28,74,58,0.45);text-decoration:none;padding:6px 0;transition:color .15s;position:relative}
+.toc-link{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.45;color:rgba(28,74,58,0.7);text-decoration:none;padding:6px 0;transition:color .15s;position:relative}
 .toc-link::before{content:'';flex-shrink:0;width:2px;min-height:14px;background:transparent;border-radius:1px;transition:background .2s;margin-top:1px}
-.toc-link:hover{color:rgba(28,74,58,0.75)}
+.toc-link:hover{color:rgba(28,74,58,0.9)}
 .toc-link.active{color:var(--forest);font-weight:600}
 .toc-link.active::before{background:var(--lime)}
-.h3-item .toc-link{padding-left:8px;font-size:11px}
+.h3-item .toc-link{padding-left:8px;font-size:12.5px}
 .toc-cta{padding:14px 16px;background:var(--forest)}
 .toc-cta-text{font-size:11px;line-height:1.55;color:rgba(245,240,232,0.6);display:block;margin-bottom:10px}
 .toc-cta-btn{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--lime);text-decoration:none;display:block}
 .art-body-col{padding:clamp(44px,6vw,72px) 0 clamp(44px,6vw,72px) clamp(32px,4vw,56px)}
 @media(max-width:900px){.art-body-col{padding:clamp(44px,6vw,72px) 0}}
 .art-body{max-width:680px}
+.art-body :global(h1){display:none}
 .art-body :global(p){font-size:clamp(14px,1.6vw,16px);line-height:1.9;color:rgba(26,26,26,.75);margin-bottom:24px}
 .art-body :global(h2){font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:var(--forest);margin:44px 0 16px;scroll-margin-top:90px}
 .art-body :global(h3){font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:700;letter-spacing:-0.03em;color:var(--forest);margin:28px 0 12px;scroll-margin-top:90px}
