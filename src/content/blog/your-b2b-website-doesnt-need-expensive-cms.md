@@ -3,7 +3,7 @@ title: "Your B2B Website Doesn't Need an Expensive Experience Management System.
 date: 2026-03-03
 excerpt: "Thousands of B2B companies are spending between €200,000 and over €1 million implementing web platforms their marketing teams can barely touch without calling an agency. In 2026, there is no longer any excuse for this."
 tag: "strategy"
-image: "/blog/your-b2b-website-doesnt-need-expensive-cms.jpg"
+image: "/blog/your-b2b-website-doesnt-need-expensive-cms.webp"
 author: "The B2B Tinkerers"
 ---
 
