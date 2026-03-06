@@ -6,7 +6,7 @@ slug: "stop-being-busy-start-making-impact-b2b-marketing"
 author: "The B2B Tinkerers"
 date: 2026-03-02
 tag: "B2B marketing strategy"
-image: "/blog/b2b-marketing-leader-strategy.png"
+image: "/blog/b2b-marketing-busy-trap-cover.jpg"
 ---
 
 There's a strange paradox in B2B marketing right now. Teams are producing more content than ever. They're running campaigns across more channels, tracking more dashboards, attending more stand-ups, and filing more reports. Everyone is busy. Calendars are packed. Slack never sleeps.
@@ -16,6 +16,8 @@ And yet, when the CFO asks the simple question — *"What did marketing contribu
 This isn't a talent problem. It's a focus problem. And if you're running or working inside a B2B marketing function, there's a good chance you're caught in it right now without even realizing it.
 
 ## The Busy Trap: When Activity Feels Like Progress
+
+![Many outputs, zero outcomes — the B2B marketing conveyor belt](/blog/b2b-marketing-outputs-vs-outcomes.webp)
 
 Let's paint a picture you might recognize. Your team published 12 blog posts last month, sent out 8 email campaigns, ran paid ads on LinkedIn and Google, posted daily on social media, and produced a webinar. You hit your content calendar targets. The dashboards show green. Impressions are up, email open rates look decent, and you've got a healthy stack of MQLs coming through.
 
@@ -38,6 +40,8 @@ When teams are under pressure to "show marketing is doing something," the natura
 There's a phrase in B2B that's worth sitting with: *the activity trap*. It's when the pace of execution becomes a substitute for strategic thinking. You're so busy shipping that you never stop to ask if what you're shipping actually matters.
 
 ## The Metrics That Lie to You
+
+![The dashboard that looks great but means nothing](/blog/b2b-marketing-vanity-metrics.webp)
 
 Let's talk about vanity metrics, because they're the fuel that keeps the busy trap running.
 
@@ -64,6 +68,8 @@ Here's a practical framework for thinking about it:
 **Customer expansion over new logos only.** Some of the highest-ROI marketing happens post-sale — upsell campaigns, community building, customer education, and retention programs. Yet most B2B teams allocate the vast majority of their energy to top-of-funnel acquisition.
 
 ## Five Ideas to Shift from Busy to Impactful
+
+![Fewer bigger bets — one focused arrow vs many scattered ones](/blog/b2b-marketing-fewer-bigger-bets.webp)
 
 If you're reading this and recognizing your own team in the description above, here are five concrete starting points:
 
