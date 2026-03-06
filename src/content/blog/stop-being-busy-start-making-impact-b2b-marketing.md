@@ -6,7 +6,7 @@ slug: "stop-being-busy-start-making-impact-b2b-marketing"
 author: "The B2B Tinkerers"
 date: 2026-01-13
 tag: "B2B marketing strategy"
-image: "/blog/b2b-marketing-busy-trap-cover.jpg"
+image: "/blog/b2b-marketing-busy-trap-cover.webp"
 ---
 
 There's a strange paradox in B2B marketing right now. Teams are producing more content than ever. They're running campaigns across more channels, tracking more dashboards, attending more stand-ups, and filing more reports. Everyone is busy. Calendars are packed. Slack never sleeps.
