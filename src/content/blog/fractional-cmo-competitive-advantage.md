@@ -3,7 +3,7 @@ title: "The fractional CMO model isn't a compromise. It's a competitive advantag
 excerpt: "Most B2B companies that hire a fractional CMO do it because they can't afford a full-time one. That's the wrong reason — and it leads to the wrong outcome."
 date: 2025-12-16
 tag: "Fractional CMO"
-image: "/blog/fractional-cmo-competitive-advantage.svg"
+image: "/blog/fractional-cmo-competitive-advantage.webp"
 readTime: "6 min read"
 ---
 
@@ -25,6 +25,8 @@ A fractional CMO who has worked across 8 to 12 B2B companies in the last three y
 
 They've seen your problem before. Usually more than once. They know which solutions look good on paper and fall apart in practice. They know which quick wins are actually quick, and which ones take six months regardless of what the consultant told you.
 
+![A surveying instrument calibrating the same pattern across multiple company windows](/blog/fractional-cmo-full-time-blind-spot.webp)
+
 ## The seniority problem in growing companies
 
 There's a specific moment in a B2B company's growth where the fractional model makes the most sense. It's the gap between "marketing is whoever does the website and events" and "we need a proper marketing function with real leadership."
@@ -36,6 +38,8 @@ If those things aren't in place, you're paying senior salary for someone to spen
 A fractional CMO can do that diagnostic work in weeks, not months. They can build the strategy, define the team structure, set the budget framework, and establish the commercial metrics — and then hand it off to a full-time hire who joins a function that's ready to run, not one they need to build from scratch.
 
 That's not a compromise. That's a smarter sequencing of investment.
+
+![Two platforms bridged by scaffolding — chaos on the left, structured order on the right](/blog/fractional-cmo-seniority-gap.webp)
 
 ## What to look for — and what to avoid
 
@@ -50,6 +54,8 @@ When you're evaluating the model, ask three questions:
 **What's their B2B depth?** B2B marketing is a different discipline from B2C. The buying cycles are longer, the stakeholders are multiple, the content has to do more work. Someone who built their career in consumer brands will spend your money learning things they should already know.
 
 **How do they handle the transition?** The best fractional CMOs build themselves out of the job. They're thinking from day one about what the team needs to look like in 12 months, and how to get there without creating a dependency on their continued involvement.
+
+![Hands pressing onto an open ledger showing pipeline charts and performance data](/blog/fractional-cmo-accountability-ledger.webp)
 
 ## The honest version
 
