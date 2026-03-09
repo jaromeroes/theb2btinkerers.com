@@ -3,7 +3,7 @@ title: "The fractional CMO model isn't a compromise. It's a competitive advantag
 excerpt: "Most B2B companies that hire a fractional CMO do it because they can't afford a full-time one. That's the wrong reason — and it leads to the wrong outcome."
 date: 2025-12-16
 tag: "Fractional CMO"
-image: "/blog/fractional-cmo-competitive-advantage.webp"
+image: "../../assets/blog/fractional-cmo-competitive-advantage.webp"
 readTime: "6 min read"
 ---
 
@@ -25,7 +25,7 @@ A fractional CMO who has worked across 8 to 12 B2B companies in the last three y
 
 They've seen your problem before. Usually more than once. They know which solutions look good on paper and fall apart in practice. They know which quick wins are actually quick, and which ones take six months regardless of what the consultant told you.
 
-![A surveying instrument calibrating the same pattern across multiple company windows](/blog/fractional-cmo-full-time-blind-spot.webp)
+![A surveying instrument calibrating the same pattern across multiple company windows](../../assets/blog/fractional-cmo-full-time-blind-spot.webp)
 
 ## The seniority problem in growing companies
 
@@ -39,7 +39,7 @@ A fractional CMO can do that diagnostic work in weeks, not months. They can buil
 
 That's not a compromise. That's a smarter sequencing of investment.
 
-![Two platforms bridged by scaffolding — chaos on the left, structured order on the right](/blog/fractional-cmo-seniority-gap.webp)
+![Two platforms bridged by scaffolding — chaos on the left, structured order on the right](../../assets/blog/fractional-cmo-seniority-gap.webp)
 
 ## What to look for — and what to avoid
 
@@ -55,7 +55,7 @@ When you're evaluating the model, ask three questions:
 
 **How do they handle the transition?** The best fractional CMOs build themselves out of the job. They're thinking from day one about what the team needs to look like in 12 months, and how to get there without creating a dependency on their continued involvement.
 
-![Hands pressing onto an open ledger showing pipeline charts and performance data](/blog/fractional-cmo-accountability-ledger.webp)
+![Hands pressing onto an open ledger showing pipeline charts and performance data](../../assets/blog/fractional-cmo-accountability-ledger.webp)
 
 ## The honest version
 

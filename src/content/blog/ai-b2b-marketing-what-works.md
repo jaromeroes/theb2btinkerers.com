@@ -3,7 +3,7 @@ title: "AI in B2B marketing: what works, what's hype, what to do next quarter"
 excerpt: "Every B2B marketing team is somewhere on the AI adoption curve. Most are further behind than they think — but not in the way they assume."
 date: 2025-12-30
 tag: "AI & Marketing"
-image: "/blog/ai-b2b-marketing-cover.webp"
+image: "../../assets/blog/ai-b2b-marketing-cover.webp"
 readTime: "10 min read"
 ---
 
@@ -17,7 +17,7 @@ AI is not replacing B2B marketing teams. But it is already separating teams that
 
 ## What's actually working right now
 
-![The filter that works — synthesis and guardrails](/blog/ai-b2b-marketing-what-works.webp)
+![The filter that works — synthesis and guardrails](../../assets/blog/ai-b2b-marketing-what-works.webp)
 
 Let's be specific. The AI use cases generating real, measurable value in B2B marketing today are not the flashy ones.
 
@@ -31,7 +31,7 @@ Let's be specific. The AI use cases generating real, measurable value in B2B mar
 
 ## What isn't working
 
-![The autonomous machine producing noise with no human in the loop](/blog/ai-b2b-marketing-what-doesnt-work.webp)
+![The autonomous machine producing noise with no human in the loop](../../assets/blog/ai-b2b-marketing-what-doesnt-work.webp)
 
 **Autonomous content production.** The dream of "set it and run" AI content is not here yet for B2B. The output lacks the specific expertise, the industry nuance, the honest opinion that makes B2B content credible with a senior buyer. You can use AI to produce content faster. You cannot yet use it to produce content without a knowledgeable human in the loop.
 
@@ -41,7 +41,7 @@ Let's be specific. The AI use cases generating real, measurable value in B2B mar
 
 ## The hybrid model
 
-![The deliberate craftsman — human judgment amplified by AI](/blog/ai-b2b-marketing-hybrid-model.webp)
+![The deliberate craftsman — human judgment amplified by AI](../../assets/blog/ai-b2b-marketing-hybrid-model.webp)
 
 The frame we find most useful is this: AI is not a replacement for human judgment in B2B marketing. It's an amplifier of it.
 

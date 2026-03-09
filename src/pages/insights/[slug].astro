@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import BlogImage from '../../components/BlogImage.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -39,101 +40,8 @@ const formattedDate = post.data.date.toLocaleDateString('en-GB', {
 </div>
 
 <div class="art-img-band">
-  {post.data.image ? (
-    <img src={post.data.image} alt={post.data.title} style="width:100%;height:100%;object-fit:cover;display:block;"/>
-  ) : post.slug === '65-percent-b2b-marketing-budgets' ? (
-    <svg viewBox="0 0 900 240" fill="none" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="240" fill="#1C4A3A"/>
-      <line x1="0" y1="60" x2="900" y2="60" stroke="rgba(245,240,232,0.022)" stroke-width="1"/>
-      <line x1="0" y1="120" x2="900" y2="120" stroke="rgba(245,240,232,0.022)" stroke-width="1"/>
-      <line x1="0" y1="180" x2="900" y2="180" stroke="rgba(245,240,232,0.022)" stroke-width="1"/>
-      <text x="-8" y="225" font-family="Bricolage Grotesque,sans-serif" font-size="230" font-weight="800" fill="rgba(212,232,74,0.042)" letter-spacing="-16">65</text>
-      <rect x="32" y="160" width="34" height="60" rx="2" fill="rgba(245,240,232,0.07)"/>
-      <rect x="72" y="130" width="34" height="90" rx="2" fill="rgba(245,240,232,0.1)"/>
-      <rect x="112" y="98" width="34" height="122" rx="2" fill="rgba(245,240,232,0.09)"/>
-      <rect x="152" y="66" width="34" height="154" rx="2" fill="rgba(245,240,232,0.07)"/>
-      <rect x="192" y="82" width="34" height="138" rx="2" fill="#D4E84A"/>
-      <polyline points="49,178 89,146 129,114 169,82 209,98" stroke="rgba(212,232,74,0.35)" stroke-width="2" fill="none"/>
-      <circle cx="209" cy="98" r="4.5" fill="#D4E84A"/>
-      <line x1="290" y1="20" x2="290" y2="220" stroke="rgba(212,232,74,0.08)" stroke-width="1" stroke-dasharray="5 4"/>
-      <rect x="308" y="18" width="188" height="204" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(212,232,74,0.1)" stroke-width="1"/>
-      <line x1="326" y1="138" x2="478" y2="138" stroke="rgba(212,232,74,0.12)" stroke-width="1"/>
-      <text x="402" y="114" font-family="Bricolage Grotesque,sans-serif" font-size="68" font-weight="800" fill="#D4E84A" text-anchor="middle" letter-spacing="-4">65%</text>
-      <text x="402" y="157" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="rgba(245,240,232,0.48)" text-anchor="middle" letter-spacing="1.2">OF B2B BUDGETS</text>
-      <text x="402" y="175" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)" text-anchor="middle">don't generate measurable ROI</text>
-      <text x="402" y="198" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(245,240,232,0.18)" text-anchor="middle" letter-spacing=".5">FORRESTER RESEARCH 2024</text>
-      <rect x="520" y="18" width="180" height="94" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(212,232,74,0.07)" stroke-width="1"/>
-      <text x="538" y="58" font-family="Bricolage Grotesque,sans-serif" font-size="34" font-weight="800" fill="rgba(212,232,74,0.6)" letter-spacing="-2">$1T</text>
-      <text x="538" y="78" font-family="Inter,sans-serif" font-size="8.5" font-weight="600" fill="rgba(245,240,232,0.35)" letter-spacing=".5">LOST ANNUALLY</text>
-      <text x="538" y="96" font-family="Inter,sans-serif" font-size="8" fill="rgba(245,240,232,0.2)">sales &amp; mktg misalignment · G2 2024</text>
-      <rect x="520" y="128" width="180" height="94" rx="3" fill="rgba(212,232,74,0.06)" stroke="rgba(212,232,74,0.08)" stroke-width="1"/>
-      <text x="538" y="168" font-family="Bricolage Grotesque,sans-serif" font-size="34" font-weight="800" fill="rgba(212,232,74,0.55)" letter-spacing="-2">+27%</text>
-      <text x="538" y="188" font-family="Inter,sans-serif" font-size="8.5" font-weight="600" fill="rgba(245,240,232,0.35)" letter-spacing=".5">FASTER PROFIT GROWTH</text>
-      <text x="538" y="206" font-family="Inter,sans-serif" font-size="8" fill="rgba(245,240,232,0.2)">with tight alignment · Marketo 2024</text>
-    </svg>
-  ) : post.slug === 'fractional-cmo-competitive-advantage' ? (
-    <svg viewBox="0 0 900 240" fill="none" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="240" fill="#1C4A3A"/>
-      <text x="-6" y="220" font-family="Bricolage Grotesque,sans-serif" font-size="190" font-weight="800" fill="rgba(212,232,74,0.04)" letter-spacing="-14">CMO</text>
-      <rect x="28" y="36" width="172" height="168" rx="3" fill="rgba(28,50,38,0.7)" stroke="rgba(245,240,232,0.07)" stroke-width="1"/>
-      <text x="114" y="72" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(245,240,232,0.28)" text-anchor="middle" letter-spacing="1.2">FULL-TIME CMO</text>
-      <circle cx="114" cy="118" r="30" fill="rgba(245,240,232,0.1)"/>
-      <line x1="72" y1="76" x2="156" y2="180" stroke="rgba(220,60,60,0.35)" stroke-width="1.5"/>
-      <line x1="156" y1="76" x2="72" y2="180" stroke="rgba(220,60,60,0.35)" stroke-width="1.5"/>
-      <text x="114" y="200" font-family="Inter,sans-serif" font-size="8" fill="rgba(245,240,232,0.2)" text-anchor="middle">fixed cost · inside view</text>
-      <text x="224" y="128" font-family="Bricolage Grotesque,sans-serif" font-size="22" font-weight="800" fill="rgba(212,232,74,0.25)" text-anchor="middle">VS</text>
-      <rect x="248" y="22" width="224" height="196" rx="3" fill="rgba(212,232,74,0.12)" stroke="rgba(212,232,74,0.28)" stroke-width="1.5"/>
-      <text x="360" y="62" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(212,232,74,0.6)" text-anchor="middle" letter-spacing="1.5">FRACTIONAL CMO</text>
-      <circle cx="360" cy="120" r="40" fill="rgba(212,232,74,0.18)" stroke="rgba(212,232,74,0.3)" stroke-width="1.5"/>
-      <text x="360" y="126" font-family="Bricolage Grotesque,sans-serif" font-size="28" font-weight="800" fill="#D4E84A" text-anchor="middle">CMO</text>
-      <text x="360" y="172" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(212,232,74,0.55)" text-anchor="middle">outside-in perspective</text>
-      <text x="360" y="188" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(212,232,74,0.4)" text-anchor="middle">cross-company pattern recognition</text>
-      <text x="360" y="206" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="rgba(212,232,74,0.28)" text-anchor="middle" letter-spacing=".6">SENIOR · FLEXIBLE · STRATEGIC</text>
-      <line x1="496" y1="22" x2="496" y2="218" stroke="rgba(212,232,74,0.08)" stroke-width="1"/>
-      <rect x="512" y="30" width="4" height="180" fill="rgba(212,232,74,0.2)"/>
-      <text x="530" y="82" font-family="Bricolage Grotesque,sans-serif" font-size="28" font-weight="800" fill="rgba(245,240,232,0.6)">Not a</text>
-      <text x="530" y="116" font-family="Bricolage Grotesque,sans-serif" font-size="28" font-weight="800" fill="rgba(245,240,232,0.6)">compromise.</text>
-      <line x1="530" y1="130" x2="880" y2="130" stroke="rgba(212,232,74,0.1)" stroke-width="1"/>
-      <text x="530" y="156" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(245,240,232,0.3)">Senior leadership without the full-time cost.</text>
-      <text x="530" y="188" font-family="Bricolage Grotesque,sans-serif" font-size="18" font-weight="700" fill="rgba(212,232,74,0.4)">A competitive advantage.</text>
-    </svg>
-  ) : (
-    <svg viewBox="0 0 900 240" fill="none" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="240" fill="#1C4A3A"/>
-      <text x="-4" y="215" font-family="Bricolage Grotesque,sans-serif" font-size="140" font-weight="800" fill="rgba(212,232,74,0.038)" letter-spacing="-10">WORKS</text>
-      <rect x="20" y="16" width="270" height="208" rx="3" fill="rgba(42,107,84,0.55)"/>
-      <rect x="20" y="16" width="270" height="36" rx="3" fill="rgba(42,107,84,0.9)"/>
-      <text x="155" y="39" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#D4E84A" text-anchor="middle" letter-spacing="2">✓  WHAT WORKS</text>
-      <text x="36" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.72)">✓</text><text x="50" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.62)">Research &amp; synthesis</text>
-      <text x="36" y="100" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.72)">✓</text><text x="50" y="100" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.62)">Content at scale (with guardrails)</text>
-      <text x="36" y="122" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.72)">✓</text><text x="50" y="122" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.62)">Faster iteration cycles</text>
-      <text x="36" y="144" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.72)">✓</text><text x="50" y="144" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.62)">Personalization infrastructure</text>
-      <text x="36" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.45)">✓</text><text x="50" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.38)">Intent data with discipline</text>
-      <text x="36" y="188" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.3)">✓</text><text x="50" y="188" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.26)">Prompt governance</text>
-      <text x="36" y="210" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.2)">✓</text><text x="50" y="210" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.17)">Hybrid human/AI models</text>
-      <rect x="304" y="70" width="114" height="100" rx="57" fill="rgba(212,232,74,0.1)" stroke="rgba(212,232,74,0.22)" stroke-width="1.5"/>
-      <text x="361" y="118" font-family="Bricolage Grotesque,sans-serif" font-size="28" font-weight="800" fill="rgba(212,232,74,0.72)" text-anchor="middle">AI</text>
-      <text x="361" y="140" font-family="Inter,sans-serif" font-size="9" fill="rgba(212,232,74,0.4)" text-anchor="middle">amplifies</text>
-      <line x1="290" y1="120" x2="302" y2="120" stroke="rgba(212,232,74,0.3)" stroke-width="1.5" stroke-dasharray="3 2"/>
-      <line x1="420" y1="120" x2="432" y2="120" stroke="rgba(212,232,74,0.2)" stroke-width="1.5" stroke-dasharray="3 2"/>
-      <rect x="450" y="16" width="270" height="208" rx="3" fill="rgba(18,32,26,0.65)"/>
-      <rect x="450" y="16" width="270" height="36" rx="3" fill="rgba(16,26,22,0.95)"/>
-      <text x="585" y="39" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="rgba(245,240,232,0.28)" text-anchor="middle" letter-spacing="2">✗  WHAT'S HYPE</text>
-      <text x="466" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.65)">✗</text><text x="480" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Fully autonomous content</text>
-      <text x="466" y="100" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.65)">✗</text><text x="480" y="100" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">AI replacing human strategy</text>
-      <text x="466" y="122" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.65)">✗</text><text x="480" y="122" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.3)">Zero-cost quality content</text>
-      <text x="466" y="144" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.55)">✗</text><text x="480" y="144" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.25)">Automating broken processes</text>
-      <text x="466" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.4)">✗</text><text x="480" y="166" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.2)">Personalization w/o clean data</text>
-      <text x="466" y="188" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.28)">✗</text><text x="480" y="188" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.15)">Intent data w/o follow-through</text>
-      <text x="466" y="210" font-family="Inter,sans-serif" font-size="9" fill="rgba(210,70,70,0.18)">✗</text><text x="480" y="210" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.1)">AI CMO replacing judgment</text>
-      <line x1="742" y1="16" x2="742" y2="224" stroke="rgba(212,232,74,0.07)" stroke-width="1"/>
-      <text x="758" y="72" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="rgba(212,232,74,0.32)" letter-spacing="1.5">AI &amp; MARKETING</text>
-      <text x="758" y="104" font-family="Bricolage Grotesque,sans-serif" font-size="22" font-weight="800" fill="rgba(245,240,232,0.42)">Judgment</text>
-      <text x="758" y="130" font-family="Bricolage Grotesque,sans-serif" font-size="22" font-weight="800" fill="rgba(245,240,232,0.42)">first.</text>
-      <line x1="758" y1="144" x2="880" y2="144" stroke="rgba(212,232,74,0.1)" stroke-width="1"/>
-      <text x="758" y="164" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.22)">AI amplifies.</text>
-      <text x="758" y="182" font-family="Inter,sans-serif" font-size="9" fill="rgba(245,240,232,0.22)">It doesn't replace.</text>
-    </svg>
+  {post.data.image && (
+    <BlogImage image={post.data.image} alt={post.data.title} loading="eager" fetchpriority="high" />
   )}
 </div>
 
