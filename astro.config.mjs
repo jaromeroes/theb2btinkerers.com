@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://theb2btinkerers.com',
-  integrations: [sitemap({ filter: () => true })],
+  integrations: [sitemap()],
   image: {
     quality: 85,
   },
