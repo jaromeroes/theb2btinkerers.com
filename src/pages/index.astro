@@ -64,72 +64,42 @@ const posts = (await getCollection('blog'))
     <p class="section-body">Six ways we connect marketing to the business — and make it stick.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card">
+    <a class="service-card" href="/services/marketing-audit">
       <span class="service-num">01</span>
       <div class="service-title">Marketing Audit</div>
       <div class="service-body">Honest assessment of where you are: positioning, team, budget, and alignment with business goals.</div>
-      <div class="service-expand">
-        <p>We go deep into your current marketing operation — talking to your team, reviewing your spend, analysing your positioning and competitor landscape. What comes out is a clear picture of what's working, what's wasted, and what needs to change first.</p>
-        <ul><li>Positioning & messaging review</li><li>Channel & budget audit</li><li>Sales-marketing alignment assessment</li><li>Prioritised recommendations with business impact</li></ul>
-        <a class="service-cta" href="#contact">Talk to us about an audit →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
-    <div class="service-card">
+      <span class="service-more">Learn more →</span>
+    </a>
+    <a class="service-card" href="/services/brand-strategy">
       <span class="service-num">02</span>
       <div class="service-title">Brand Strategy & Positioning</div>
       <div class="service-body">Define what you stand for, who you're for, and why someone should choose you. The foundation.</div>
-      <div class="service-expand">
-        <p>Most B2B brands are built by accident — a sales pitch that stuck, a founder's instinct, a tagline nobody hates. We build it on purpose. A sharp positioning statement, a clear value proposition, and a messaging framework your whole team can actually use.</p>
-        <ul><li>Market & competitor positioning map</li><li>ICP definition and buyer journey</li><li>Core messaging architecture</li><li>Brand voice and tone guidelines</li></ul>
-        <a class="service-cta" href="#contact">Discuss your positioning →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
-    <div class="service-card">
+      <span class="service-more">Learn more →</span>
+    </a>
+    <a class="service-card" href="/services/go-to-market">
       <span class="service-num">03</span>
       <div class="service-title">Go-To-Market Strategy</div>
       <div class="service-body">A clear GTM motion that connects your positioning to pipeline. Channels, messages, timing — aligned.</div>
-      <div class="service-expand">
-        <p>A GTM strategy is more than a launch plan. It's the answer to: who are we selling to, what do we say, where do we show up, and how do sales and marketing move together. We build it from scratch or fix what's broken — with a bias for things that generate pipeline, not just awareness.</p>
-        <ul><li>Market entry or expansion planning</li><li>Channel mix and prioritisation</li><li>Demand generation architecture</li><li>Sales and marketing playbook</li></ul>
-        <a class="service-cta" href="#contact">Plan your GTM →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
-    <div class="service-card">
+      <span class="service-more">Learn more →</span>
+    </a>
+    <a class="service-card" href="/services/marketing-plan">
       <span class="service-num">04</span>
       <div class="service-title">Marketing Plan & Business Alignment</div>
       <div class="service-body">A marketing plan that reflects real business objectives — and that your team will actually follow.</div>
-      <div class="service-expand">
-        <p>Most marketing plans are written for board decks, not for execution. We build plans that start from the business — revenue targets, growth priorities, team capacity — and work backwards to a quarterly roadmap your team can own and your leadership can trust.</p>
-        <ul><li>Annual and quarterly marketing roadmaps</li><li>OKR and KPI framework aligned to business goals</li><li>Budget allocation and ROI model</li><li>Cross-functional alignment workshops</li></ul>
-        <a class="service-cta" href="#contact">Build a plan that works →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
-    <div class="service-card">
+      <span class="service-more">Learn more →</span>
+    </a>
+    <a class="service-card" href="/services/ai-strategy">
       <span class="service-num">05</span>
       <div class="service-title">AI & Hybrid Marketing Strategy</div>
       <div class="service-body">The future marketing team is not fully human — nor fully automated. We help you define the hybrid model.</div>
-      <div class="service-expand">
-        <p>AI won't replace your marketing team. But teams that use AI well will outcompete those that don't. We help B2B companies understand where AI genuinely adds value in their marketing operation — and build the workflows, tools, and processes to make it stick.</p>
-        <ul><li>AI readiness assessment</li><li>Content and campaign automation strategy</li><li>Tool selection and stack integration</li><li>Team capability building</li></ul>
-        <a class="service-cta" href="#contact">Explore AI strategy →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
-    <div class="service-card">
+      <span class="service-more">Learn more →</span>
+    </a>
+    <a class="service-card" href="/services/fractional-cmo">
       <span class="service-num">06</span>
       <div class="service-title">Fractional CMO</div>
       <div class="service-body">Senior marketing leadership without the full-time cost. We lead your team and maintain direction.</div>
-      <div class="service-expand">
-        <p>As fractional CMO, we embed into your leadership team: attending key meetings, setting marketing strategy, coaching your team, and making sure marketing stays connected to what the business actually needs. Not a consultant who sends a report and disappears.</p>
-        <ul><li>Weekly leadership involvement</li><li>Strategy ownership and team direction</li><li>Board and investor-level marketing narrative</li><li>Hiring and team structure guidance</li></ul>
-        <a class="service-cta" href="#contact">Ask about Fractional CMO →</a>
-      </div>
-      <span class="service-arrow">→</span>
-    </div>
+      <span class="service-more">Learn more →</span>
+    </a>
   </div>
 </section>
 
@@ -257,29 +227,16 @@ const posts = (await getCollection('blog'))
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.services-grid{grid-template-columns:1fr}}
-.service-card{background:var(--mid);padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px);position:relative;transition:background .2s;cursor:pointer}
+.service-card{background:var(--mid);padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px);position:relative;transition:background .2s;cursor:pointer;text-decoration:none;display:block}
 .service-card:hover{background:var(--lime)}
 .service-card:hover .service-num{color:var(--forest);opacity:.22}
 .service-card:hover .service-title{color:var(--forest)}
 .service-card:hover .service-body{color:rgba(28,74,58,.65)}
-.service-card:hover .service-arrow{color:var(--forest);opacity:.5}
-.service-card.open{background:var(--lime)}
 .service-num{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:40px;font-weight:800;color:var(--cream);opacity:.45;display:block;line-height:1;margin-bottom:6px;transition:color .2s,opacity .2s}
-.service-card.open .service-num{color:var(--forest);opacity:.25}
 .service-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(13px,1.8vw,16px);font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.3;transition:color .2s}
-.service-card.open .service-title{color:var(--forest)}
 .service-body{font-size:12.5px;line-height:1.7;color:rgba(245,240,232,.88);transition:color .2s;padding-bottom:28px}
-.service-card.open .service-body{color:rgba(28,74,58,.65)}
-.service-arrow{position:absolute;bottom:20px;right:20px;font-size:16px;color:var(--lime);opacity:.35;transition:color .2s,opacity .2s,transform .2s}
-.service-card.open .service-arrow{transform:rotate(90deg);color:var(--forest);opacity:.5}
-.service-expand{display:none;margin-top:18px;padding-top:18px;border-top:1px solid rgba(28,74,58,.15)}
-.service-card.open .service-expand{display:block}
-.service-expand p{font-size:13px;line-height:1.75;color:rgba(28,74,58,.7);margin-bottom:14px}
-.service-expand ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
-.service-expand ul li{font-size:12px;color:rgba(28,74,58,.65);padding-left:14px;position:relative}
-.service-expand ul li::before{content:'→';position:absolute;left:0;font-size:10px;color:rgba(28,74,58,.4)}
-.service-cta{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);border-bottom:2px solid rgba(28,74,58,.3);padding-bottom:2px;text-decoration:none;transition:border-color .15s}
-.service-cta:hover{border-color:var(--forest)}
+.service-more{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--lime);opacity:.6;position:absolute;bottom:20px;left:clamp(20px,2.5vw,32px);transition:color .2s,opacity .2s}
+.service-card:hover .service-more{color:var(--forest);opacity:1}
 
 /* METHOD */
 .method{padding:clamp(72px,9vw,112px) var(--pad);background:var(--linen)}
@@ -357,17 +314,6 @@ const posts = (await getCollection('blog'))
 </style>
 
 <script>
-// Service accordion
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const isOpen = card.classList.contains('open');
-      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('open'));
-      if (!isOpen) card.classList.add('open');
-    });
-  });
-});
-
 // Grain effect — deferred after LCP to avoid render blocking
 function initGrain(){
   const canvas = document.getElementById('hero-grain');
