@@ -16,37 +16,37 @@ import Base from '../../layouts/Base.astro';
 <section class="sh-grid-section">
   <div class="sh-grid">
     <a class="sh-card" href="/services/marketing-audit">
-      <span class="sh-num">01</span>
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
       <div class="sh-title">Marketing Audit</div>
       <div class="sh-body">Honest assessment of where you are: positioning, team, budget, and alignment with business goals.</div>
       <span class="sh-more">Learn more &rarr;</span>
     </a>
+    <a class="sh-card" href="/services/ai-strategy">
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+      <div class="sh-title">AI &amp; Hybrid Marketing Strategy</div>
+      <div class="sh-body">The future marketing team is not fully human nor fully automated. We help you define the hybrid model.</div>
+      <span class="sh-more">Learn more &rarr;</span>
+    </a>
     <a class="sh-card" href="/services/brand-strategy">
-      <span class="sh-num">02</span>
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       <div class="sh-title">Brand Strategy &amp; Positioning</div>
       <div class="sh-body">Define what you stand for, who you're for, and why someone should choose you. The foundation.</div>
       <span class="sh-more">Learn more &rarr;</span>
     </a>
     <a class="sh-card" href="/services/go-to-market">
-      <span class="sh-num">03</span>
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
       <div class="sh-title">Go-To-Market Strategy</div>
       <div class="sh-body">A clear GTM motion that connects your positioning to pipeline. Channels, messages, timing.</div>
       <span class="sh-more">Learn more &rarr;</span>
     </a>
     <a class="sh-card" href="/services/marketing-plan">
-      <span class="sh-num">04</span>
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <div class="sh-title">Marketing Plan &amp; Business Alignment</div>
       <div class="sh-body">A marketing plan that reflects real business objectives and that your team will actually follow.</div>
       <span class="sh-more">Learn more &rarr;</span>
     </a>
-    <a class="sh-card" href="/services/ai-strategy">
-      <span class="sh-num">05</span>
-      <div class="sh-title">AI &amp; Hybrid Marketing Strategy</div>
-      <div class="sh-body">The future marketing team is not fully human nor fully automated. We help you define the hybrid model.</div>
-      <span class="sh-more">Learn more &rarr;</span>
-    </a>
     <a class="sh-card" href="/services/fractional-cmo">
-      <span class="sh-num">06</span>
+      <svg class="sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
       <div class="sh-title">Fractional CMO</div>
       <div class="sh-body">Senior marketing leadership without the full-time cost. We lead your team and maintain direction.</div>
       <span class="sh-more">Learn more &rarr;</span>
@@ -84,11 +84,11 @@ import Base from '../../layouts/Base.astro';
 /* CARDS */
 .sh-card{background:var(--forest);padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px);position:relative;transition:background .2s;cursor:pointer;text-decoration:none;display:block}
 .sh-card:hover{background:var(--lime)}
-.sh-card:hover .sh-num{color:var(--forest);opacity:.22}
+.sh-card:hover .sh-icon{color:var(--lime)}
 .sh-card:hover .sh-title{color:var(--forest)}
 .sh-card:hover .sh-body{color:rgba(28,74,58,.65)}
 .sh-card:hover .sh-more{color:var(--forest);opacity:1}
-.sh-num{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:40px;font-weight:800;color:var(--cream);opacity:.15;display:block;line-height:1;margin-bottom:6px;transition:color .2s,opacity .2s}
+.sh-icon{width:28px;height:28px;color:var(--cream);opacity:.5;display:block;margin-bottom:12px;transition:color .2s,opacity .2s}
 .sh-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(14px,1.8vw,17px);font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.3;transition:color .2s}
 .sh-body{font-size:12.5px;line-height:1.7;color:rgba(245,240,232,.68);transition:color .2s;padding-bottom:28px}
 .sh-more{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--lime);opacity:.6;position:absolute;bottom:20px;left:clamp(20px,2.5vw,32px);transition:color .2s,opacity .2s}
