@@ -11,18 +11,18 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache static assets for 1 week
+# Cache static assets for 30 days
 [[headers]]
   for = "/*.ico"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "/*.svg"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "/*.mp4"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=2592000"
