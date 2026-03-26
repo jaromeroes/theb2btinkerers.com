@@ -49,6 +49,7 @@ body{background:var(--cream);color:var(--ink);font-family:'Inter Variable',sans-
 
 /* MOBILE NAV SUB-MENU */
 .nav-mobile-toggle{background:none;border:none;font-family:inherit;cursor:pointer;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.nav-mobile-toggle:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 .nav-mobile-chevron{transition:transform .2s;display:inline-block;font-size:18px}
 .nav-mobile-toggle.open .nav-mobile-chevron{transform:rotate(90deg)}
 .nav-mobile-sub{display:none;flex-direction:column;padding:0 0 8px}
