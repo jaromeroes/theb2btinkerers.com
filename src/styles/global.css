@@ -38,6 +38,24 @@ body{background:var(--cream);color:var(--ink);font-family:'Inter Variable',sans-
 .nav-mobile-cta{margin-top:18px;background:var(--lime);color:var(--forest);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 20px;text-decoration:none;text-align:center}
 @media(max-width:700px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 
+/* NAV DROPDOWN */
+.nav-dropdown-wrap{position:relative}
+.nav-dropdown{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--forest);border:1px solid rgba(212,232,74,.12);padding:12px 0;min-width:220px;z-index:210;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+@media(min-width:701px){.nav-dropdown-wrap:hover .nav-dropdown{display:flex;flex-direction:column}}
+.nav-dropdown-link{font-size:12px;color:rgba(245,240,232,.7);text-decoration:none;padding:8px 20px;transition:background .12s,color .12s}
+.nav-dropdown-link:hover{background:rgba(212,232,74,.1);color:var(--cream)}
+.nav-dropdown-all{border-top:1px solid rgba(245,240,232,.08);margin-top:8px;padding-top:12px;font-weight:700;font-size:11px;letter-spacing:.04em;color:var(--lime)}
+.nav-dropdown-all:hover{color:var(--cream)}
+
+/* MOBILE NAV SUB-MENU */
+.nav-mobile-toggle{background:none;border:none;font-family:inherit;cursor:pointer;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.nav-mobile-chevron{transition:transform .2s;display:inline-block;font-size:18px}
+.nav-mobile-toggle.open .nav-mobile-chevron{transform:rotate(90deg)}
+.nav-mobile-sub{display:none;flex-direction:column;padding:0 0 8px}
+.nav-mobile-sub.open{display:flex}
+.nav-mobile-sublink{font-size:14px;color:rgba(245,240,232,.5);text-decoration:none;padding:10px 0 10px 20px;border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-mobile-sublink:hover{color:var(--cream)}
+
 /* SHARED */
 .section-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--forest);opacity:.7;display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .section-eyebrow::before{content:'';display:block;width:14px;height:1px;background:currentColor}

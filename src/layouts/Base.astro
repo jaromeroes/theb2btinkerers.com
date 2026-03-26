@@ -38,22 +38,44 @@ const currentPath = Astro.url.pathname;
   <div class="nav-inner">
     <a class="nav-logo" href="/"><img src="/logo.svg" alt="The B2B Tinkerers" class="nav-logo-img"/></a>
     <div class="nav-links">
-      <a class={`nav-link${currentPath==='/'?'':''}`} href="/#services">Services</a>
-      <a class={`nav-link${currentPath==='/'?'':''}`} href="/#method">Method</a>
+      <div class="nav-dropdown-wrap">
+        <a class={`nav-link${currentPath.startsWith('/services')?' active':''}`} href="/services">Services</a>
+        <div class="nav-dropdown">
+          <a class="nav-dropdown-link" href="/services/marketing-audit">Marketing Audit</a>
+          <a class="nav-dropdown-link" href="/services/brand-strategy">Brand Strategy</a>
+          <a class="nav-dropdown-link" href="/services/go-to-market">Go-To-Market Strategy</a>
+          <a class="nav-dropdown-link" href="/services/marketing-plan">Marketing Plan</a>
+          <a class="nav-dropdown-link" href="/services/ai-strategy">AI & Hybrid Strategy</a>
+          <a class="nav-dropdown-link" href="/services/fractional-cmo">Fractional CMO</a>
+          <a class="nav-dropdown-link nav-dropdown-all" href="/services">View all services →</a>
+        </div>
+      </div>
       <a class={`nav-link${currentPath.startsWith('/insights')?' active':''}`} href="/insights">Insights</a>
       <a class={`nav-link${currentPath==='/about'?' active':''}`} href="/about">About</a>
+      <a class={`nav-link${currentPath==='/join'?' active':''}`} href="/join">Join</a>
     </div>
-    <a class="nav-cta" href="/#contact">Book a call →</a>
+    <a class="nav-cta" href="/#contact">Let's talk →</a>
     <button class="nav-burger" id="nav-burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a class="nav-mobile-link" href="/#services">Services</a>
-    <a class="nav-mobile-link" href="/#method">Method</a>
+    <div class="nav-mobile-services">
+      <button class="nav-mobile-link nav-mobile-toggle" id="nav-services-toggle">Services <span class="nav-mobile-chevron">›</span></button>
+      <div class="nav-mobile-sub" id="nav-services-sub">
+        <a class="nav-mobile-sublink" href="/services/marketing-audit">Marketing Audit</a>
+        <a class="nav-mobile-sublink" href="/services/brand-strategy">Brand Strategy</a>
+        <a class="nav-mobile-sublink" href="/services/go-to-market">Go-To-Market Strategy</a>
+        <a class="nav-mobile-sublink" href="/services/marketing-plan">Marketing Plan</a>
+        <a class="nav-mobile-sublink" href="/services/ai-strategy">AI & Hybrid Strategy</a>
+        <a class="nav-mobile-sublink" href="/services/fractional-cmo">Fractional CMO</a>
+        <a class="nav-mobile-sublink" href="/services">View all services</a>
+      </div>
+    </div>
     <a class="nav-mobile-link" href="/insights">Insights</a>
     <a class="nav-mobile-link" href="/about">About</a>
-    <a class="nav-mobile-cta" href="mailto:hello@theb2btinkerers.com">Book a discovery call →</a>
+    <a class="nav-mobile-link" href="/join">Join the team</a>
+    <a class="nav-mobile-cta" href="/#contact">Let's talk →</a>
   </div>
 </nav>
 
@@ -117,15 +139,18 @@ const currentPath = Astro.url.pathname;
     <div class="footer-mid">
       <div class="footer-col">
         <span class="footer-col-label">Services</span>
-        <a class="footer-link" href="/#services">Marketing Audit</a>
-        <a class="footer-link" href="/#services">Brand Strategy</a>
-        <a class="footer-link" href="/#services">Go-To-Market</a>
-        <a class="footer-link" href="/#services">Fractional CMO</a>
+        <a class="footer-link" href="/services/marketing-audit">Marketing Audit</a>
+        <a class="footer-link" href="/services/brand-strategy">Brand Strategy</a>
+        <a class="footer-link" href="/services/go-to-market">Go-To-Market</a>
+        <a class="footer-link" href="/services/marketing-plan">Marketing Plan</a>
+        <a class="footer-link" href="/services/ai-strategy">AI Strategy</a>
+        <a class="footer-link" href="/services/fractional-cmo">Fractional CMO</a>
       </div>
       <div class="footer-col">
         <span class="footer-col-label">Company</span>
         <a class="footer-link" href="/about">About</a>
         <a class="footer-link" href="/insights">Insights</a>
+        <a class="footer-link" href="/join">Join the team</a>
         <a class="footer-link" href="/#contact">Contact</a>
       </div>
       <div class="footer-col">
@@ -151,6 +176,12 @@ window.addEventListener('scroll', () => {
 document.getElementById('nav-burger')?.addEventListener('click', function() {
   this.classList.toggle('open');
   document.getElementById('nav-mobile')?.classList.toggle('open');
+});
+
+/* ── Mobile services sub-menu ── */
+document.getElementById('nav-services-toggle')?.addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('nav-services-sub')?.classList.toggle('open');
 });
 
 /* ── Session journey tracking ── */
