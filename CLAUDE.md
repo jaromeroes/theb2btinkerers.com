@@ -4,7 +4,7 @@ This file provides guidance to Claude Code when working with this repository.
 
 ## Project
 
-Static B2B marketing consultancy website (theb2btinkerers.com) built with **Astro 4.16**, deployed on **Netlify**, Node 20. The site belongs to The B2B Tinkerers, a B2B marketing strategy consultancy ("the anti-agency") targeting mid-market European B2B companies (100–500 employees, €20M–€200M revenue) in tech/SaaS and industrial sectors.
+Static B2B marketing consultancy website (theb2btinkerers.com) built with **Astro 4.16**, deployed on **Netlify**, Node 20. The site belongs to The B2B Tinkerers, a B2B marketing strategy consultancy ("the anti-agency") targeting B2B companies in tech/SaaS, industrial, and financial services sectors across Europe and North America.
 
 ## Commands
 
@@ -52,6 +52,7 @@ author: "The B2B Tinkerers"   # optional
 - Never use: agency jargon, empty buzzwords, generic corporate language, transactional lead-gen CTAs.
 - Avoid overuse of em-dashes as sentence separators. Use periods and shorter sentences instead. Em-dashes are flagged as AI-generated writing.
 - All content is written in English.
+- All monetary figures display both euro and dollar amounts, with the dollar equivalent in parentheses: e.g., €200,000 ($220,000).
 
 ### Good examples of tone
 
