@@ -1,7 +1,7 @@
 ---
 title: "AI Slop Is Real. And Your Marketing Team Is Probably Already Dealing With It."
 excerpt: "Everyone in the company now has access to the same AI tools your marketing team uses. That creates a problem nobody is talking about honestly."
-date: 2026-02-11
+date: 2026-03-05
 tag: "AI & Marketing"
 readTime: "8 min read"
 image: "../../assets/blog/ai-slop-cover.webp"
