@@ -88,9 +88,16 @@ Update the project description to reflect new positioning:
 - Add financial services to sector list
 - Update currency convention to mention dual display
 
+### ai-strategy.astro
+
+Audited — no references to sectors, geography, currency, or company size. No changes needed.
+
 ## Out of scope
 
 - No layout, component, or style changes
 - No new pages or sections
 - Blog content that already uses USD (the Contentful section in the CMS article) stays as-is
+- **Blog body copy with "mid-market"** — `agentic-ai-b2b-marketing.md` (lines 44, 68, 78) and `ai-slop-marketing-team.md` (line 46) use "mid-market" as a descriptor for the article's target reader. These are published, dated content and should be treated as historical. Not modified.
+- **case-study-ai-insurance-quoting.md** — "mid-market" (lines 18, 60) describes the client's customers, not the consultancy's positioning. Not modified.
+- **CMS blog post line 40** — "mid-sized businesses" describes the historical reality of companies that bought enterprise CMS platforms, not our target audience. Stays as-is.
 - The newsletter feature (separate initiative, to follow)
