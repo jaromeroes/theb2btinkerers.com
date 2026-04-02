@@ -1,7 +1,7 @@
 ---
 title: "Your B2B Website Doesn't Need an Expensive Experience Management System. And It Probably Never Did."
 date: 2026-01-28
-excerpt: "Thousands of B2B companies are spending between €200,000 and over €1 million implementing web platforms their marketing teams can barely touch without calling an agency. In 2026, there is no longer any excuse for this."
+excerpt: "Thousands of B2B companies are spending between €200,000 ($220,000) and over €1 million ($1.1M) implementing web platforms their marketing teams can barely touch without calling an agency. In 2026, there is no longer any excuse for this."
 tag: "strategy"
 image: "../../assets/blog/your-b2b-website-doesnt-need-expensive-cms.webp"
 author: "The B2B Tinkerers"
@@ -21,7 +21,7 @@ The problem isn't that these platforms are bad. The problem is that for most B2B
 
 When a company decides to implement Sitecore, the initial budgets circulating in internal presentations rarely tell the full story.
 
-The documented reality is this: implementing Sitecore in an enterprise environment can cost anywhere between €200,000 at the low end — for straightforward deployments — and well over €1 million when advanced customisation, CRM and ERP integrations, content migration and team training are factored in. The annual licence alone averages around €70,000, reaching €360,000 in high-traffic scenarios.
+The documented reality is this: implementing Sitecore in an enterprise environment can cost anywhere between €200,000 ($220,000) at the low end — for straightforward deployments — and well over €1 million ($1.1M) when advanced customisation, CRM and ERP integrations, content migration and team training are factored in. The annual licence alone averages around €70,000 ($77,000), reaching €360,000 ($400,000) in high-traffic scenarios.
 
 And that is only the beginning. Then comes the operational cost: specialist .NET profiles to maintain the platform, certified agencies for any meaningful modification, upgrade cycles that can freeze the site for weeks. An average marketing team can barely touch anything without external help.
 
@@ -37,9 +37,9 @@ The question nobody asks in the meeting room is this: what specific business obj
 
 For years, the answer to that question was "scalability" and "integrations." Sitecore could manage 50 sites across multiple languages. It could personalise experiences in real time. It could integrate with any CRM on the market.
 
-All of that was true. And for a multinational manufacturer with a presence in 30 countries and a digital team of 40 people, it probably still makes sense. But the majority of B2B companies that bought these platforms between 2015 and 2022 were not that. They were mid-sized businesses with a marketing team of three to eight people, a primarily national or European market, and a corporate website whose main job was to generate leads and publish content.
+All of that was true. And for a multinational manufacturer with a presence in 30 countries and a digital team of 40 people, it probably still makes sense. But the majority of B2B companies that bought these platforms between 2015 and 2022 were not that. They were mid-sized businesses with a marketing team of three to eight people, a primarily national or regional market, and a corporate website whose main job was to generate leads and publish content.
 
-For that use case, spending between €200,000 and €1 million on implementation and tens of thousands per year on licences and support is, simply put, a misjudgement that the inflated budgets of that era made possible.
+For that use case, spending between €200,000 ($220,000) and €1 million ($1.1M) on implementation and tens of thousands per year on licences and support is, simply put, a misjudgement that the inflated budgets of that era made possible.
 
 In 2026, that mistake is no longer just expensive. It is competitively dangerous.
 
