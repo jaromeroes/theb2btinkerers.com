@@ -47,7 +47,20 @@
     transition:.18s;white-space:nowrap;}
   .bar-nav a:hover{color:var(--li);background:rgba(212,232,74,.08);}
   .progress{height:2px;background:var(--li);width:0%;transition:width .12s linear;}
-  @media(max-width:680px){.bar-inner{padding:11px 22px;}.bar-sep,.bar-doc{display:none;}}
+  @media(max-width:680px){
+    .bar-inner{padding:9px 22px;}
+    .bar-sep,.bar-doc{display:none;}
+    /* nav: tap targets + right-edge fade so it reads as horizontally scrollable */
+    .bar-nav{gap:4px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);}
+    .bar-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 11px;}
+    /* hero meta: stack with bottom dividers instead of dangling right borders on wrap */
+    .meta{flex-direction:column;align-items:flex-start;}
+    .meta div{border-right:0;padding-right:0;margin-right:0;width:100%;border-bottom:1px solid rgba(245,240,232,.14);padding-bottom:11px;margin-bottom:11px;}
+    .meta div:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0;}
+    /* eq cards: avoid the 2+1 orphan row in the tablet/large-phone mid-range */
+    .eq{display:grid;grid-template-columns:1fr;}
+    .eq-card{min-width:0;}
+  }
 
   /* ---------- hero ---------- */
   .hero{background-color:var(--f);color:var(--cr);padding:100px 0 86px;position:relative;overflow:hidden;
@@ -337,7 +350,7 @@
   .gate{position:fixed;inset:0;z-index:1000;background:var(--fd);
     background-image:linear-gradient(rgba(212,232,74,.05) 1px,transparent 1px),
       linear-gradient(90deg,rgba(212,232,74,.05) 1px,transparent 1px);background-size:64px 64px;
-    display:flex;align-items:center;justify-content:center;padding:24px;}
+    display:flex;align-items:safe center;justify-content:center;padding:32px 24px;overflow-y:auto;}
   .gate::after{content:"";position:absolute;right:-180px;top:-200px;width:560px;height:560px;border-radius:50%;
     background:radial-gradient(circle,rgba(212,232,74,.14),transparent 62%);pointer-events:none;}
   .gate::before{content:"";position:absolute;left:-150px;bottom:-200px;width:440px;height:440px;border-radius:50%;
@@ -352,7 +365,7 @@
   .gate-box>p{font-size:14.5px;color:rgba(245,240,232,.66);margin-bottom:26px;max-width:44ch;}
   .gate-form{display:flex;flex-direction:column;gap:12px;}
   .gate-form input{width:100%;background:rgba(245,240,232,.06);border:1px solid rgba(245,240,232,.22);
-    color:var(--cr);font-family:'Inter',sans-serif;font-size:15px;padding:14px 16px;outline:none;
+    color:var(--cr);font-family:'Inter',sans-serif;font-size:16px;padding:14px 16px;outline:none;
     transition:border-color .15s;}
   .gate-form input::placeholder{color:rgba(245,240,232,.4);}
   .gate-form input:focus{border-color:var(--li);}
@@ -1014,28 +1027,6 @@
     <p>Un resumen honesto de los cambios sustantivos por versión. El detalle operativo de qué está cerrado y qué sigue abierto vive en Tensiones; aquí solo lo que mueve la marca.</p>
 
     <div class="changelog reveal">
-      <div class="cl-row">
-        <div>
-          <div class="cl-ver">v0.1 – v0.4</div>
-          <div class="cl-meta">Iteraciones internas</div>
-        </div>
-        <div>
-          <div class="cl-tit">Estructura y formato</div>
-          <div class="cl-body">Iteraciones rápidas previas al primer documento estable. Definición de la lógica de <strong>dos capas de lectura</strong> (el concepto y la respuesta de Eaship), la arquitectura de siete capítulos, y los primeros borradores de contenido. Sin presentación a cliente.</div>
-        </div>
-      </div>
-
-      <div class="cl-row">
-        <div>
-          <div class="cl-ver">v0.5</div>
-          <div class="cl-meta">Síntesis del Brand Discovery</div>
-        </div>
-        <div>
-          <div class="cl-tit">Primer documento estable</div>
-          <div class="cl-body">Cierre de los siete capítulos con su respuesta de Eaship. Territorio como <strong>"control operativo del transporte industrial"</strong>; categoría como <strong>"Sistema Operativo de Logística Industrial"</strong>; arquitectura de marca de dos alturas (Visión y Promesa); los tres adjetivos (Resolutiva, Fiable, Cercana). Iteración interna posterior: el arquetipo se degradó a nota breve y el capítulo recuperó el título "Personalidad". Aplicación de la identidad de <strong>The B2B Tinkerers</strong> para encuadrar el documento como entrega de agencia, no como la nueva identidad de Eaship.</div>
-        </div>
-      </div>
-
       <div class="cl-row">
         <div>
           <div class="cl-ver">v0.6</div>
