@@ -50,8 +50,10 @@
   @media(max-width:680px){
     .bar-inner{padding:9px 22px;}
     .bar-sep,.bar-doc{display:none;}
-    /* nav: tap targets + right-edge fade so it reads as horizontally scrollable */
-    .bar-nav{gap:4px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);}
+    /* logo must never shrink: only the nav gives way and scrolls */
+    .bar-id{flex-shrink:0;}
+    /* nav takes the remaining width, tap targets + right-edge fade so it reads as scrollable */
+    .bar-nav{flex:1 1 auto;min-width:0;gap:4px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);}
     .bar-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 11px;}
     /* hero meta: stack with bottom dividers instead of dangling right borders on wrap */
     .meta{flex-direction:column;align-items:flex-start;}
