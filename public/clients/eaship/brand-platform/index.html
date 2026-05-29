@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Eaship · Plataforma de Marca v0.7 · The B2B Tinkerers</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@300;400;500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --f:#1C4A3A;--fd:#142E24;--m:#2A6B54;
+    --li:#D4E84A;--lid:#B8CC30;
+    --cr:#F5F0E8;--ln:#E8E3D8;--lnd:#D8D2C5;
+    --ink:#1A1A1A;--gr:#5A5A5A;--grl:#8A8A8A;
+    --red:#C83232;--w:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;color-scheme:light only;}
+  body{background:var(--cr);color:var(--ink);
+    font-family:'Inter',sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--li);color:var(--f);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 44px;}
+  .col{max-width:780px;}
+  @media(max-width:680px){.wrap{padding:0 22px;}}
+
+  /* ---------- sticky header ---------- */
+  header.bar{position:sticky;top:0;z-index:50;background:rgba(20,46,36,.97);
+    backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,232,74,.12);}
+  .bar-inner{max-width:1180px;margin:0 auto;padding:13px 44px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .bar-id{display:flex;align-items:center;gap:12px;min-width:0;}
+  .bar-brand{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:-.02em;color:var(--cr);white-space:nowrap;}
+  .bar-brand em{color:var(--li);font-style:normal;}
+  .bar-sep{width:1px;height:13px;background:rgba(245,240,232,.22);flex-shrink:0;}
+  .bar-doc{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;
+    color:rgba(245,240,232,.5);white-space:nowrap;}
+  .bar-nav{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;}
+  .bar-nav::-webkit-scrollbar{display:none;}
+  .bar-nav a{color:rgba(245,240,232,.5);text-decoration:none;
+    font-family:'DM Mono',monospace;font-size:12px;padding:5px 8px;
+    transition:.18s;white-space:nowrap;}
+  .bar-nav a:hover{color:var(--li);background:rgba(212,232,74,.08);}
+  .progress{height:2px;background:var(--li);width:0%;transition:width .12s linear;}
+  @media(max-width:680px){.bar-inner{padding:11px 22px;}.bar-sep,.bar-doc{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{background-color:var(--f);color:var(--cr);padding:100px 0 86px;position:relative;overflow:hidden;
+    background-image:linear-gradient(rgba(212,232,74,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(212,232,74,.045) 1px,transparent 1px);background-size:64px 64px;}
+  .hero::after{content:"";position:absolute;right:-180px;top:-200px;width:620px;height:620px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,232,74,.16),transparent 62%);}
+  .hero::before{content:"";position:absolute;left:-160px;bottom:-220px;width:480px;height:480px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,232,74,.06),transparent 64%);}
+  .hero .wrap{position:relative;}
+  .kicker{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--li);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+  .kicker::before{content:"";width:30px;height:1px;background:var(--li);}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,7vw,84px);
+    line-height:.96;letter-spacing:-.045em;max-width:15ch;color:var(--cr);
+    animation:rise .9s cubic-bezier(.2,.7,.2,1) both;}
+  .hero h1 em{font-style:normal;color:var(--li);}
+  @keyframes rise{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  .hero p.lead{margin-top:26px;max-width:58ch;font-size:18px;color:rgba(245,240,232,.74);
+    animation:rise 1s .12s cubic-bezier(.2,.7,.2,1) both;}
+  .hero .provisional{margin-top:16px;font-family:'DM Mono',monospace;font-size:11.5px;line-height:1.6;
+    color:rgba(245,240,232,.5);border-left:2px solid rgba(212,232,74,.5);padding-left:12px;max-width:54ch;}
+  .meta{margin-top:44px;display:flex;flex-wrap:wrap;border-top:1px solid rgba(245,240,232,.14);padding-top:22px;}
+  .meta div{padding-right:34px;margin-right:34px;border-right:1px solid rgba(245,240,232,.14);margin-bottom:8px;}
+  .meta div:last-child{border:0;margin-right:0;padding-right:0;}
+  .meta .lab{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(245,240,232,.45);margin-bottom:5px;}
+  .meta .val{font-size:14px;color:var(--cr);}
+
+  /* ---------- manifesto ---------- */
+  .manifesto{padding:80px 0;border-bottom:1px solid var(--lnd);position:relative;overflow:hidden;background:var(--cr);}
+  .manifesto .ch-tag{margin-bottom:20px;}
+  .big-line{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(30px,4.6vw,50px);line-height:1.05;letter-spacing:-.04em;color:var(--f);max-width:19ch;}
+  .big-line em{font-style:normal;background:var(--li);color:var(--f);
+    padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
+  .manifesto p{margin-top:22px;font-size:17px;max-width:70ch;color:var(--gr);}
+  .manifesto p strong{color:var(--f);font-weight:600;}
+  .pull{margin:30px 0 4px;border-left:4px solid var(--li);padding:18px 26px;background:var(--w);
+    font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;
+    letter-spacing:-.02em;line-height:1.35;color:var(--f);max-width:none;}
+
+  /* ---------- generic section ---------- */
+  section.block{padding:60px 0;border-bottom:1px solid var(--lnd);background:var(--cr);}
+  section.block:nth-of-type(even){background:var(--ln);}
+
+  .read-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 6px;}
+  @media(max-width:680px){.read-grid{grid-template-columns:1fr;}}
+  .layer{border:1px solid var(--lnd);padding:24px 26px;background:var(--w);}
+  .layer .ln{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:9px;color:var(--f);}
+  .layer .ln::before{content:"";width:11px;height:11px;display:inline-block;}
+  .layer.l1 .ln::before{background:var(--f);}
+  .layer.l2 .ln::before{background:var(--li);}
+  .layer h4{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;
+    letter-spacing:-.02em;margin-bottom:6px;color:var(--f);}
+  .layer p{font-size:14.5px;color:var(--gr);margin:0;}
+
+  /* ---------- índice / toc ---------- */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0 8px;}
+  @media(max-width:680px){.toc-grid{grid-template-columns:1fr;}}
+  .toc-item{display:flex;gap:18px;align-items:flex-start;border:1px solid var(--lnd);
+    background:var(--w);padding:18px 22px;text-decoration:none;transition:border-color .15s,transform .15s;}
+  .toc-item:hover{border-color:var(--lid);transform:translateY(-2px);}
+  .toc-num{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:700;
+    line-height:1;color:var(--lid);min-width:44px;letter-spacing:-.03em;}
+  .toc-tx h4{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;
+    letter-spacing:-.02em;color:var(--f);margin-bottom:3px;}
+  .toc-tx p{font-size:13px;color:var(--gr);line-height:1.35;margin:0;}
+  .toc-item.applied{background:var(--f);border-color:var(--f);}
+  .toc-item.applied:hover{border-color:var(--li);}
+  .toc-item.applied .toc-num{color:var(--li);}
+  .toc-item.applied .toc-tx h4{color:var(--cr);}
+  .toc-item.applied .toc-tx p{color:rgba(245,240,232,.72);}
+
+  /* ---------- changelog ---------- */
+  .changelog{margin-top:26px;}
+  .cl-row{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--lnd);}
+  .cl-row:last-child{border-bottom:1px solid var(--lnd);}
+  .cl-ver{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;
+    color:var(--lid);letter-spacing:-.02em;line-height:1;}
+  .cl-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--m);
+    letter-spacing:.1em;text-transform:uppercase;margin-top:8px;}
+  .cl-tit{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;
+    color:var(--f);margin-bottom:8px;letter-spacing:-.01em;}
+  .cl-body{font-size:13.5px;color:var(--gr);line-height:1.55;}
+  .cl-body strong{color:var(--ink);font-weight:600;}
+  @media(max-width:680px){.cl-row{grid-template-columns:1fr;gap:6px;}}
+
+  /* ---------- chapter ---------- */
+  .chapter{padding:74px 0;border-bottom:1px solid var(--lnd);position:relative;overflow:hidden;background:var(--cr);}
+  .chapter:nth-of-type(even){background:var(--ln);}
+  .ch-watermark{position:absolute;right:-10px;top:34px;font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;font-size:230px;line-height:1;color:var(--f);opacity:.04;pointer-events:none;user-select:none;}
+  .ch-head{position:relative;margin-bottom:30px;}
+  .ch-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--f);display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .ch-tag::before{content:"";width:26px;height:1px;background:var(--f);}
+  .ch-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,52px);
+    line-height:1.0;letter-spacing:-.04em;color:var(--f);}
+  .ch-q{margin-top:12px;font-size:17px;color:var(--gr);font-style:italic;
+    font-family:'Inter',sans-serif;max-width:60ch;}
+  h3.sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:25px;letter-spacing:-.03em;
+    margin:38px 0 6px;padding-top:26px;border-top:1px solid var(--lnd);color:var(--f);}
+
+  /* ---------- concept panel ---------- */
+  .concept{background:var(--w);border:1px solid var(--lnd);
+    padding:0;margin:6px 0 30px;overflow:hidden;}
+  .concept-bar{background:var(--f);color:var(--cr);padding:11px 24px;
+    font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;}
+  .concept-bar::before{content:"";width:11px;height:11px;background:var(--li);flex-shrink:0;}
+  .concept-body{padding:22px 26px;}
+  .concept-body p{font-size:15px;color:var(--gr);margin-bottom:12px;line-height:1.6;}
+  .concept-body p:last-child{margin-bottom:0;}
+  .concept-body p strong{color:var(--f);font-weight:600;}
+  .concept-test{margin-top:14px;padding-top:14px;border-top:1px dashed var(--lnd);font-size:13.5px;color:var(--gr);}
+  .concept-test b{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--f);}
+
+  /* ---------- answer ---------- */
+  .answer-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--f);display:flex;align-items:center;gap:11px;margin-bottom:18px;}
+  .answer-eyebrow::after{content:"";height:1px;background:var(--lnd);flex:1;}
+  .answer p{margin-bottom:16px;max-width:74ch;}
+  .answer strong{font-weight:600;color:var(--f);}
+  .answer em{color:var(--m);font-style:italic;}
+
+  .statement{border-left:4px solid var(--li);background:var(--w);padding:26px 30px;margin:22px 0;
+    font-family:'Bricolage Grotesque',sans-serif;font-size:22px;line-height:1.35;
+    font-weight:700;letter-spacing:-.02em;color:var(--f);}
+  .statement em{font-style:normal;color:var(--m);}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+  .chip{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 11px;border:1px solid var(--lnd);color:var(--gr);background:var(--w);}
+  .chip.vision{border-color:var(--f);color:var(--f);}
+  .chip.promesa{border-color:var(--li);color:var(--f);background:rgba(212,232,74,.22);}
+  .chip.decidido{border-color:var(--f);color:var(--cr);background:var(--f);}
+
+  .heights{margin:24px 0 8px;display:flex;flex-direction:column;}
+  .tier{border:1px solid var(--lnd);padding:22px 26px;background:var(--w);}
+  .tier.top{border-bottom:0;}
+  .tier .tlab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;margin-bottom:6px;}
+  .tier.top .tlab{color:var(--f);}
+  .tier.bot .tlab{color:var(--m);}
+  .tier h4{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;
+    letter-spacing:-.02em;margin-bottom:5px;color:var(--f);}
+  .tier p{font-size:14.5px;color:var(--gr);margin:0;}
+  .bridge{align-self:center;background:var(--f);color:var(--li);
+    font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;padding:7px 16px;margin-bottom:2px;}
+
+  .eq{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 8px;}
+  .eq-card{flex:1;min-width:180px;background:var(--w);border:1px solid var(--lnd);padding:20px;}
+  .eq-card .ql{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--m);margin-bottom:8px;}
+  .eq-card .qw{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;
+    letter-spacing:-.03em;color:var(--f);}
+  .eq-card .qd{font-size:13.5px;color:var(--gr);margin-top:5px;}
+
+  ul.clean{list-style:none;margin:8px 0;}
+  ul.clean li{position:relative;padding-left:26px;margin-bottom:11px;max-width:74ch;}
+  ul.clean li::before{content:"";position:absolute;left:2px;top:10px;width:7px;height:7px;
+    background:var(--li);transform:rotate(45deg);}
+  ul.clean strong{color:var(--f);font-weight:600;}
+
+  .roles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0 6px;}
+  @media(max-width:680px){.roles{grid-template-columns:1fr;}}
+  .role{background:var(--w);border:1px solid var(--lnd);padding:18px 20px;}
+  .role .rn{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;
+    letter-spacing:-.02em;margin-bottom:4px;color:var(--f);}
+  .role .rt{font-size:13.5px;color:var(--gr);}
+  .role .rk{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--m);margin-top:9px;}
+
+  .note{background:var(--w);border:1px solid var(--lnd);border-left:3px solid var(--li);
+    padding:18px 22px;margin:22px 0;}
+  .note .nh{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--f);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+  .note .nh::before{content:"";width:9px;height:9px;background:var(--li);}
+  .note p{margin:0;font-size:14.5px;color:var(--gr);}
+  .note p strong{color:var(--f);font-weight:600;}
+  .note p+p{margin-top:9px;}
+
+  /* ---------- sliders ---------- */
+  .slider{background:var(--w);border:1px solid var(--lnd);padding:24px 28px 22px;margin-bottom:16px;}
+  .ax-label{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--f);margin-bottom:18px;}
+  .track{display:grid;grid-template-columns:140px 1fr 140px;align-items:center;gap:14px;}
+  @media(max-width:680px){.track{grid-template-columns:1fr;gap:6px;}.pole{text-align:left !important;}}
+  .pole{font-size:13px;color:var(--gr);}
+  .pole.left{text-align:right;}
+  .pole.right{text-align:left;}
+  .pole .pname{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;
+    letter-spacing:-.01em;color:var(--f);display:block;}
+  .rail{position:relative;height:8px;background:var(--ln);border:1px solid var(--lnd);}
+  .center-tick{position:absolute;left:50%;top:-5px;bottom:-5px;width:1px;
+    background:repeating-linear-gradient(180deg,var(--lnd) 0 3px,transparent 3px 6px);}
+  .fill{position:absolute;top:0;bottom:0;left:0;background:var(--li);}
+  .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;
+    background:var(--li);border:3px solid var(--f);transform:translate(-50%,-50%);}
+  .reading{margin-top:18px;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;
+    font-weight:700;letter-spacing:-.02em;color:var(--f);display:flex;align-items:baseline;gap:10px;}
+  .reading::before{content:"";width:8px;height:8px;background:var(--li);
+    transform:rotate(45deg);flex-shrink:0;}
+  .why{font-size:14px;color:var(--gr);margin:8px 0 0;max-width:none;}
+  .why em{font-style:italic;color:var(--m);}
+  .anchor{margin-top:13px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.05em;
+    color:var(--f);background:rgba(212,232,74,.22);border:1px solid var(--li);
+    display:inline-block;padding:5px 10px;}
+
+  /* ---------- principle cards ---------- */
+  .pintro{margin-bottom:30px;}
+  .principle{background:var(--w);border:1px solid var(--lnd);padding:26px 28px;margin-bottom:16px;}
+  .p-top{display:flex;gap:16px;align-items:baseline;margin-bottom:6px;}
+  .p-num{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--li);background:var(--f);
+    width:34px;height:34px;min-width:34px;display:flex;align-items:center;justify-content:center;}
+  .p-title{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;
+    letter-spacing:-.03em;line-height:1.2;color:var(--f);}
+  .p-why{margin:10px 0 16px 50px;font-size:14.5px;color:var(--gr);max-width:70ch;}
+  .p-why em{font-style:italic;color:var(--m);}
+  @media(max-width:680px){.p-why{margin-left:0;}}
+  .p-ex{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-left:50px;}
+  @media(max-width:680px){.p-ex{grid-template-columns:1fr;margin-left:0;}}
+  .ex{padding:15px 17px;}
+  .ex.no{background:rgba(200,50,50,.05);border:1px solid rgba(200,50,50,.32);}
+  .ex.si{background:rgba(28,74,58,.06);border:1px solid rgba(28,74,58,.28);}
+  .ex .exl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:6px;font-weight:500;}
+  .ex.no .exl{color:var(--red);}
+  .ex.si .exl{color:var(--f);}
+  .ex .exl::before{font-weight:700;}
+  .ex.no .exl::before{content:"\00d7";font-size:14px;}
+  .ex.si .exl::before{content:"\2713";font-size:12px;}
+  .ex p{font-size:14px;margin:0;color:var(--ink);line-height:1.5;}
+  .ex p.q{font-style:italic;}
+
+  /* ---------- tensions ---------- */
+  .trow{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--lnd);}
+  .trow:last-child{border-bottom:0;}
+  .tstate{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:500;padding:4px 9px;white-space:nowrap;margin-top:2px;}
+  .ts-open{background:var(--li);color:var(--f);}
+  .ts-res{background:var(--f);color:var(--li);}
+  .trow .ttx{font-size:14.5px;color:var(--gr);}
+  .trow .ttx b{color:var(--f);}
+
+  /* ---------- closing ---------- */
+  .closing{background-color:var(--f);color:var(--cr);padding:84px 0 78px;position:relative;overflow:hidden;
+    background-image:linear-gradient(rgba(212,232,74,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(212,232,74,.04) 1px,transparent 1px);background-size:64px 64px;}
+  .closing::after{content:"";position:absolute;left:-160px;top:-160px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,232,74,.14),transparent 62%);}
+  .closing .wrap{position:relative;}
+  .closing .ch-tag{color:var(--li);}
+  .closing .ch-tag::before{background:var(--li);}
+  .closing h2{color:var(--cr);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(32px,4.4vw,48px);line-height:1.05;letter-spacing:-.04em;max-width:19ch;}
+  .closing h2 em{font-style:normal;color:var(--li);}
+  .closing p{color:rgba(245,240,232,.74);max-width:68ch;margin:18px 0 0;font-size:17px;}
+  .next{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0 0;}
+  @media(max-width:680px){.next{grid-template-columns:1fr;}}
+  .nx{border:1px solid rgba(245,240,232,.16);padding:22px;}
+  .nx .nxn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--li);margin-bottom:8px;}
+  .nx .nxt{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;
+    letter-spacing:-.02em;margin-bottom:5px;color:var(--cr);}
+  .nx .nxd{font-size:13px;color:rgba(245,240,232,.6);}
+  .foot{border-top:1px solid rgba(245,240,232,.14);margin-top:48px;padding-top:22px;
+    font-family:'DM Mono',monospace;font-size:11px;color:rgba(245,240,232,.5);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  h2.plain{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(28px,3.6vw,40px);line-height:1.05;letter-spacing:-.04em;color:var(--f);}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- brand logo in header ---------- */
+  .bar-brand-logo{display:flex;align-items:center;flex-shrink:0;line-height:0;}
+  .bar-brand-logo img{height:26px;width:auto;display:block;}
+  @media(max-width:680px){.bar-brand-logo img{height:22px;}}
+
+  /* ---------- password gate ---------- */
+  html:not(.unlocked),html:not(.unlocked) body{overflow:hidden;}
+  html.unlocked .gate{display:none;}
+  .gate{position:fixed;inset:0;z-index:1000;background:var(--fd);
+    background-image:linear-gradient(rgba(212,232,74,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(212,232,74,.05) 1px,transparent 1px);background-size:64px 64px;
+    display:flex;align-items:center;justify-content:center;padding:24px;}
+  .gate::after{content:"";position:absolute;right:-180px;top:-200px;width:560px;height:560px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,232,74,.14),transparent 62%);pointer-events:none;}
+  .gate::before{content:"";position:absolute;left:-150px;bottom:-200px;width:440px;height:440px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,232,74,.06),transparent 64%);pointer-events:none;}
+  .gate-box{position:relative;width:100%;max-width:430px;}
+  .gate-logo{height:34px;width:auto;display:block;margin-bottom:38px;}
+  .gate-kicker{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--li);display:flex;align-items:center;gap:11px;margin-bottom:18px;}
+  .gate-kicker::before{content:"";width:26px;height:1px;background:var(--li);}
+  .gate-box h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:31px;line-height:1.04;
+    letter-spacing:-.035em;color:var(--cr);margin-bottom:11px;}
+  .gate-box>p{font-size:14.5px;color:rgba(245,240,232,.66);margin-bottom:26px;max-width:44ch;}
+  .gate-form{display:flex;flex-direction:column;gap:12px;}
+  .gate-form input{width:100%;background:rgba(245,240,232,.06);border:1px solid rgba(245,240,232,.22);
+    color:var(--cr);font-family:'Inter',sans-serif;font-size:15px;padding:14px 16px;outline:none;
+    transition:border-color .15s;}
+  .gate-form input::placeholder{color:rgba(245,240,232,.4);}
+  .gate-form input:focus{border-color:var(--li);}
+  .gate-form button{background:var(--li);color:var(--f);border:0;font-family:'DM Mono',monospace;
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:14px 16px;
+    cursor:pointer;transition:background .15s;}
+  .gate-form button:hover{background:var(--lid);}
+  .gate-err{font-family:'DM Mono',monospace;font-size:12px;color:#E89090;
+    min-height:16px;letter-spacing:.04em;opacity:0;transition:opacity .15s;}
+  .gate-err.show{opacity:1;}
+  .gate.shake .gate-box{animation:gshake .4s;}
+  @keyframes gshake{10%,90%{transform:translateX(-2px);}30%,70%{transform:translateX(4px);}50%{transform:translateX(-7px);}}
+  .gate-foot{margin-top:40px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.06em;
+    color:rgba(245,240,232,.42);line-height:1.6;}
+</style>
+<script>
+  // Early unlock check: avoids overlay flash for an already-authenticated session.
+  try{ if(sessionStorage.getItem('eaship_brand_auth')==='1'){ document.documentElement.classList.add('unlocked'); } }catch(e){}
+</script>
+</head>
+<body>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="gate" id="gate" aria-hidden="false">
+  <div class="gate-box">
+    <img class="gate-logo" src="/logo.svg" alt="The B2B Tinkerers">
+    <div class="gate-kicker">Documento protegido</div>
+    <h1>Eaship · Plataforma de Marca</h1>
+    <p>Este documento es confidencial. Introduce la contraseña para acceder.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input type="password" id="gatePass" placeholder="Contraseña" aria-label="Contraseña" autocomplete="off" autofocus>
+      <button type="submit">Acceder</button>
+      <div class="gate-err" id="gateErr">Contraseña incorrecta. Inténtalo de nuevo.</div>
+    </form>
+    <div class="gate-foot">The B2B Tinkerers · Síntesis del Brand Discovery</div>
+  </div>
+</div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <div class="bar-id">
+      <a class="bar-brand-logo" href="https://theb2btinkerers.com" target="_blank" rel="noopener" aria-label="The B2B Tinkerers"><img src="/logo.svg" alt="The B2B Tinkerers" width="92" height="33"></a>
+      <span class="bar-sep"></span>
+      <span class="bar-doc">Eaship · Plataforma de Marca</span>
+    </div>
+    <nav class="bar-nav">
+      <a href="#indice">Índice</a>
+      <a href="#manifiesto">Manifiesto</a>
+      <a href="#leer">Cómo leer</a>
+      <a href="#arq">Base</a>
+      <a href="#s1">01</a><a href="#s2">02</a><a href="#s3">03</a><a href="#s4">04</a>
+      <a href="#s5">05</a><a href="#s6">06</a><a href="#s7">07</a>
+      <a href="#s9">Principios</a><a href="#tens">Tensiones</a><a href="#historial">Historial</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Brand Discovery · Síntesis estratégica · v0.7</div>
+    <h1>El <em>nuevo Eaship</em> empieza por sus fundamentos</h1>
+    <p class="lead">No es un cambio de logo. Es la marca poniéndose a la altura de la compañía que Eaship ya es. Esta es la plataforma que lo hace posible: el destilado del Brand Discovery convertido en una propuesta de posicionamiento.</p>
+    <p class="provisional">Eaship es, por ahora, un nombre de trabajo. El proyecto de naming con Luis decidirá si se mantiene o evoluciona. El "nuevo Eaship" de este documento es la compañía, no las seis letras.</p>
+    <div class="meta">
+      <div><div class="lab">Preparado por</div><div class="val">The B2B Tinkerers</div></div>
+      <div><div class="lab">Origen</div><div class="val">Workshop 15 mayo 2026</div></div>
+      <div><div class="lab">Versión</div><div class="val">v0.7 · global</div></div>
+      <div><div class="lab">Novedad</div><div class="val">Personalidad completa</div></div>
+      <div><div class="lab">Siguiente fase</div><div class="val">Naming · Identidad</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ÍNDICE / QUÉ CUBRE ============ -->
+<section class="block" id="indice">
+  <div class="wrap col">
+    <span class="ch-tag" style="margin-bottom:14px;">Qué cubre este documento</span>
+    <h2 class="plain">Un recorrido en siete capítulos</h2>
+    <div class="reveal" style="margin-top:22px;">
+      <p>La plataforma avanza de lo más abstracto a lo más concreto: del terreno que ocupa la marca hasta cómo se escribe en el día a día. Antes de los capítulos hay dos apartados de contexto (cómo leer el documento y la base de marca de dos alturas). Después, cada capítulo plantea una pregunta y propone una respuesta para Eaship.</p>
+      <div class="toc-grid">
+        <a class="toc-item" href="#s1"><div class="toc-num">01</div><div class="toc-tx"><h4>Territorio</h4><p>¿Sobre qué terreno se construye Eaship?</p></div></a>
+        <a class="toc-item" href="#s2"><div class="toc-num">02</div><div class="toc-tx"><h4>Categoría</h4><p>¿En qué cajón mental nos coloca el cliente?</p></div></a>
+        <a class="toc-item" href="#s3"><div class="toc-num">03</div><div class="toc-tx"><h4>Audiencia</h4><p>¿A quién le hablamos, y a quién renunciamos?</p></div></a>
+        <a class="toc-item" href="#s4"><div class="toc-num">04</div><div class="toc-tx"><h4>Diferenciador</h4><p>¿Por qué Eaship, y no la alternativa?</p></div></a>
+        <a class="toc-item" href="#s5"><div class="toc-num">05</div><div class="toc-tx"><h4>Promesa</h4><p>¿Qué se compromete a entregar la marca?</p></div></a>
+        <a class="toc-item" href="#s6"><div class="toc-num">06</div><div class="toc-tx"><h4>Propósito y misión</h4><p>¿Qué hacemos, por qué y cómo?</p></div></a>
+        <a class="toc-item" href="#s7"><div class="toc-num">07</div><div class="toc-tx"><h4>Personalidad</h4><p>¿Cómo se percibe la marca en el primer contacto?</p></div></a>
+        <a class="toc-item applied" href="#s9"><div class="toc-num">+</div><div class="toc-tx"><h4>Principios de comunicación</h4><p>Capítulo aplicado: de la estrategia a la redacción del día a día.</p></div></a>
+      </div>
+      <p style="margin-top:22px;">El documento cierra con un apartado de <strong>tensiones abiertas</strong>: lo que ya está decidido y lo que sigue pendiente de cerrar, sin maquillar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFIESTO ============ -->
+<div class="manifesto" id="manifiesto">
+  <div class="wrap col">
+    <span class="ch-tag reveal">El punto de partida</span>
+    <div class="big-line reveal">Eaship ha cambiado de tamaño. Ahora le toca a la <em>marca</em>.</div>
+    <div class="reveal">
+      <p>En poco tiempo, la compañía ha pasado de 8 a más de 20 clientes activos, ha cerrado su ronda de financiación y ha validado el producto en planta industrial real. La empresa ya tiene claro a quién sirve, qué problema resuelve y dónde se diferencia. Lo que todavía no tiene es una marca que diga todo eso con la misma claridad.</p>
+      <p>Este documento existe para cerrar esa distancia: <strong>convertir lo que Eaship ya es en algo que se pueda decir, repetir y reconocer</strong>. Una marca no es lo que uno dice de sí mismo, es lo que la gente experimenta de forma consistente. Y la consistencia se construye con fundamentos claros.</p>
+      <div class="pull">El objetivo no es hacer más ruido. Es que, cuando Eaship hable, se le reconozca a la primera. Esa es la única forma de notoriedad que construye una marca B2B sólida: la del que tiene algo real que enseñar.</div>
+      <p style="margin-top:24px;">Lo que sigue no es una propuesta cerrada. Es la materia prima sobre la que se construye todo lo demás: naming, identidad, web, contenido. Está hecha para entenderse, debatirse y validarse en equipo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CÓMO LEER ============ -->
+<section class="block" id="leer">
+  <div class="wrap col">
+    <span class="ch-tag" style="margin-bottom:14px;">Antes de empezar</span>
+    <h2 class="plain">Cómo leer este documento</h2>
+    <div class="reveal" style="margin-top:22px;">
+      <p>Una estrategia de marca usa términos (territorio, categoría, diferenciador) que significan algo muy concreto, y que conviene compartir antes de discutir las respuestas. Por eso este documento se lee en <strong>dos capas</strong>, y cada capítulo las presenta en orden.</p>
+      <div class="read-grid">
+        <div class="layer l1">
+          <div class="ln">El concepto</div>
+          <h4>Qué significa el término</h4>
+          <p>Una explicación breve del concepto en estrategia de marca: qué es, para qué sirve y cómo se sabe si está bien resuelto. Es la parte de criterio compartido.</p>
+        </div>
+        <div class="layer l2">
+          <div class="ln">La respuesta de Eaship</div>
+          <h4>La propuesta concreta</h4>
+          <p>La decisión que proponemos para Eaship sobre ese concepto, destilada del workshop. Es la parte que está sobre la mesa para validar o corregir.</p>
+        </div>
+      </div>
+      <p style="margin-top:22px;">El documento no busca acertar a la primera, busca claridad y consistencia. Está pensado para iterarse capítulo a capítulo. Al final, un apartado de <strong>tensiones abiertas</strong> recoge con honestidad lo que aún no está cerrado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BASE: DOS ALTURAS ============ -->
+<section class="block" id="arq">
+  <div class="wrap col">
+    <span class="ch-tag" style="margin-bottom:14px;">La base · principio rector</span>
+    <h2 class="plain">Una marca de dos alturas</h2>
+    <div class="reveal" style="margin-top:22px;">
+      <p>Toda la plataforma se apoya en una idea: Eaship necesita una marca que funcione en dos niveles a la vez, y el error más caro sería confundirlos.</p>
+      <div class="heights">
+        <div class="tier top">
+          <div class="tlab">Altura 1 · Visión</div>
+          <h4>Lo que la marca persigue</h4>
+          <p>Tan ambiciosa como queramos. El sistema operativo de la logística industrial, con su horizonte de inteligencia y red. Vive en el relato de marca, la web, el liderazgo del CEO y la conversación con inversores.</p>
+        </div>
+        <div class="bridge">▼ puente: el modelo modular ▼</div>
+        <div class="tier bot">
+          <div class="tlab">Altura 2 · Promesa</div>
+          <h4>Lo que el cliente recibe el día 1</h4>
+          <p>Cierta y demostrable hoy. Vive en el copy comercial, los casos, la landing y la discovery. Nada que el cliente de 2026 no pueda comprobar.</p>
+        </div>
+      </div>
+      <p style="margin-top:22px;">El puente entre ambas lo da el modelo modular: hoy te damos control de tu coordinación; ese mismo sistema, a medida que tu operación crece, se convierte en tu inteligencia logística. Cada capítulo indica si habla en clave de <span class="chip vision" style="vertical-align:middle;">Visión</span> o de <span class="chip promesa" style="vertical-align:middle;">Promesa</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 01 · TERRITORIO ============ -->
+<section class="chapter" id="s1">
+  <div class="ch-watermark">01</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 01 / 07</span>
+      <h2>Territorio</h2>
+      <p class="ch-q">¿Sobre qué terreno se construye Eaship?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es un territorio de marca</div>
+      <div class="concept-body">
+        <p>El territorio es el <strong>espacio conceptual que una marca puede ocupar de forma creíble y defender en el tiempo</strong>. No es un eslogan ni una lista de funcionalidades: es el terreno sobre el que se apoya todo lo demás (mensajes, campañas, identidad).</p>
+        <p>Un buen territorio es más amplio que el producto de hoy (para que la marca no se quede pequeña) pero más estrecho que "el mercado" (para que signifique algo).</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> se resume en una frase y excluye cosas. Si un territorio vale para cualquier empresa, no es un territorio.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <div class="statement">El control operativo del transporte industrial.</div>
+      <p>Convertir la coordinación del transporte, hoy artesanal y dependiente de personas concretas, en un sistema fiable que la fábrica controla. El competidor real no es otro software: es la operativa instalada de hoja de cálculo, correo y teléfono, y la persona que lo sabe todo. El territorio de Eaship es el otro lado de eso: una operación que funciona como sistema, no como una cadena de favores y memoria individual.</p>
+      <p>Dentro del territorio conviven tres palabras con un trabajo distinto. Este encadenamiento es la columna vertebral de toda la narrativa:</p>
+      <div class="eq">
+        <div class="eq-card"><div class="ql">El verbo</div><div class="qw">Coordinar</div><div class="qd">Lo que Eaship hace.</div></div>
+        <div class="eq-card"><div class="ql">El resultado</div><div class="qw">Control</div><div class="qd">Lo que el cliente gana.</div></div>
+        <div class="eq-card"><div class="ql">La categoría</div><div class="qw">Sistema operativo</div><div class="qd">Lo que Eaship es.</div></div>
+      </div>
+      <p style="margin-top:20px;">Eaship coordina, y por eso el cliente recupera el control. Esto resuelve la tensión entre "Control" (lo más repetido del board) y "Coordinación" (la palabra de Ramón y el verbo de la misión): no compiten, se ordenan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 02 · CATEGORÍA ============ -->
+<section class="chapter" id="s2">
+  <div class="ch-watermark">02</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 02 / 07</span>
+      <h2>Categoría</h2>
+      <p class="ch-q">¿En qué cajón mental nos coloca el cliente?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es una categoría</div>
+      <div class="concept-body">
+        <p>La categoría es el <strong>cajón mental donde el cliente coloca tu marca</strong> cuando te conoce. No se elige en abstracto: o la defines tú con intención, o el mercado te la asigna por defecto, y normalmente te asigna la del competidor más parecido.</p>
+        <p>Definir categoría es elegir las palabras con las que quieres que te describan cuando no estás delante. Por eso importa tanto: la categoría equivocada arrastra expectativas, comparaciones y precios equivocados.</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> el cliente la repite con tus palabras, no con las del competidor.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <div class="chips"><span class="chip decidido">Decidido en sesión: salir de "TMS"</span></div>
+      <p>El equipo acordó moverse de "TMS" a "Sistema Operativo". La categoría se trabaja en dos alturas, porque la etiqueta de visión y la de discovery no pueden ser la misma.</p>
+      <div class="heights">
+        <div class="tier top">
+          <div class="tlab">Categoría · Visión</div>
+          <h4>Sistema Operativo de Logística Industrial</h4>
+          <p>Define hacia dónde va Eaship. Va en web, manifiesto y narrativa de inversores, donde además traduce bien como Vertical SaaS y Services-as-a-Software.</p>
+        </div>
+        <div class="bridge">▼ misma idea, dos registros ▼</div>
+        <div class="tier bot">
+          <div class="tlab">Descriptor · Cliente</div>
+          <h4>El sistema que coordina el transporte que hace funcionar tu fábrica</h4>
+          <p>Lenguaje que un director de operaciones o de logística entiende y repite en una reunión. Ya existe medio testado: es casi literal el cierre de nuestro plan de marketing 2026.</p>
+        </div>
+      </div>
+      <div class="note">
+        <div class="nh">Por qué "sistema", y no "capa" ni "plataforma"</div>
+        <p>Tres candidatas para el descriptor de cliente, una decisión. <strong>"Capa"</strong> funciona internamente, pero la primera vez que un director de operaciones o de logística la oye suena abstracta y obliga a explicarla; Luis lo señaló en la revisión. <strong>"Plataforma"</strong> es la palabra genérica del SaaS de los últimos diez años: correcta pero diluida, te coloca al lado de cualquier producto. <strong>"Sistema"</strong> dice exactamente lo que Eaship hace (algo montado para coordinar piezas, con lógica interna, que funciona) y hace eco con la categoría de la altura visión, <em>Sistema Operativo de Logística Industrial</em>. Misma palabra, dos registros: la marca aspira en la visión y cumple en la promesa. Es también la palabra del cliente, que vive rodeado de sistemas (MES, SCADA, ERP), no de plataformas.</p>
+      </div>
+      <div class="note">
+        <div class="nh">El sistema crece contigo · arquitectura modular</div>
+        <p>La promesa de simplicidad se sostiene en la arquitectura del producto: el sistema empieza por el <strong>Core</strong>, lo justo para que la coordinación funcione, y crece módulo a módulo (Muelles, Documental, Analítica) cuando el cliente lo pide. No se vende todo de golpe. Este patrón resuelve dos cosas a la vez: hace creíble el "es fácil empezar" y da estructura a la conversación con IT y con Procurement, que ven un camino, no un compromiso de plataforma.</p>
+        <p style="margin-top:10px;">La metáfora interna que el equipo ha adoptado para esto es la <strong>cebolla</strong> (aporte de Ramón en la sesión de revisión): cada capa que el cliente activa no es solo más producto, es <em>más control y más entrada en su organización</em>. La base toca Transporte; al activar la siguiente, entras en Operaciones y almacén; la siguiente toca Finanzas y administración. A más capas, más profundidad de cuenta.</p>
+        <p style="margin-top:10px;"><strong>Implicación para ventas:</strong> la adopción es secuencial, no se salta de la capa 1 a la 4 sin pasar por las intermedias. La cuenta crece, no salta.</p>
+      </div>
+      <div class="note">
+        <div class="nh">Tensión a registrar · el nombre del módulo base</div>
+        <p>Si la categoría se mueve a "Sistema Operativo", el nombre actual del módulo base del producto, <strong>"TMS Core"</strong>, contradice el reposicionamiento en su propio nivel fundacional: un cliente que ve la arquitectura de pricing vuelve a la casilla "TMS".</p>
+        <p>Propuesta: renombrarlo <strong>Eaship Core</strong>. "Core" ya dice "módulo base" sin explicar nada y sin arrastrar la sigla. Lo ideal sería extender el patrón al resto de módulos (Eaship Muelles, Eaship Analítica, Eaship Documental, en lugar de los nombres actuales), para que la arquitectura de producto hable el mismo idioma que la categoría. Es decisión de Ramiro y Luis; aquí queda como recomendación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 03 · AUDIENCIA ============ -->
+<section class="chapter" id="s3">
+  <div class="ch-watermark">03</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 03 / 07</span>
+      <h2>Audiencia</h2>
+      <p class="ch-q">¿A quién le hablamos, y a quién renunciamos?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es definir la audiencia</div>
+      <div class="concept-body">
+        <p>La audiencia no es "el mercado": es la decisión de a quién le hablas y, sobre todo, <strong>a quién decides no servir</strong>. En branding, definir audiencia es un acto de foco. Cada renuncia hace más creíble tu promesa para quien sí encaja.</p>
+        <p>En B2B hay un matiz extra: no compra una persona, compra un sistema de personas. La audiencia bien definida reconoce ese comité y le habla a cada rol.</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> puedes nombrar con claridad a quién dices que no, sin incomodidad.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <p>El foco industrial es la decisión más cargada de la sesión. Ramón la formula casi literal: el foco es la logística industrial, <em>"que si no, somos uno más"</em>. La diferencia es estructural frente a competidores que reparten su esfuerzo entre transportistas, distribuidores y cargadores. Por eso no es segmentación, es un pilar de posicionamiento.</p>
+      <div class="statement">Empresas industriales mid-market con transporte FTL recurrente, donde la coordinación diaria del transporte genera desgaste operativo.</div>
+      <p><strong>Un matiz de precisión para el copy.</strong> "Fabricante" en sentido literal deja fuera a clientes reales que sí encajan: Hijolusa (lava, corta y empaqueta patata) o Ibersteel (centro de servicios que rectifica bobina) no fabrican desde cero, pero tienen proceso industrial. La línea acordada en sala, en palabras de Ramiro: <em>transforma, no solo distribuye</em>. La etiqueta debe cubrir "proceso industrial o de transformación", no solo "fabricante".</p>
+      <p style="margin-top:22px;"><strong>La marca habla a un micro-comité, no a un buyer.</strong> Un mensaje por rol, sobre un mismo territorio. La marca no cambia; cambia la cara del problema que se ilumina.</p>
+      <div class="roles">
+        <div class="role"><div class="rn">Operaciones</div><div class="rt">El nivel de negocio del comité. Le importa el caso económico: hacer más sin contratar más.</div><div class="rk">ROI · eficiencia · capacidad</div></div>
+        <div class="role"><div class="rn">Supply Chain</div><div class="rt">Busca el control de la cadena de suministro de extremo a extremo. Visión estratégica, por encima del ruido diario.</div><div class="rk">Control de la cadena · estrategia · riesgo</div></div>
+        <div class="role"><div class="rn">Logística</div><div class="rt">Muy alineada con Supply Chain en el objetivo, pero es quien percibe el ruido diario. El perfil más operativo y la puerta de entrada del mensaje: muelles, incidencias, coordinación.</div><div class="rk">Control · visibilidad · menos incendios</div></div>
+        <div class="role"><div class="rn">IT / Sistemas</div><div class="rt">Validador técnico. La logística no suele ser su prioridad.</div><div class="rk">Simplicidad · API clara · vía partner</div></div>
+        <div class="role"><div class="rn">Procurement / Finanzas</div><div class="rt">Validador económico. Le importan el coste y la trazabilidad. Más presente en inbound.</div><div class="rk">Orden · trazabilidad · ahorros · menos errores</div></div>
+        <div class="role"><div class="rn">Partners ERP</div><div class="rt">No son audiencia, son canal. Pueden prescribir la venta.</div><div class="rk">Prescripción · credibilidad</div></div>
+      </div>
+      <div class="note">
+        <div class="nh">Por debajo del comité · el usuario operativo</div>
+        <p>El comité decide, pero no es quien usa Eaship a diario. Por debajo están los <strong>usuarios operativos de logística</strong> (técnicos, inside sales, customer service): no firman la compra, pero pueden hundir la adopción si la herramienta no les facilita el día. Hay que convencerlos también, normalmente de forma indirecta, <strong>a través del Director de Logística</strong>, y es donde más pesan la demo y el onboarding. Conecta con el matiz de autonomía: la herramienta los empodera, no los vigila.</p>
+      </div>
+      <div class="note">
+        <div class="nh">Geografía y lengua · sin candado</div>
+        <p>España es el mercado de arranque y Portugal ya está en negociación. El foco que protege la marca es <strong>vertical</strong> (industrial, no distribución), no geográfico. España vive en la ejecución y los planes de campaña, no en la plataforma de marca.</p>
+        <p><strong>Lengua de marca: ES y EN desde el inicio.</strong> La narrativa funciona en ambos sin parecer traducida, anticipando Portugal (en negociación) y Francia (1-2 años). Es también un criterio que entra en el brief de naming: el nombre tiene que aguantar pronunciación en castellano y en inglés sin fricción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 04 · DIFERENCIADOR ============ -->
+<section class="chapter" id="s4">
+  <div class="ch-watermark">04</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 04 / 07</span>
+      <h2>Diferenciador</h2>
+      <p class="ch-q">¿Por qué Eaship, y no la alternativa?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es un diferenciador</div>
+      <div class="concept-body">
+        <p>El diferenciador es <strong>la razón por la que un cliente te elige a ti y no a la alternativa</strong>. No es una lista de ventajas: es la una cosa que, si se quita, la marca se vuelve intercambiable.</p>
+        <p>Un buen diferenciador cumple tres condiciones a la vez: es <strong>relevante</strong> (le importa al cliente), es <strong>cierto</strong> (se puede demostrar) y es <strong>difícil de copiar</strong> (no lo dice ya todo el mundo).</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> el competidor no podría poner la misma frase en su web sin mentir.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <div class="statement">El único sistema operativo de logística construido en exclusiva para la operativa real de la industria.</div>
+      <p>No es un optimizador de rutas, no es un software de oficina de tráfico, no es una suite enterprise y no es el ERP forzado a cubrir transporte. <strong>Eaship coordina; no optimiza.</strong> Y lo hace donde la logística industrial ocurre de verdad: los muelles, las entradas y salidas de planta, las esperas, las incidencias.</p>
+      <p><strong>Las razones que lo hacen creíble</strong> <span class="chip promesa" style="margin-left:6px;">Promesa · demostrable hoy</span></p>
+      <ul class="clean">
+        <li>Es un sistema que <strong>complementa el ERP y se integra con él</strong> para darle la información relevante. Nunca lo reemplaza.</li>
+        <li>Está <strong>diseñado solo para empresas industriales</strong>, no es un SaaS horizontal adaptado.</li>
+        <li><strong>No depende del efecto red</strong>: se adapta a los transportistas habituales del cliente, no le obliga a cambiarlos. Baja la barrera de adopción.</li>
+        <li><strong>Implantación rápida y de bajo riesgo</strong>: sin tocar el ERP core, sin desembolso inicial, sin permanencia.</li>
+        <li><strong>Time-to-value medido en semanas, no en trimestres.</strong> Donde un TMS tradicional pide proyecto, Eaship arranca con onboarding ligero y entrega valor desde la primera semana. Barrera de entrada baja, barrera de salida también: el cliente prueba sin compromiso largo.</li>
+      </ul>
+      <p style="margin-top:20px;"><strong>Contra quién se compite, nombrado.</strong> El competidor más peligroso no es otro SaaS: es Excel, correo y teléfono. Pero hay un segundo competidor concreto y con casos, el <strong>ERP mal montado</strong>: el Business Central configurado a su manera que no sostiene la operativa real. Refuerza el principio de complementar el ERP, no negarlo.</p>
+      <div class="note">
+        <div class="nh">La línea que no se cruza · coordinación, no optimización</div>
+        <p>El AI Route Planner (optimización de rutas, distribución, multi-drop) se queda <strong>deliberadamente fuera</strong> del relato de marca. No es una cuestión de validación pendiente, es de posicionamiento: optimizar rutas resuelve un problema distinto al que define a Eaship. <strong>Eaship coordina; no optimiza.</strong> La optimización es el terreno de los TMS de planificación; arrastrarla al core difuminaría justo la línea que nos diferencia y nos devolvería a la comparación que no queremos. Si la distribución se aborda algún día, vive vía partners (modelo marketplace), nunca como core ni como promesa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 05 · PROMESA ============ -->
+<section class="chapter" id="s5">
+  <div class="ch-watermark">05</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 05 / 07</span>
+      <h2>Promesa</h2>
+      <p class="ch-q">¿Qué se compromete a entregar la marca?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es la promesa de marca</div>
+      <div class="concept-body">
+        <p>La promesa es <strong>el compromiso concreto que la marca le hace al cliente</strong>: lo que el cliente espera recibir y, por tanto, lo que la marca no puede fallar.</p>
+        <p>La regla de oro: la promesa tiene que ser <strong>cierta el día uno</strong>. Una promesa que describe el futuro deseado, y no la realidad entregable, erosiona la confianza en cuanto el cliente la contrasta.</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> un cliente recién firmado la reconocería como cumplida, no como expectativa.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <div class="chips"><span class="chip promesa">Promesa · cierta el día 1</span></div>
+      <div class="statement">Recupera el control de tu transporte: que funcione como un sistema, no como una cadena de llamadas ni la memoria de una persona. Sin cambiar tu ERP ni tus transportistas.</div>
+      <p>El valor que sí está en la promesa es la <strong>capacidad</strong>: muchos de estos fabricantes, en palabras del equipo, "viven con la lengua afuera", subidos a la ola de su gran cliente y sin margen para absorber su propio crecimiento. Eaship devuelve ese margen.</p>
+      <div class="note">
+        <div class="nh">El coste, en su sitio · cómo aparece en el mensaje</div>
+        <p>Eaship no se compra por coste por envío. El aprendizaje del ICP es claro: el cliente actúa por <strong>control</strong> y por <strong>dependencia de personas clave</strong>, no por precio. Por eso el coste no es la puerta de entrada y no encabeza la promesa: ahí gana la pelea de la urgencia operativa, no la de la calculadora.</p>
+        <p>Dicho eso, el ROI es real y rápido, y es lo que cierra la conversación, sobre todo con <strong>Procurement e IT</strong>. Eaship reduce el tiempo de coordinación, recupera errores de facturación, baja los sobrecostes de urgencia y acelera el cobro. <strong>La regla de marca:</strong> el coste no abre el mensaje, lo respalda.</p>
+        <p style="margin-top:10px;"><em>Material disponible</em>: la calculadora de ROI (siete palancas de valor, tres escenarios, anclada en datos de Caiba) es el activo de sales enablement que aterriza el caso económico ante Procurement e IT. A enriquecer con métricas validadas de Elmubas y Fritoper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 06 · PROPÓSITO ============ -->
+<section class="chapter" id="s6">
+  <div class="ch-watermark">06</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 06 / 07</span>
+      <h2>Propósito y misión</h2>
+      <p class="ch-q">¿Qué hacemos, por qué y cómo?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es el propósito y la misión</div>
+      <div class="concept-body">
+        <p>El <strong>propósito</strong> responde a por qué existe la marca más allá de ganar dinero. La <strong>misión</strong> lo aterriza en una frase práctica: qué hace, por qué y cómo.</p>
+        <p>No es texto para la web. Es una brújula interna: cuando hay que decidir entre dos caminos, el propósito desempata. Por eso conviene que sea sobrio y verdadero, no aspiracional vacío.</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> sirve para tomar una decisión difícil, no solo para decorar una presentación.</div>
+      </div>
+    </div>
+    <div class="answer reveal">
+      <div class="answer-eyebrow">La respuesta de Eaship</div>
+      <p>Destilada de todo el material (workshop, transcripción, documento de visión de producto y el posicionamiento de esta plataforma), en la plantilla "hacemos / porque / y así lo hacemos":</p>
+      <div class="statement">Hacemos que el transporte de las empresas industriales funcione como un sistema, porque la coordinación logística no debería depender de hojas de cálculo ni de personas concretas, y así es como lo hacemos: con un sistema operativo simple que se integra con su ERP y captura la realidad de su planta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP 07 · PERSONALIDAD Y ARQUETIPO ============ -->
+<section class="chapter" id="s7">
+  <div class="ch-watermark">07</div>
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo 07 / 07</span>
+      <h2>Personalidad</h2>
+      <p class="ch-q">¿Cómo se percibe la marca en el primer contacto?</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué es la personalidad de marca</div>
+      <div class="concept-body">
+        <p>Las personas se relacionan con las marcas como se relacionan con personas. La personalidad son los <strong>rasgos</strong> que alguien percibiría en el primer contacto: lo que hace que dos textos distintos suenen a la misma marca.</p>
+        <p>Se concreta de dos formas complementarias: unos pocos <strong>adjetivos</strong> que la resumen, y un <strong>perfil de matices</strong> que la calibra eje a eje.</p>
+        <div class="concept-test"><b>Cómo se sabe que está bien:</b> los rasgos excluyen opciones. Si todos los aceptaríamos para cualquier marca, no definen. Una marca que quiere ser todo no es nada.</div>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <div class="nh">Nota · el arquetipo queda para la fase de identidad</div>
+      <p>El workshop cerró también un arquetipo de marca: Mago primario y Sabio secundario, "el alquimista". No se desarrolla aquí: es material de partida para el proyecto de naming e identidad, no para esta plataforma.</p>
+    </div>
+
+    <h3 class="sub reveal">Los tres adjetivos</h3>
+    <div class="answer reveal">
+      <p>El workshop votó Resolutiva, Ágil y Operativa. La recomendación que hacemos no devuelve el recuento, devuelve un sistema, porque los votos cubren tres trabajos distintos: competencia, confianza y vínculo.</p>
+      <div class="eq">
+        <div class="eq-card"><div class="ql">Competencia</div><div class="qw">Resolutiva</div><div class="qd">El adjetivo más votado, intacto. Ataca el problema, no teoriza.</div></div>
+        <div class="eq-card"><div class="ql">Confianza</div><div class="qw">Fiable</div><div class="qd">En B2B industrial la confianza es la moneda. Seguridad para pagar y facturar. No es solo un rasgo: es la regla de producto que evita la deriva, recalcada por Ramón en la revisión. Antes de añadir, hay que sostener.</div></div>
+        <div class="eq-card"><div class="ql">Vínculo</div><div class="qw">Cercana</div><div class="qd">El lado humano del Sabio y el tono del micro-comité.</div></div>
+      </div>
+      <div class="note">
+        <div class="nh">Matiz de tono · de servilismo a autonomía</div>
+        <p>Aporte de Luis: la marca cercana corre el riesgo de leerse como una centralita 24/7. La salida no es endurecer el tono, es desplazar el foco. Eaship no se ofrece como el operador del cliente, se ofrece como la palanca que <strong>convierte al cliente en el que controla</strong>. La autonomía es lo que da cuerpo a "Resolutiva": resuelve, sí, pero resuelve poniendo al cliente al mando, no haciéndose imprescindible.</p>
+        <p style="margin-top:10px;"><em>Validado por Ramón y Fur en la sesión de revisión.</em> La imagen que cerró Ramón resume el ángulo: "te enseñamos a pescar, te damos las redes, pero tú eres quien pesca". Queda como ángulo de marca confirmado, no como propuesta.</p>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">El perfil en detalle · ocho ejes de personalidad</h3>
+    <div class="reveal">
+      <p>Los ocho ejes que siguen son una propuesta de partida derivada de la estrategia (arquetipo, adjetivos, principios y audiencia), para afinar en equipo. Tomados en conjunto, no apuntan al centro: dibujan una voz reconocible.</p>
+
+      <div class="statement">El perfil dibuja una voz reconocible y deliberadamente no neutra: cercana pero sobria, experta pero accesible, tranquila pero resolutiva. La voz del especialista que no necesita levantar la voz, porque sabe. Es el alquimista hecho tono: hace mucho y dice poco.</div>
+
+      <div class="slider">
+        <div class="ax-label">01 · Tono de voz</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Serio</span></div>
+          <div class="rail"><div class="fill" style="width:62%"></div><div class="center-tick"></div><div class="dot" style="left:62%"></div></div>
+          <div class="pole right"><span class="pname">Cercano</span></div>
+        </div>
+        <div class="reading">Cercano, sin caer en lo coloquial</div>
+        <p class="why">El interlocutor es operativo y práctico. La marca habla su idioma y se siente como un colega de la sala de operaciones, no como un proveedor corporativo. El Sabio evita que la cercanía derive en informalidad.</p>
+        <span class="anchor">Ancla: adjetivo Cercana · Principio 01</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">02 · Personalidad</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Reservada</span></div>
+          <div class="rail"><div class="fill" style="width:35%"></div><div class="center-tick"></div><div class="dot" style="left:35%"></div></div>
+          <div class="pole right"><span class="pname">Expresiva</span></div>
+        </div>
+        <div class="reading">Sobria. Demuestra más de lo que proclama</div>
+        <p class="why">La marca convence con prueba, no con exclamaciones. El Mago no necesita contar el truco. La contención es lo contrario del SaaS de hype, y eso ya es un diferencial de tono.</p>
+        <span class="anchor">Ancla: Principio 04 · arquetipo Mago</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">03 · Conocimiento</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Experto / Autoridad</span></div>
+          <div class="rail"><div class="fill" style="width:38%"></div><div class="center-tick"></div><div class="dot" style="left:38%"></div></div>
+          <div class="pole right"><span class="pname">Aliado / Acompaña</span></div>
+        </div>
+        <div class="reading">Experto que acompaña, no que sermonea</div>
+        <p class="why">El Sabio es autoridad en la operativa industrial, y ese es el diferenciador. Acompaña al cliente, pero desde el criterio, no desde el servilismo. Es el matiz de servilismo a servicio aplicado al tono.</p>
+        <span class="anchor">Ancla: arquetipo Sabio · Capítulo 04</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">04 · Sensación</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Corporativa</span></div>
+          <div class="rail"><div class="fill" style="width:70%"></div><div class="center-tick"></div><div class="dot" style="left:70%"></div></div>
+          <div class="pole right"><span class="pname">Humana</span></div>
+        </div>
+        <div class="reading">Humana. Una persona que conoce la planta</div>
+        <p class="why">El micro-comité son personas reales con problemas diarios. La marca se siente como alguien que ha pisado los muelles, no como un departamento que envía comunicados.</p>
+        <span class="anchor">Ancla: adjetivo Cercana · audiencia micro-comité</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">05 · Confianza</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Institucional</span></div>
+          <div class="rail"><div class="fill" style="width:56%"></div><div class="center-tick"></div><div class="dot" style="left:56%"></div></div>
+          <div class="pole right"><span class="pname">Personal</span></div>
+        </div>
+        <div class="reading">La confianza se gana en la relación y en la referencia de un par</div>
+        <p class="why">La venta es consultiva y la prescripción pesa: un cliente recomienda a otro. Aun así, la marca debe sentirse lo bastante sólida como para confiarle facturación y pagos. Por eso queda solo ligeramente del lado personal.</p>
+        <span class="anchor">Ancla: adjetivo Fiable · venta consultiva y prescripción</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">06 · Innovación</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Conservadora</span></div>
+          <div class="rail"><div class="fill" style="width:44%"></div><div class="center-tick"></div><div class="dot" style="left:44%"></div></div>
+          <div class="pole right"><span class="pname">Disruptiva</span></div>
+        </div>
+        <div class="reading">Innovación que tranquiliza, no que inquieta</div>
+        <p class="why">La tecnología es real (sistema operativo, IA), pero el cliente industrial mid-market valora el bajo riesgo. La innovación se presenta como evolución natural y segura, no como ruptura. Ver la nota de tensión más abajo.</p>
+        <span class="anchor">Ancla: diferenciador bajo riesgo · argumento de Ramón sobre el Mago</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">07 · Descubrimiento</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Funcional</span></div>
+          <div class="rail"><div class="fill" style="width:38%"></div><div class="center-tick"></div><div class="dot" style="left:38%"></div></div>
+          <div class="pole right"><span class="pname">Inspiracional</span></div>
+        </div>
+        <div class="reading">Funcional en la base, con un hilo de visión en el horizonte</div>
+        <p class="why">El copy de cliente, que sostiene la Promesa, es concreto y demostrable. El registro inspiracional vive en la Visión. Es la arquitectura de dos alturas aplicada al tono.</p>
+        <span class="anchor">Ancla: arquitectura de dos alturas</span>
+      </div>
+
+      <div class="slider">
+        <div class="ax-label">08 · Primera impresión</div>
+        <div class="track">
+          <div class="pole left"><span class="pname">Calmada</span></div>
+          <div class="rail"><div class="fill" style="width:32%"></div><div class="center-tick"></div><div class="dot" style="left:32%"></div></div>
+          <div class="pole right"><span class="pname">Enérgica</span></div>
+        </div>
+        <div class="reading">Calmada. Tranquila porque tiene el control</div>
+        <p class="why">El cliente ya vive con urgencia de sobra. La marca aporta sosiego, no más alarma. Resolutiva no significa ruidosa: significa eficaz. La calma viene del control, no de la pasividad.</p>
+        <span class="anchor">Ancla: Principio 05 · adjetivo Resolutiva</span>
+      </div>
+
+      <div class="note">
+        <div class="nh">Tensión deliberada · el Mago no tira hacia la derecha</div>
+        <p>El arquetipo Mago, leído de forma ingenua, empujaría tres sliders hacia la derecha: Expresiva, Disruptiva y Enérgica. Esta propuesta lo resiste a propósito. El Mago de Eaship transforma en un mercado donde casi todo se gestiona aún con hoja de cálculo, y esa transformación tranquiliza, no agita. Si la marca sonara disruptiva y enérgica, contradiría el diferenciador de bajo riesgo. La magia de Eaship es serena. Es una decisión, y por eso queda visible para que el equipo la confirme o la discuta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPIOS ============ -->
+<section class="block" id="s9">
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Capítulo aplicado</span>
+      <h2>Principios de comunicación</h2>
+      <p class="ch-q">De la estrategia a las decisiones de redacción del día a día.</p>
+    </div>
+    <div class="concept reveal">
+      <div class="concept-bar">El concepto · Qué son los principios de comunicación</div>
+      <div class="concept-body">
+        <p>Los principios son <strong>las reglas operativas que traducen todo lo anterior a decisiones concretas de redacción</strong>. Mientras el posicionamiento se interioriza una vez, los principios se usan cada vez que alguien escribe un correo, una landing o un caso.</p>
+        <p>Son la herramienta que de verdad protege la <strong>consistencia</strong>, que es lo que construye marca. Por eso cada principio se presenta con su porqué y con un ejemplo de "así no / así sí": un principio sin ejemplo es solo una buena intención.</p>
+      </div>
+    </div>
+    <div class="pintro reveal">
+      <p>Ocho principios. Cada uno indica por qué importa y muestra la diferencia entre aplicarlo y no aplicarlo. Los ejemplos son ilustrativos, para fijar el criterio, no copy final.</p>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">01</div><div class="p-title">Lenguaje del cliente, no de SaaS</div></div>
+      <p class="p-why">El ICP no busca "software": vive un problema operativo. Si el copy habla en abstracto, el cliente no se reconoce y la marca suena como cualquier otra. Hablar su idioma es la primera prueba de que conocemos su mundo.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">Optimiza tus procesos logísticos con nuestra solución integral.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Sabes qué camión llega, a qué muelle y a qué hora, sin perseguir a nadie por teléfono.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">02</div><div class="p-title">Afirmar la categoría propia</div></div>
+      <p class="p-why">Definirse contra el TMS mete la categoría del competidor en la cabeza del cliente y obliga a hablar su idioma. Nombrar al TMS para diferenciarse es prestarle su espacio. Eaship se describe por lo que es. El contraste "de TMS a Sistema Operativo" se reserva para relato de visión e inversores.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">A diferencia de un TMS tradicional, Eaship no solo gestiona expediciones.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Eaship es el sistema que coordina el transporte que hace funcionar tu fábrica.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">03</div><div class="p-title">Complementa el ERP, se integra con él</div></div>
+      <p class="p-why">IT teme proyectos que tocan el core; Procurement teme duplicidad. La marca tiene que dejar claro que Eaship suma sin sustituir, y que se conecta con lo que ya existe para devolverle información, no para reemplazarlo.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">Sustituye la gestión de transporte de tu ERP.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Se integra con tu ERP y le devuelve la información de transporte que hoy no captura.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">04</div><div class="p-title">Mostrar, no prometer. Y cuando aporte, cuantificar.</div></div>
+      <p class="p-why">En B2B industrial la confianza se gana con prueba, no con adjetivos. La visión puede ser grande arriba; abajo, en el copy de cliente, manda la evidencia: casos reales y métricas validadas. Cuando el dato existe, se nombra; mostrar adultos con cifras pesa más que mostrarles con superlativos. La calculadora de ROI es la versión institucional de este principio frente a Procurement e IT.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">La solución revolucionaria que transforma tu logística para siempre.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Fritoper coordina sus expediciones diarias con Eaship y ha reducido un 70% los tiempos muertos de espera en muelle. (Métricas a validar con cliente.)</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">05</div><div class="p-title">Calma experta</div></div>
+      <p class="p-why">El cliente ya vive con suficiente urgencia. La marca no añade alarma, aporta sosiego. El tono es el de la persona más tranquila de la sala de operaciones: sabe, y por eso no necesita gritar.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">¿Tu logística es un caos? ¡No pierdas ni un día más de dinero!</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Coordinar el transporte no tiene por qué consumir la mañana. Te enseñamos cómo.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">06</div><div class="p-title">Sin enmarcar en negativo al cliente</div></div>
+      <p class="p-why">El cliente no es torpe por trabajar con hoja de cálculo y teléfono: es una operativa que funcionó hasta que el volumen la superó. Insultar el punto de partida insulta a quien decide la compra.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">Acaba con el caos y la improvisación de tu logística.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Cuando el volumen crece, la coordinación manual empieza a pasar factura.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">07</div><div class="p-title">Especialista, no generalista</div></div>
+      <p class="p-why">La especialización industrial es el pilar del posicionamiento. El copy lo refuerza nombrando el sector con propiedad y diciendo también, sin complejo, a quién no se sirve.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">Para cualquier empresa que necesite mover mercancía.</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">Diseñado para empresas con proceso industrial. No para distribución capilar ni última milla.</p></div>
+      </div>
+    </div>
+
+    <div class="principle reveal">
+      <div class="p-top"><div class="p-num">08</div><div class="p-title">Un mensaje por rol</div></div>
+      <p class="p-why">Eaship se vende a un micro-comité. El mismo territorio se ilumina distinto para Logística, IT y Procurement. Un único mensaje genérico no le habla a ninguno de los tres.</p>
+      <div class="p-ex">
+        <div class="ex no"><div class="exl">Así no</div><p class="q">Un solo argumentario, idéntico, para "el cliente".</p></div>
+        <div class="ex si"><div class="exl">Así sí</div><p class="q">A Logística, control y menos incendios; a IT, simplicidad e integración; a Procurement, orden y trazabilidad.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TENSIONES ============ -->
+<section class="block" id="tens">
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">Honestidad de proceso</span>
+      <h2>Tensiones abiertas</h2>
+      <p class="ch-q">Lo que ya está decidido, y lo que sigue pendiente de cerrar.</p>
+    </div>
+    <div class="reveal">
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Categoría "TMS" vs "Sistema Operativo".</b> El equipo acordó la dirección Sistema Operativo. Pendiente solo el detalle del nombre del módulo base.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Descriptor cliente "capa" → "sistema".</b> Tras la revisión con Luis y Fur, "capa" se sustituye por "sistema" en todo el documento. Se mantiene como descriptor: <em>el sistema que coordina el transporte que hace funcionar tu fábrica</em>. Razonamiento en el Capítulo 02.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Coste y ROI en la propuesta de valor.</b> Revisado respecto al workshop. La promesa sigue sin liderar con coste, pero el ROI entra como argumento de respaldo en el mensaje, en el rol de Procurement y en el principio "Mostrar, y cuantificar". La calculadora se incorpora como activo de sales enablement.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Cambio de naming.</b> Mandato explícito de Ramón en la sesión de revisión: "el naming hay que cambiarlo al 100%". El proyecto sigue delegado a Luis, ahora con la plataforma como brief estable.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Sliders de personalidad.</b> No se hicieron en el workshop. Incorporados en el Capítulo 07 como propuesta nuestra, pendiente de validar con el equipo.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Distribución fuera del ICP.</b> Aparcada, no cerrada. Fuera del posicionamiento y del core; admisible vía partners.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>Validación de los ocho sliders.</b> Son una propuesta deducida, no captura del equipo. Atención especial al eje 06, Innovación, el más sensible.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>Nombre del módulo base del producto.</b> "TMS Core" contradice la categoría. Propuesta sobre la mesa: Eaship Core, con patrón extensible al resto de módulos. A confirmar con Ramiro y Luis.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>Autonomía como ángulo de marca.</b> Propuesta de Luis para resolver el matiz servilismo-servicio. Validada por Ramón y Fur en la sesión de revisión, con la imagen del CEO como cierre: "te enseñamos a pescar, te damos las redes, pero tú eres quien pesca". Queda como ángulo confirmado.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>Bloque de Valores.</b> Quedó flojo en la sesión y se envió como tarea. Necesita un cierre aparte antes de fijar los valores de marca.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>"Sistema Operativo" a validar de cara al mercado externo.</b> Fur lo apuntó: internamente la categoría es clara, pero quien la oye por primera vez puede necesitar contexto. A medir con primeras campañas y reacciones del mercado; ajustar el copy de discovery si hace falta.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>Búsqueda del nombre nuevo.</b> La fricción de "Eaship" (e-ship leído como "a ship" en inglés, problema de deletreo en castellano) quedó confirmada por Ramón en la sesión. La búsqueda del nuevo nombre es trabajo en curso con Luis, sin fecha de cierre.</div></div>
+      <div class="trow"><span class="tstate ts-res">Resuelto</span><div class="ttx"><b>AI Route Planner / optimización.</b> Fuera del relato de marca por decisión de posicionamiento: Eaship coordina, no optimiza. Si el producto lo retoma, solo vía partners, nunca en el core ni en la promesa. La tarea pendiente es de producto: que no lo reintroduzca en el relato central.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>La red logística (visión Fase 3).</b> Sigue viva en el equipo y reintroduce efecto red. La arquitectura de dos alturas la mantiene como visión de fondo; el framework debe evitar que se venda en una discovery de hoy.</div></div>
+      <div class="trow"><span class="tstate ts-open">Abierto</span><div class="ttx"><b>Métricas de casos (Elmubas, Fritoper).</b> Siguen siendo direccionales hasta validación de cliente. No usar en posiciones hero; sí en la calculadora una vez verificadas.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORIAL ============ -->
+<section class="block" id="historial">
+  <div class="wrap col">
+    <span class="ch-tag" style="margin-bottom:14px;">Anexo · historial</span>
+    <h2 class="plain">Cómo ha evolucionado este documento</h2>
+    <p>Un resumen honesto de los cambios sustantivos por versión. El detalle operativo de qué está cerrado y qué sigue abierto vive en Tensiones; aquí solo lo que mueve la marca.</p>
+
+    <div class="changelog reveal">
+      <div class="cl-row">
+        <div>
+          <div class="cl-ver">v0.1 – v0.4</div>
+          <div class="cl-meta">Iteraciones internas</div>
+        </div>
+        <div>
+          <div class="cl-tit">Estructura y formato</div>
+          <div class="cl-body">Iteraciones rápidas previas al primer documento estable. Definición de la lógica de <strong>dos capas de lectura</strong> (el concepto y la respuesta de Eaship), la arquitectura de siete capítulos, y los primeros borradores de contenido. Sin presentación a cliente.</div>
+        </div>
+      </div>
+
+      <div class="cl-row">
+        <div>
+          <div class="cl-ver">v0.5</div>
+          <div class="cl-meta">Síntesis del Brand Discovery</div>
+        </div>
+        <div>
+          <div class="cl-tit">Primer documento estable</div>
+          <div class="cl-body">Cierre de los siete capítulos con su respuesta de Eaship. Territorio como <strong>"control operativo del transporte industrial"</strong>; categoría como <strong>"Sistema Operativo de Logística Industrial"</strong>; arquitectura de marca de dos alturas (Visión y Promesa); los tres adjetivos (Resolutiva, Fiable, Cercana). Iteración interna posterior: el arquetipo se degradó a nota breve y el capítulo recuperó el título "Personalidad". Aplicación de la identidad de <strong>The B2B Tinkerers</strong> para encuadrar el documento como entrega de agencia, no como la nueva identidad de Eaship.</div>
+        </div>
+      </div>
+
+      <div class="cl-row">
+        <div>
+          <div class="cl-ver">v0.6</div>
+          <div class="cl-meta">Revisión con Luis y Fur</div>
+        </div>
+        <div>
+          <div class="cl-tit">Reescritura sustantiva</div>
+          <div class="cl-body"><strong>"Sistema"</strong> sustituye a "capa" como descriptor de cliente, con su razonamiento; <strong>"Eaship Core"</strong> propuesto para el módulo base. <strong>ROI</strong> integrado en la propuesta de valor (Capítulo 05: "el coste, en su sitio") y calculadora incorporada como activo de sales enablement. <strong>Quinto RTB de time-to-value</strong> en el diferenciador. Matiz de tono <strong>"servilismo a autonomía"</strong> como aporte de Luis. Audiencia bilingüe <strong>ES/EN</strong> desde el inicio. <strong>Audiencia ampliada a seis roles</strong> (Operaciones, Supply Chain, Logística, IT, Procurement, Partners ERP) y usuario operativo añadido como categoría aparte. <strong>"Eaship coordina, no optimiza"</strong> como línea de posicionamiento, con AI Route Planner firme fuera. Índice añadido tras el hero.</div>
+        </div>
+      </div>
+
+      <div class="cl-row">
+        <div>
+          <div class="cl-ver">v0.7</div>
+          <div class="cl-meta">Revisión con Ramón y Fur · dirección</div>
+        </div>
+        <div>
+          <div class="cl-tit">Ajustes a partir del feedback de dirección</div>
+          <div class="cl-body"><strong>Autonomía confirmada</strong> como ángulo de marca, con la imagen del CEO: "te damos las redes, pero tú pescas". <strong>Metáfora de la cebolla</strong> incorporada al modelo modular del Capítulo 02 como narrativa de expansión de cuenta (a más capas, más profundidad en la organización). <strong>Fiabilidad elevada</strong> de rasgo a regla de producto en el Capítulo 07: antes de añadir, hay que sostener. <strong>Cambio de naming ratificado</strong> con mandato explícito del CEO.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<div class="closing">
+  <div class="wrap col">
+    <div class="ch-head reveal">
+      <span class="ch-tag">El recorrido</span>
+      <h2>El nuevo Eaship no es un destino. Es una decisión que empieza <em>ahora</em>.</h2>
+    </div>
+    <div class="reveal">
+      <p>Esta plataforma es la materia prima. A partir de aquí se construye todo lo visible: naming, identidad, web, contenido y el manual de tono para que la IA escriba como Eaship. Pero antes de eso, hay que validarla, y está pensada para hacerlo capítulo a capítulo, con iteraciones pequeñas.</p>
+      <div class="next">
+        <div class="nx"><div class="nxn">Paso 1</div><div class="nxt">Iterar Territorio y Categoría</div><div class="nxd">Son los capítulos que, si se mueven, arrastran a todos los demás. Conviene cerrarlos primero.</div></div>
+        <div class="nx"><div class="nxn">Paso 2</div><div class="nxt">Validar sliders y cerrar Valores</div><div class="nxd">Revisión corta con el equipo: confirmar los ocho ejes y cerrar el bloque de Valores que quedó como tarea.</div></div>
+        <div class="nx"><div class="nxn">Paso 3</div><div class="nxt">Arrancar naming e identidad</div><div class="nxd">Con la plataforma estable, dar paso al proyecto de naming con Luis y a la fase de identidad creativa.</div></div>
+      </div>
+      <div class="foot">
+        <span>Eaship · Plataforma de Marca v0.7 · Preparado por The B2B Tinkerers</span>
+        <span>Síntesis del Brand Discovery Workshop · 15 mayo 2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- password gate (client-side) ----------
+  (function(){
+    var PASS='eaship2026', KEY='eaship_brand_auth';
+    var gate=document.getElementById('gate'),
+        form=document.getElementById('gateForm'),
+        pass=document.getElementById('gatePass'),
+        err=document.getElementById('gateErr');
+    function unlock(){
+      document.documentElement.classList.add('unlocked');
+      gate.setAttribute('aria-hidden','true');
+      try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+    }
+    if(document.documentElement.classList.contains('unlocked')){ unlock(); }
+    else if(pass){ pass.focus(); }
+    if(form){
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        if(pass.value===PASS){ unlock(); }
+        else{
+          err.classList.add('show');
+          gate.classList.remove('shake'); void gate.offsetWidth; gate.classList.add('shake');
+          pass.value=''; pass.focus();
+        }
+      });
+    }
+  })();
+
+  const prog=document.getElementById('progress');
+  function upd(){
+    const h=document.documentElement;
+    prog.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';
+  }
+  document.addEventListener('scroll',upd,{passive:true});upd();
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
