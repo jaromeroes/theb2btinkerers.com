@@ -4,7 +4,7 @@ Part of the Tinkerers imagery system. Run from repo root:  python3 docs/brand/du
 Originals are tracked in git; revert with `git checkout -- src/assets/blog`.
 """
 from PIL import Image, ImageOps
-import glob, os
+import glob, os, sys
 
 # Cool ramp (B2B content): shadows ink -> forest -> emerald -> chartreuse -> cream highlights.
 COOL = [
@@ -32,7 +32,10 @@ def build_lut(stops, ch):
 
 RL, GL, BL = build_lut(COOL, 0), build_lut(COOL, 1), build_lut(COOL, 2)
 
-paths = sorted(glob.glob("src/assets/blog/*.webp") + glob.glob("src/assets/blog/*.png"))
+dirs = sys.argv[1:] or ["src/assets/blog"]
+paths = []
+for d in dirs:
+    paths += sorted(glob.glob(f"{d}/*.webp") + glob.glob(f"{d}/*.png"))
 for p in paths:
     im = Image.open(p).convert("L")
     im = ImageOps.autocontrast(im, cutoff=1)   # normalize tonal range for consistency

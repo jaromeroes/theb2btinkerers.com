@@ -3,11 +3,11 @@ import Base from '../layouts/Base.astro';
 ---
 <Base title="Join the Team" description="We're a deliberately small group of senior B2B marketing strategists who challenge the status quo. If that resonates, let's talk.">
 
-<section class="jn-hero">
-  <div class="jn-hero-inner">
-    <div class="jn-eyebrow">Join the team</div>
-    <h1 class="jn-h1">We're small on purpose. Every person here is someone we'd want in the room when it matters.</h1>
-    <p class="jn-hero-sub">A curated network of senior B2B strategists across Europe and North America. Remote, flexible, united by the obsession with work that actually moves the needle.</p>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-kick">Join the team</p>
+    <h1>We're small on purpose. Every person here is someone we'd want <span class="hl">in the room when it matters.</span></h1>
+    <p class="page-hero-sub">A curated network of senior B2B strategists across Europe and North America. Remote, flexible, united by the obsession with work that actually moves the needle.</p>
   </div>
 </section>
 
@@ -48,13 +48,6 @@ import Base from '../layouts/Base.astro';
 </Base>
 
 <style>
-.jn-hero{padding:calc(68px + clamp(60px,8vw,100px)) var(--pad) clamp(64px,8vw,96px);background:var(--forest);position:relative;overflow:hidden}
-.jn-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(212,232,74,0.07) 0%,transparent 55%);pointer-events:none}
-.jn-hero-inner{max-width:800px;position:relative;z-index:1}
-.jn-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--lime);opacity:.65;display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.jn-eyebrow::before{content:'';display:block;width:18px;height:1px;background:var(--lime)}
-.jn-h1{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:.97;color:var(--cream)}
-.jn-hero-sub{font-size:clamp(14px,1.6vw,17px);line-height:1.75;color:rgba(245,240,232,.45);margin-top:24px;max-width:620px}
 .jn-manifesto{padding:clamp(72px,9vw,112px) var(--pad);background:var(--cream)}
 .jn-manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,88px);align-items:start}
 @media(max-width:760px){.jn-manifesto-inner{grid-template-columns:1fr}}

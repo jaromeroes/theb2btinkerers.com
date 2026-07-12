@@ -4,11 +4,11 @@ import Base from '../../layouts/Base.astro';
 <Base title="B2B Marketing Services | The B2B Tinkerers" description="Six ways we help B2B tech, industrial, and financial services companies get more from marketing. Strategy, positioning, GTM, AI, and fractional leadership for B2B companies.">
 
 <!-- HERO -->
-<section class="sh-hero">
-  <div class="sh-hero-inner">
-    <div class="sh-eyebrow">What we do</div>
-    <h1 class="sh-h1">Six ways we turn marketing into a growth engine.</h1>
-    <p class="sh-subtitle">We help B2B tech, industrial, and financial services companies get more from marketing without spending more. Each engagement starts with understanding your business. The strategy follows.</p>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-kick">What we do</p>
+    <h1>Six ways we turn marketing into a <span class="hl">growth engine.</span></h1>
+    <p class="page-hero-sub">We help B2B tech, industrial, and financial services companies get more from marketing without spending more. Each engagement starts with understanding your business. The strategy follows.</p>
   </div>
 </section>
 
@@ -66,32 +66,19 @@ import Base from '../../layouts/Base.astro';
 </Base>
 
 <style>
-/* HERO */
-.sh-hero{padding:calc(68px + clamp(60px,8vw,100px)) var(--pad) clamp(64px,8vw,96px);background:var(--forest);position:relative;overflow:hidden}
-.sh-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(212,232,74,0.07) 0%,transparent 55%);pointer-events:none}
-.sh-hero-inner{max-width:800px;position:relative;z-index:1}
-.sh-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--lime);opacity:.65;display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.sh-eyebrow::before{content:'';display:block;width:18px;height:1px;background:var(--lime)}
-.sh-h1{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:.97;color:var(--cream);margin-bottom:20px}
-.sh-subtitle{font-size:clamp(14px,1.8vw,17px);line-height:1.8;color:rgba(245,240,232,0.60);max-width:520px}
-
 /* GRID */
-.sh-grid-section{padding:clamp(72px,9vw,112px) var(--pad);background:var(--cream)}
-.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.sh-grid-section{padding:clamp(56px,8vw,104px) var(--pad);background:var(--cream)}
+.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(21,20,15,.12);border:1px solid rgba(21,20,15,.12);border-radius:14px;overflow:hidden;max-width:1160px;margin:0 auto}
 @media(max-width:900px){.sh-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.sh-grid{grid-template-columns:1fr}}
 
-/* CARDS */
-.sh-card{background:var(--forest);padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px);position:relative;transition:background .2s;cursor:pointer;text-decoration:none;display:block}
-.sh-card:hover{background:var(--lime)}
-.sh-card:hover .sh-icon{color:var(--lime)}
-.sh-card:hover .sh-title{color:var(--forest)}
-.sh-card:hover .sh-body{color:rgba(28,74,58,.65)}
-.sh-card:hover .sh-more{color:var(--forest);opacity:1}
-.sh-icon{width:28px;height:28px;color:var(--cream);opacity:.5;display:block;margin-bottom:12px;transition:color .2s,opacity .2s}
-.sh-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(14px,1.8vw,17px);font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.3;transition:color .2s}
-.sh-body{font-size:12.5px;line-height:1.7;color:rgba(245,240,232,.68);transition:color .2s;padding-bottom:28px}
-.sh-more{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--lime);opacity:.6;position:absolute;bottom:20px;left:clamp(20px,2.5vw,32px);transition:color .2s,opacity .2s}
+/* CARDS — light editorial */
+.sh-card{background:var(--card);padding:clamp(26px,3vw,38px);position:relative;transition:background .2s;text-decoration:none;display:flex;flex-direction:column;min-height:214px}
+.sh-card:hover{background:#fff}
+.sh-icon{width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:16px}
+.sh-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(16px,2vw,20px);font-weight:800;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px;line-height:1.25}
+.sh-body{font-size:14px;line-height:1.6;color:var(--ink-2);padding-bottom:30px;flex:1}
+.sh-more{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--chartreuse-deep);position:absolute;bottom:24px;left:clamp(26px,3vw,38px)}
 
 /* CTA BANNER */
 .sh-cta{padding:clamp(72px,9vw,112px) var(--pad);background:var(--forest)}

@@ -3,10 +3,10 @@ import Base from '../layouts/Base.astro';
 ---
 <Base title="About" description="We're not an agency. We're not a consultancy. We're the person you wish you'd hired sooner.">
 
-<section class="about-hero">
-  <div class="about-hero-inner">
-    <div class="about-eyebrow">About us</div>
-    <h1 class="about-h1">We're not an agency.<br/>We're not a consultancy.<br/>We're the person you<br/>wish you'd hired sooner.</h1>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-kick">About us</p>
+    <h1>We're not an agency. We're not a consultancy. We're the person you <span class="hl">wish you'd hired sooner.</span></h1>
   </div>
 </section>
 
@@ -77,12 +77,6 @@ import Base from '../layouts/Base.astro';
 </Base>
 
 <style>
-.about-hero{padding:calc(68px + clamp(60px,8vw,100px)) var(--pad) clamp(64px,8vw,96px);background:var(--forest);position:relative;overflow:hidden}
-.about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(212,232,74,0.07) 0%,transparent 55%);pointer-events:none}
-.about-hero-inner{max-width:800px;position:relative;z-index:1}
-.about-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--lime);opacity:.65;display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.about-eyebrow::before{content:'';display:block;width:18px;height:1px;background:var(--lime)}
-.about-h1{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:.97;color:var(--cream)}
 .about-manifesto{padding:clamp(72px,9vw,112px) var(--pad);background:var(--cream)}
 .about-manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,88px);align-items:start}
 @media(max-width:760px){.about-manifesto-inner{grid-template-columns:1fr}}
