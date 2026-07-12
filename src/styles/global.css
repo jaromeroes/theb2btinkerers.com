@@ -15,7 +15,7 @@
   --ink:#15140F;
   --ink-2:#46443C;
   --gray:#7C7A70;
-  --dark:#0F3728;          /* deep brand green for dark grounds (nav, footer, dark bands) */
+  --dark:#15140F;          /* neutral near-black for dark grounds — neutral base scales across brands; green stays accent-only */
   --pad:clamp(20px,5vw,72px);
 }
 html{scroll-behavior:smooth}
