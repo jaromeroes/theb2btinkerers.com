@@ -85,24 +85,29 @@ const fmtDate = (d) => d.toLocaleDateString('en-GB', { month: 'short', year: 'nu
 <!-- PROOF — anti-agency numbers -->
 <section class="sec sec--line proof">
   <div class="sec-in">
-    <div class="section-eyebrow">How we're different</div>
-    <h2 class="section-h2">The anti-agency, in four numbers.</h2>
+    <div class="section-eyebrow">The numbers</div>
+    <h2 class="section-h2">This is what misaligned marketing costs.</h2>
+    <p class="proof-lead">Not our numbers. Industry data from Forrester, G2, Marketo and ZoomInfo.</p>
     <div class="proof-grid">
       <div class="proof-item">
-        <div class="proof-n"><u>100</u>%</div>
-        <p class="proof-t">Senior. Every engagement is led and delivered by a senior operator, never handed down to juniors.</p>
+        <div class="proof-n"><u>65</u>%</div>
+        <p class="proof-t">of B2B professionals say marketing and sales are not aligned.</p>
+        <span class="proof-src">Forrester, 2024</span>
       </div>
       <div class="proof-item">
-        <div class="proof-n">0</div>
-        <p class="proof-t">Retainers that buy decks instead of decisions. We price the problem, not the calendar.</p>
+        <div class="proof-n">$1T</div>
+        <p class="proof-t">lost annually to sales and marketing misalignment across B2B.</p>
+        <span class="proof-src">G2 / Industry, 2024</span>
       </div>
       <div class="proof-item">
-        <div class="proof-n">1</div>
-        <p class="proof-t">Point of contact. No account managers, no layers between you and the thinking.</p>
+        <div class="proof-n"><u>+27</u>%</div>
+        <p class="proof-t">faster profit growth in companies with tightly aligned teams.</p>
+        <span class="proof-src">Marketo / ZoomInfo, 2024</span>
       </div>
       <div class="proof-item">
-        <div class="proof-n"><u>~3</u> wks</div>
-        <p class="proof-t">From kickoff to a plan your team can act on. Strategy that ships, not a six-month study.</p>
+        <div class="proof-n">8%</div>
+        <p class="proof-t">of B2B companies have genuinely strong alignment.</p>
+        <span class="proof-src">ZoomInfo / Marketo, 2024</span>
       </div>
     </div>
   </div>
@@ -233,6 +238,8 @@ const fmtDate = (d) => d.toLocaleDateString('en-GB', { month: 'short', year: 'nu
 .proof-n{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(42px,6vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink)}
 .proof-n u{text-decoration:none;box-shadow:inset 0 -.16em 0 rgba(183,214,43,.65)}
 .proof-t{margin:14px 0 0;font-size:14.5px;color:var(--ink-2);max-width:30ch;line-height:1.55}
+.proof-lead{margin:14px 0 0;color:var(--ink-2);font-size:15px;max-width:52ch;line-height:1.6}
+.proof-src{display:block;margin-top:10px;font-size:11px;color:var(--gray);letter-spacing:.02em}
 
 /* ===== the way we work ===== */
 .howwork-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:start}
