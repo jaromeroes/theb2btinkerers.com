@@ -6,6 +6,8 @@ This file provides guidance to Claude Code when working with this repository.
 
 Static B2B marketing consultancy website (theb2btinkerers.com) built with **Astro 4.16**, deployed on **Netlify**, Node 20. The site belongs to The B2B Tinkerers, a B2B marketing strategy consultancy ("the anti-agency") targeting B2B companies in tech/SaaS, industrial, and financial services sectors across Europe and North America.
 
+The site is **bilingual (EN/ES)** via Astro's native i18n. English (US) is the default locale served on the existing URLs (`/`, `/about`, `/services/*`, `/insights/*`, `/join`) to preserve SEO. Spanish (Spain) lives under the `/es/` prefix. See **Internationalization (i18n)** below.
+
 ## Commands
 
 - `npm run dev` — local dev server
@@ -20,30 +22,59 @@ No test framework is configured. Verify changes by running `npm run build` befor
 
 ### Routing
 
-- `/` — `src/pages/index.astro` (homepage)
-- `/about` — `src/pages/about.astro`
-- `/insights` — `src/pages/insights/index.astro` (blog listing)
-- `/insights/[slug]` — `src/pages/insights/[slug].astro` (dynamic blog posts with related posts by tag)
+Page routes (`src/pages/*`) are **thin wrappers**: each renders a shared, language-aware page component from `src/components/pages/` and passes a `lang` prop. English routes live at the root; Spanish routes mirror them under `src/pages/es/`.
+
+- `/` and `/es/` — `Home.astro`
+- `/about` and `/es/about` — `About.astro`
+- `/join` and `/es/join` — `Join.astro`
+- `/services` and `/es/services` — `ServicesIndex.astro`
+- `/services/[slug]` and `/es/services/[slug]` — `ServicePage.astro` (one data-driven template for all six services; slugs are identical across languages)
+- `/insights` and `/es/insights` — `InsightsIndex.astro` (blog listing, filtered by `lang`)
+- `/insights/[slug]` and `/es/insights/[slug]` — `BlogArticle.astro` (dynamic blog posts; **ES slugs are translated**, EN posts keep their existing slugs)
 
 ### Layout & Components
 
-- `src/layouts/Base.astro` — wraps all pages: head metadata, navigation, contact form (Formspree, async with inline confirmation), Umami analytics
+- `src/layouts/Base.astro` — wraps all pages: `lang` prop drives `<html lang>`, translated nav/footer/contact-form, canonical, hreflang (en/es/x-default), and the EN/ES language switcher. Also head metadata, contact form (Formspree, async with inline confirmation), Umami analytics.
+- `src/components/pages/*.astro` — one component per page type, all `lang`-aware. They render `<Base>` internally and pull copy from `src/i18n/`.
 - `src/components/BlogImage.astro` — optimized image wrapper (WebP, quality:85, lazy loading)
+- `src/components/service-icons.ts` — shared SVG icons for the six services (home grid + services grid)
+
+## Internationalization (i18n)
+
+Native Astro i18n. Config in `astro.config.mjs`: `defaultLocale: 'en'`, `locales: ['en','es']`, `prefixDefaultLocale: false` (EN at root, ES under `/es/`). Sitemap emits both locales with hreflang.
+
+**Translation strings live in `src/i18n/`:**
+
+- `config.ts` — locale list, `htmlLang` (BCP-47), switcher labels.
+- `utils.ts` — `getLangFromUrl`, `localizePath` (EN path → localized path), `mirrorAlternates` (builds the `{ en, es }` hreflang map for simple mirrored pages).
+- `ui.ts` — chrome strings (nav, footer, contact, form, SEO defaults), keyed `ui[lang]`.
+- `services-nav.ts` — service slugs + translated nav/footer labels.
+- `pages/*.ts` — structured page copy per page, shape `{ en: {...}, es: {...} }`. Service detail content lives in `pages/services.ts`.
+
+**Adding a language:** add the locale to `config.ts` + `astro.config.mjs`, extend every `Record<Lang, ...>` in `src/i18n/`, and add the mirrored routes under `src/pages/<locale>/`.
+
+**hreflang for blog posts:** EN and ES versions of an article are paired by a shared `translationKey` in frontmatter. `BlogArticle.astro` looks up the counterpart and emits the correct cross-language alternate even though the slugs differ.
+
+**Voice:** Spanish is **Spain Spanish**, natural, same challenger/direct brand voice — not a literal translation. Keep product and technical terms in their usual form (pipeline, GTM, ICP, MQL, motion, workflow, etc.).
 
 ## Content System
 
-Blog posts live in `src/content/blog/` as Markdown files. Schema defined in `src/content/config.ts`.
+Blog posts live in `src/content/blog/` as Markdown files. Schema defined in `src/content/config.ts`. English posts are `<slug>.md`; their Spanish counterpart is `<slug>.es.md` with `lang: "es"`, a translated `slug`, and a matching `translationKey`.
 
 ### Frontmatter
 ```yaml
 title: "Article Title"
 excerpt: "One-sentence summary for meta and listing cards"
 date: 2026-01-15
-tag: "B2B Strategy"
-readTime: "6 min read"        # optional
-image: "../../assets/blog/filename.webp"  # optional, relative path
-author: "The B2B Tinkerers"   # optional
+tag: "B2B Strategy"                        # tag is in the post's own language
+readTime: "6 min read"                     # optional ("6 min de lectura" in ES)
+image: "../../assets/blog/filename.webp"   # optional, relative path
+lang: "en"                                 # "en" (default) | "es"
+translationKey: "article-key"              # pairs EN + ES versions (hreflang, language switch)
+slug: "traduccion-del-slug"                # ES only: translated URL slug
 ```
+
+Images are shared across languages (they're abstract/duotone, language-neutral); only the alt text is translated in the `.es.md` file.
 
 ### Writing Voice
 
@@ -51,8 +82,11 @@ author: "The B2B Tinkerers"   # optional
 - Bold in the headline, humble in the detail. Conversational (75%), moderately provocative (60%).
 - Never use: agency jargon, empty buzzwords, generic corporate language, transactional lead-gen CTAs.
 - Avoid overuse of em-dashes as sentence separators. Use periods and shorter sentences instead. Em-dashes are flagged as AI-generated writing.
-- All content is written in English.
-- All monetary figures display both euro and dollar amounts, with the dollar equivalent in parentheses: e.g., €200,000 ($220,000).
+- Content is **bilingual (EN/ES)**. English is US English (default locale). Spanish is Spain Spanish — natural, same challenger voice, not a literal translation. Keep product/technical terms in their usual form (pipeline, GTM, ICP, MQL, motion, workflow…).
+- **Monetary figures show both currencies, order and formatting by language:**
+  - English (US): dollar first, euro in parentheses → `$220,000 (€200,000)`.
+  - Spanish (Spain): euro first, dollar in parentheses, ES number format (period as thousands separator, symbol after the amount) → `200.000 € (220.000 $)`.
+  - Large round figures follow the same rule, e.g. EN `$2.2M (€2M)` / ES `2 M€ (2,2 M$)`. Rhetorical "trillion" industry stats use Spain's long scale: `$1 trillion` → `1 billón de dólares`.
 
 ### Good examples of tone
 

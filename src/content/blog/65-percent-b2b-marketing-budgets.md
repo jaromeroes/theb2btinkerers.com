@@ -5,6 +5,7 @@ date: 2025-12-02
 tag: "Strategy"
 image: "../../assets/blog/65-percent-b2b-marketing-budgets-cover.webp"
 readTime: "8 min read"
+translationKey: "budget-alignment"
 ---
 
 There's a stat that keeps coming up in conversations with B2B marketing leaders: around 65% of them say their marketing and sales teams are not aligned. Depending on the source, the number moves a few points either way. But the direction never changes.

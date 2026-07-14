@@ -2,31 +2,59 @@
 import '@fontsource-variable/inter';
 import '@fontsource-variable/bricolage-grotesque';
 import '../styles/global.css';
+import { ui } from '../i18n/ui';
+import { htmlLang, langLabels, type Lang } from '../i18n/config';
+import { localizePath, toCanonicalPath, mirrorAlternates } from '../i18n/utils';
+import { serviceSlugs, serviceNav } from '../i18n/services-nav';
+
 export interface Props {
   title: string;
   description?: string;
-  canonicalURL?: string;
+  lang?: Lang;
+  /** { en, es } paths for hreflang + language switch. es may be null when no translation exists. */
+  alternates?: { en: string; es: string | null };
 }
-const {
-  title,
-  description = 'B2B Marketing Strategy Consultancy. We help B2B tech, industrial, and financial services companies get more from marketing — without spending more.',
-  canonicalURL = Astro.url.href,
-} = Astro.props;
-const siteName = 'The B2B Tinkerers';
+
+const { title, lang = 'en', description, alternates } = Astro.props;
+const t = ui[lang];
+const desc = description ?? t.site.defaultDescription;
+
+const siteName = t.site.name;
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+
 const currentPath = Astro.url.pathname;
+const canonicalCurrent = toCanonicalPath(currentPath);
+const isActive = (p: string) =>
+  p === '/' ? canonicalCurrent === '/' : canonicalCurrent === p || canonicalCurrent.startsWith(p + '/');
+
+// hreflang / canonical — keep trailing slashes consistent with canonical
+const slashed = (path: string) => (path.endsWith('/') ? path : path + '/');
+const alt = alternates ?? mirrorAlternates(canonicalCurrent);
+const canonicalURL = new URL(slashed(currentPath), Astro.site).href;
+const enHref = alt.en ? new URL(slashed(alt.en), Astro.site).href : null;
+const esHref = alt.es ? new URL(slashed(alt.es), Astro.site).href : null;
+
+const p = (path: string) => localizePath(path, lang);
+const langTargets: Record<Lang, string> = {
+  en: slashed(lang === 'en' ? currentPath : (alt.en ?? '/')),
+  es: slashed(lang === 'es' ? currentPath : (alt.es ?? '/es/')),
+};
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang={htmlLang[lang]}>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{fullTitle}</title>
-  <meta name="description" content={description}/>
+  <meta name="description" content={desc}/>
   <link rel="canonical" href={canonicalURL}/>
+  {enHref && <link rel="alternate" hreflang="en" href={enHref}/>}
+  {esHref && <link rel="alternate" hreflang="es" href={esHref}/>}
+  {enHref && <link rel="alternate" hreflang="x-default" href={enHref}/>}
   <meta property="og:title" content={fullTitle}/>
-  <meta property="og:description" content={description}/>
+  <meta property="og:description" content={desc}/>
   <meta property="og:site_name" content={siteName}/>
+  <meta property="og:locale" content={htmlLang[lang].replace('-', '_')}/>
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <!-- Preconnect to external origins -->
   <link rel="preconnect" href="https://cloud.umami.is" crossorigin/>
@@ -39,49 +67,55 @@ const currentPath = Astro.url.pathname;
 </head>
 <body>
 
-<a class="skip-link" href="#main-content">Skip to content</a>
+<a class="skip-link" href="#main-content">{t.site.skipToContent}</a>
 <nav class="nav" id="main-nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="/"><img src="/logo.svg" alt="The B2B Tinkerers" class="nav-logo-img" width="99" height="36"/></a>
+    <a class="nav-logo" href={p('/')}><img src="/logo.svg" alt={t.site.logoAlt} class="nav-logo-img" width="99" height="36"/></a>
     <div class="nav-links">
       <div class="nav-dropdown-wrap">
-        <a class={`nav-link${currentPath.startsWith('/services')?' active':''}`} href="/services">Services</a>
+        <a class={`nav-link${isActive('/services') ? ' active' : ''}`} href={p('/services')}>{t.nav.services}</a>
         <div class="nav-dropdown">
-          <a class="nav-dropdown-link" href="/services/marketing-audit">Marketing Audit</a>
-          <a class="nav-dropdown-link" href="/services/ai-strategy">AI & Hybrid Strategy</a>
-          <a class="nav-dropdown-link" href="/services/brand-strategy">Brand Strategy</a>
-          <a class="nav-dropdown-link" href="/services/go-to-market">Go-To-Market Strategy</a>
-          <a class="nav-dropdown-link" href="/services/marketing-plan">Marketing Plan</a>
-          <a class="nav-dropdown-link" href="/services/fractional-cmo">Fractional CMO</a>
-          <a class="nav-dropdown-link nav-dropdown-all" href="/services">View all services →</a>
+          {serviceSlugs.map(slug => (
+            <a class="nav-dropdown-link" href={p(`/services/${slug}`)}>{serviceNav[lang][slug].menu}</a>
+          ))}
+          <a class="nav-dropdown-link nav-dropdown-all" href={p('/services')}>{t.nav.viewAllServices}</a>
         </div>
       </div>
-      <a class={`nav-link${currentPath.startsWith('/insights')?' active':''}`} href="/insights">Insights</a>
-      <a class={`nav-link${currentPath==='/about'?' active':''}`} href="/about">About</a>
-      <a class={`nav-link${currentPath==='/join'?' active':''}`} href="/join">Join</a>
+      <a class={`nav-link${isActive('/insights') ? ' active' : ''}`} href={p('/insights')}>{t.nav.insights}</a>
+      <a class={`nav-link${isActive('/about') ? ' active' : ''}`} href={p('/about')}>{t.nav.about}</a>
+      <a class={`nav-link${isActive('/join') ? ' active' : ''}`} href={p('/join')}>{t.nav.join}</a>
     </div>
-    <a class="nav-cta" href="#contact">Let's talk →</a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label={t.nav.langSwitchLabel}>
+        <a class={`lang-opt${lang === 'en' ? ' active' : ''}`} href={langTargets.en} hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>{langLabels.en}</a>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <a class={`lang-opt${lang === 'es' ? ' active' : ''}`} href={langTargets.es} hreflang="es" aria-current={lang === 'es' ? 'true' : undefined}>{langLabels.es}</a>
+      </div>
+      <a class="nav-cta" href="#contact">{t.nav.cta}</a>
+    </div>
     <button class="nav-burger" id="nav-burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
     <div class="nav-mobile-services">
-      <button class="nav-mobile-link nav-mobile-toggle" id="nav-services-toggle">Services <span class="nav-mobile-chevron">›</span></button>
+      <button class="nav-mobile-link nav-mobile-toggle" id="nav-services-toggle">{t.nav.services} <span class="nav-mobile-chevron">›</span></button>
       <div class="nav-mobile-sub" id="nav-services-sub">
-        <a class="nav-mobile-sublink" href="/services/marketing-audit">Marketing Audit</a>
-        <a class="nav-mobile-sublink" href="/services/ai-strategy">AI & Hybrid Strategy</a>
-        <a class="nav-mobile-sublink" href="/services/brand-strategy">Brand Strategy</a>
-        <a class="nav-mobile-sublink" href="/services/go-to-market">Go-To-Market Strategy</a>
-        <a class="nav-mobile-sublink" href="/services/marketing-plan">Marketing Plan</a>
-        <a class="nav-mobile-sublink" href="/services/fractional-cmo">Fractional CMO</a>
-        <a class="nav-mobile-sublink" href="/services">View all services</a>
+        {serviceSlugs.map(slug => (
+          <a class="nav-mobile-sublink" href={p(`/services/${slug}`)}>{serviceNav[lang][slug].menu}</a>
+        ))}
+        <a class="nav-mobile-sublink" href={p('/services')}>{t.nav.viewAllServices.replace(' →', '')}</a>
       </div>
     </div>
-    <a class="nav-mobile-link" href="/insights">Insights</a>
-    <a class="nav-mobile-link" href="/about">About</a>
-    <a class="nav-mobile-link" href="/join">Join the team</a>
-    <a class="nav-mobile-cta" href="#contact">Let's talk →</a>
+    <a class="nav-mobile-link" href={p('/insights')}>{t.nav.insights}</a>
+    <a class="nav-mobile-link" href={p('/about')}>{t.nav.about}</a>
+    <a class="nav-mobile-link" href={p('/join')}>{t.nav.joinMobile}</a>
+    <div class="nav-mobile-lang">
+      <a class={`lang-opt${lang === 'en' ? ' active' : ''}`} href={langTargets.en} hreflang="en">{langLabels.en}</a>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <a class={`lang-opt${lang === 'es' ? ' active' : ''}`} href={langTargets.es} hreflang="es">{langLabels.es}</a>
+    </div>
+    <a class="nav-mobile-cta" href="#contact">{t.nav.cta}</a>
   </div>
 </nav>
 
@@ -92,11 +126,11 @@ const currentPath = Astro.url.pathname;
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <div class="contact-left">
-      <div class="contact-eyebrow">Let's talk</div>
-      <h2 class="contact-h2">30 minutes. No pitch. Just an honest conversation.</h2>
-      <p class="contact-body">Tell us where you're stuck. We'll tell you, straight, whether we can help and how. Reply within 24 hours.</p>
+      <div class="contact-eyebrow">{t.contact.eyebrow}</div>
+      <h2 class="contact-h2">{t.contact.heading}</h2>
+      <p class="contact-body">{t.contact.body}</p>
       <div class="contact-direct">
-        <span class="contact-or">Or email us directly</span>
+        <span class="contact-or">{t.contact.orEmail}</span>
         <a class="contact-email-link" href="mailto:hello@theb2btinkerers.com">hello@theb2btinkerers.com</a>
       </div>
     </div>
@@ -104,33 +138,37 @@ const currentPath = Astro.url.pathname;
       <form class="contact-form" id="contact-form">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="name">Your name</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required/>
+            <label class="form-label" for="name">{t.form.nameLabel}</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder={t.form.namePlaceholder} required/>
           </div>
           <div class="form-group">
-            <label class="form-label" for="company">Company</label>
-            <input class="form-input" type="text" id="company" name="company" placeholder="Acme B2B" required/>
+            <label class="form-label" for="company">{t.form.companyLabel}</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder={t.form.companyPlaceholder} required/>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="email">Work email</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="jane@company.com" required/>
+          <label class="form-label" for="email">{t.form.emailLabel}</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder={t.form.emailPlaceholder} required/>
         </div>
         <div class="form-group">
-          <label class="form-label" for="message">What are you trying to solve?</label>
-          <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your current situation and what you're looking for..." rows="4" required></textarea>
+          <label class="form-label" for="message">{t.form.messageLabel}</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder={t.form.messagePlaceholder} rows="4" required></textarea>
         </div>
         <!-- Hidden fields: journey + UTM params -->
+        <input type="hidden" name="_language" value={lang}/>
         <input type="hidden" name="_journey" id="field-journey"/>
         <input type="hidden" name="_utm_source" id="field-utm-source"/>
         <input type="hidden" name="_utm_medium" id="field-utm-medium"/>
         <input type="hidden" name="_utm_campaign" id="field-utm-campaign"/>
         <input type="hidden" name="_utm_content" id="field-utm-content"/>
         <input type="hidden" name="_utm_term" id="field-utm-term"/>
-        <button class="form-submit" type="submit">Send message →</button>
-        <p class="form-disclaimer">We'll respond within 24 hours. No spam, no pitch decks.</p>
-        <p class="form-success" id="form-success" style="display:none;">Message sent. We'll be in touch shortly.</p>
-        <p class="form-error" id="form-error" style="display:none;">Something went wrong. Please try emailing us directly.</p>
+        <button class="form-submit" type="submit"
+          data-label-default={t.form.submit}
+          data-label-sending={t.form.sending}
+          data-label-sent={t.form.sent}>{t.form.submit}</button>
+        <p class="form-disclaimer">{t.form.disclaimer}</p>
+        <p class="form-success" id="form-success" style="display:none;">{t.form.success}</p>
+        <p class="form-error" id="form-error" style="display:none;">{t.form.error}</p>
       </form>
     </div>
   </div>
@@ -139,39 +177,48 @@ const currentPath = Astro.url.pathname;
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <a class="footer-logo" href="/"><img src="/logo.svg" alt="The B2B Tinkerers" class="footer-logo-img" width="88" height="32"/></a>
-      <p class="footer-tagline">Senior B2B marketing strategy,<br/>without the agency overhead.</p>
+      <a class="footer-logo" href={p('/')}><img src="/logo.svg" alt={t.site.logoAlt} class="footer-logo-img" width="88" height="32"/></a>
+      <p class="footer-tagline" set:html={t.footer.tagline}></p>
     </div>
     <div class="footer-mid">
       <div class="footer-col">
-        <span class="footer-col-label">Services</span>
-        <a class="footer-link" href="/services/marketing-audit">Marketing Audit</a>
-        <a class="footer-link" href="/services/ai-strategy">AI Strategy</a>
-        <a class="footer-link" href="/services/brand-strategy">Brand Strategy</a>
-        <a class="footer-link" href="/services/go-to-market">Go-To-Market</a>
-        <a class="footer-link" href="/services/marketing-plan">Marketing Plan</a>
-        <a class="footer-link" href="/services/fractional-cmo">Fractional CMO</a>
+        <span class="footer-col-label">{t.footer.servicesLabel}</span>
+        {serviceSlugs.map(slug => (
+          <a class="footer-link" href={p(`/services/${slug}`)}>{serviceNav[lang][slug].footer}</a>
+        ))}
       </div>
       <div class="footer-col">
-        <span class="footer-col-label">Company</span>
-        <a class="footer-link" href="/about">About</a>
-        <a class="footer-link" href="/insights">Insights</a>
-        <a class="footer-link" href="/join">Join the team</a>
-        <a class="footer-link" href="#contact">Contact</a>
+        <span class="footer-col-label">{t.footer.companyLabel}</span>
+        <a class="footer-link" href={p('/about')}>{t.footer.about}</a>
+        <a class="footer-link" href={p('/insights')}>{t.footer.insights}</a>
+        <a class="footer-link" href={p('/join')}>{t.footer.join}</a>
+        <a class="footer-link" href="#contact">{t.footer.contact}</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-label">Get in touch</span>
+        <span class="footer-col-label">{t.footer.getInTouchLabel}</span>
         <a class="footer-link" href="mailto:hello@theb2btinkerers.com">hello@theb2btinkerers.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 The B2B Tinkerers. All rights reserved.</span>
+      <span class="footer-copy">{t.footer.copyright}</span>
     </div>
   </div>
 </footer>
 
 </body>
 </html>
+
+<style>
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2vw,24px)}
+.lang-switch{display:flex;align-items:center;gap:6px}
+.lang-opt{font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(245,240,232,.5);text-decoration:none;transition:color .15s}
+.lang-opt:hover{color:var(--cream)}
+.lang-opt.active{color:var(--lime)}
+.lang-sep{font-size:12px;color:rgba(245,240,232,.3)}
+@media(max-width:700px){.nav-right{display:none}}
+.nav-mobile-lang{display:flex;align-items:center;gap:8px;padding:16px 0 4px}
+.nav-mobile-lang .lang-opt{font-size:14px}
+</style>
 
 <script>
 /* ── Nav ── */
@@ -219,10 +266,14 @@ document.getElementById('nav-services-toggle')?.addEventListener('click', functi
   const form = document.getElementById('contact-form');
   if (!form) return;
 
+  const btn = form.querySelector('.form-submit');
+  const labelDefault = btn?.dataset.labelDefault || 'Send message →';
+  const labelSending = btn?.dataset.labelSending || 'Sending...';
+  const labelSent = btn?.dataset.labelSent || 'Sent ✓';
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const btn = form.querySelector('.form-submit');
     const successEl = document.getElementById('form-success');
     const errorEl = document.getElementById('form-error');
 
@@ -238,7 +289,7 @@ document.getElementById('nav-services-toggle')?.addEventListener('click', functi
     document.getElementById('field-utm-term').value = utmData.utm_term || '';
 
     btn.disabled = true;
-    btn.textContent = 'Sending...';
+    btn.textContent = labelSending;
     successEl.style.display = 'none';
     errorEl.style.display = 'none';
 
@@ -252,7 +303,7 @@ document.getElementById('nav-services-toggle')?.addEventListener('click', functi
       if (res.ok) {
         form.reset();
         successEl.style.display = 'block';
-        btn.textContent = 'Sent ✓';
+        btn.textContent = labelSent;
 
         /* Fire Umami conversion event */
         if (typeof umami !== 'undefined') {
@@ -267,7 +318,7 @@ document.getElementById('nav-services-toggle')?.addEventListener('click', functi
     } catch (err) {
       errorEl.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Send message →';
+      btn.textContent = labelDefault;
     }
   });
 })();

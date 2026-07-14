@@ -8,6 +8,10 @@ const blog = defineCollection({
     tag: z.string(),
     readTime: z.string().optional(),
     image: image().optional(),
+    // i18n
+    lang: z.enum(['en', 'es']).default('en'),
+    // Pairs the EN and ES versions of the same article (for hreflang + language switch).
+    translationKey: z.string().optional(),
   }),
 });
 
