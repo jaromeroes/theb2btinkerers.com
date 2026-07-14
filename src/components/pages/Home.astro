@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import BlogImage from '../BlogImage.astro';
 import { getCollection } from 'astro:content';
+import { isPublished } from '../../content/utils';
 import { home } from '../../i18n/pages/home';
 import { ui } from '../../i18n/ui';
 import { serviceIcons } from '../service-icons';
@@ -15,7 +16,7 @@ const t = home[lang];
 const p = (path: string) => localizePath(path, lang);
 
 const posts = (await getCollection('blog'))
-  .filter(post => post.data.lang === lang)
+  .filter(post => post.data.lang === lang && isPublished(post))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 4);
 const featured = posts[0];

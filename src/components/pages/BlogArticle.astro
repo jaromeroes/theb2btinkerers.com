@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import BlogImage from '../BlogImage.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { isPublished } from '../../content/utils';
 import { insights, fmtLongDate, fmtShortDate } from '../../i18n/pages/insights';
 import { localizePath } from '../../i18n/utils';
 import type { Lang } from '../../i18n/config';
@@ -13,7 +14,8 @@ const p = (path: string) => localizePath(path, lang);
 
 const { Content, headings } = await post.render();
 
-const allPosts = await getCollection('blog');
+// Only surface posts that are already published (future-dated posts stay hidden).
+const allPosts = (await getCollection('blog')).filter(pp => isPublished(pp));
 
 // Related: same language, same tag.
 const related = allPosts

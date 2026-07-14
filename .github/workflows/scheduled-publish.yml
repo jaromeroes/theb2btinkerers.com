@@ -1,0 +1,28 @@
+name: Scheduled publish
+
+# Rebuilds the site once a day so future-dated blog posts go live on their own
+# date without a manual commit. The date-gate in src/content/utils.ts hides any
+# post whose `date` is still in the future; each rebuild re-evaluates "today" and
+# reveals whatever has come due.
+
+on:
+  schedule:
+    # 06:00 UTC daily (~08:00 Europe/Madrid). Posts are dated at 00:00 UTC, so
+    # they are live a few hours into their publication day.
+    - cron: '0 6 * * *'
+  # Lets you trigger a rebuild by hand from the Actions tab.
+  workflow_dispatch: {}
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Netlify build hook
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret is not set." >&2
+            exit 1
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"
