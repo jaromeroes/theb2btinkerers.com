@@ -187,7 +187,7 @@ const rest = posts.slice(1, 4);
 @media(max-width:520px){.work-grid{grid-template-columns:1fr}}
 .work-card{background:var(--card);padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;min-height:200px;text-decoration:none;transition:background .2s}
 .work-card:hover{background:#fff}
-.work-card svg{width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:14px}
+.work-card :global(svg){width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:14px}
 .work-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:800;letter-spacing:-.015em;color:var(--ink);margin:0 0 10px;line-height:1.2}
 .work-body{font-size:14px;line-height:1.6;color:var(--ink-2);flex:1}
 .work-more{margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--chartreuse-deep)}
@@ -201,7 +201,7 @@ const rest = posts.slice(1, 4);
 .proof-item{padding:26px 0;border-top:2px solid var(--ink)}
 @media(max-width:720px){.proof-item{border-top:1px solid rgba(21,20,15,.12)}.proof-item:first-child{border-top:2px solid var(--ink)}}
 .proof-n{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(42px,6vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink)}
-.proof-n u{text-decoration:none;box-shadow:inset 0 -.16em 0 rgba(183,214,43,.65)}
+.proof-n :global(u){text-decoration:none;box-shadow:inset 0 -.16em 0 rgba(183,214,43,.65)}
 .proof-t{margin:14px 0 0;font-size:14.5px;color:var(--ink-2);max-width:30ch;line-height:1.55}
 .proof-lead{margin:14px 0 0;color:var(--ink-2);font-size:15px;max-width:52ch;line-height:1.6}
 .proof-src{display:block;margin-top:10px;font-size:11px;color:var(--gray);letter-spacing:.02em}

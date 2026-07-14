@@ -56,7 +56,7 @@ const p = (path: string) => localizePath(path, lang);
 /* CARDS — light editorial */
 .sh-card{background:var(--card);padding:clamp(26px,3vw,38px);position:relative;transition:background .2s;text-decoration:none;display:flex;flex-direction:column;min-height:214px}
 .sh-card:hover{background:#fff}
-.sh-card svg{width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:16px}
+.sh-card :global(svg){width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:16px}
 .sh-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(16px,2vw,20px);font-weight:800;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px;line-height:1.25}
 .sh-body{font-size:14px;line-height:1.6;color:var(--ink-2);padding-bottom:30px;flex:1}
 .sh-more{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--chartreuse-deep);position:absolute;bottom:24px;left:clamp(26px,3vw,38px)}
