@@ -7,6 +7,7 @@ author: "The B2B Tinkerers"
 date: 2026-01-13
 tag: "B2B marketing strategy"
 image: "../../assets/blog/b2b-marketing-busy-trap-cover.webp"
+translationKey: "busy-vs-impact"
 ---
 
 There's a strange paradox in B2B marketing right now. Teams are producing more content than ever. They're running campaigns across more channels, tracking more dashboards, attending more stand-ups, and filing more reports. Everyone is busy. Calendars are packed. Slack never sleeps.
@@ -47,7 +48,7 @@ Let's talk about vanity metrics, because they're the fuel that keeps the busy tr
 
 Click-through rates, impressions, email open rates, social media engagement, number of leads generated — these metrics have their place. They can help you diagnose creative performance or understand audience behavior. But when they become your primary success indicators, you're building a marketing function on sand.
 
-A $50 cost per lead means nothing if those leads never convert to pipeline. A viral LinkedIn post feels great until you realize none of the engagement came from your ICP. High email open rates are encouraging — until you notice your reply rate is zero.
+A $50 (€45) cost per lead means nothing if those leads never convert to pipeline. A viral LinkedIn post feels great until you realize none of the engagement came from your ICP. High email open rates are encouraging — until you notice your reply rate is zero.
 
 Gartner's 2025 data shows that CMO budgets have remained flat at 7.7% of company revenue. When marketing can't demonstrate clear connections to business outcomes, it struggles to secure the investment it needs. The teams that get their budgets cut aren't the ones doing nothing — they're the ones that can't prove their work matters.
 

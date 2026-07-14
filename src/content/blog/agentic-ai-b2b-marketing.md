@@ -5,11 +5,12 @@ date: 2026-02-11
 tag: "AI"
 image: "../../assets/blog/agentic-ai-b2b-marketing-cover.webp"
 readTime: "7 min read"
+translationKey: "agentic-ai"
 ---
 
 Your LinkedIn feed is full of people telling you that agentic AI is going to transform your marketing department. Most of them are selling something. This is not that article.
 
-What follows is a working definition of what agentic AI actually is, a walk through where it can realistically help a B2B marketing team, and an honest account of where the gap between the demo and the daily reality still sits. If you are managing a marketing function of three to eight people, no dedicated AI or tech resource, and a budget somewhere between €200K–€1M ($220K–$1.1M), this is written specifically for you.
+What follows is a working definition of what agentic AI actually is, a walk through where it can realistically help a B2B marketing team, and an honest account of where the gap between the demo and the daily reality still sits. If you are managing a marketing function of three to eight people, no dedicated AI or tech resource, and a budget somewhere between $220K–$1.1M (€200K–€1M), this is written specifically for you.
 
 ## Start with the words, because they matter
 

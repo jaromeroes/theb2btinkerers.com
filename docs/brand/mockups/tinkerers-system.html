@@ -1,0 +1,337 @@
+<title>The Tinkerers System — una casa, dos marcas</title>
+<style>
+  :root{
+    --paper:#F7F5EF;
+    --paper-2:#EFEDE5;
+    --card:#FBFAF6;
+    --ink:#15140F;
+    --ink-2:#46443C;
+    --ink-3:#7C7A70;
+    --line:rgba(21,20,15,.13);
+    --line-2:rgba(21,20,15,.22);
+    --chartreuse:#B7D62B;
+    --chartreuse-deep:#9BBE1E;
+    --amber:#F5B301;
+    --yellow:#F6C21A;
+    --orange:#EE5A1E;
+    --maxw:1160px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(26px,5vw,68px) clamp(18px,4.5vw,44px)}
+  .mono{font-family:var(--mono)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:11px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ink);opacity:.5}
+
+  /* header */
+  .h-lede{margin:20px 0 0;font-size:clamp(32px,6vw,64px);line-height:.98;letter-spacing:-.035em;font-weight:800;text-wrap:balance;max-width:15ch}
+  .h-sub{margin:20px 0 0;max-width:56ch;color:var(--ink-2);font-size:clamp(15px,1.7vw,18px)}
+  .h-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:9px 22px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .h-meta span{display:flex;align-items:center;gap:8px}
+  .tick{width:7px;height:7px;background:var(--orange)}
+
+  .rule{height:1px;background:var(--line);margin:clamp(34px,6vw,60px) 0}
+
+  .sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 20px;display:flex;align-items:center;gap:12px}
+  .sec-label b{color:var(--ink);font-weight:600}
+
+  /* shared DNA strip */
+  .dna{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media(max-width:760px){.dna{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.dna{grid-template-columns:1fr}}
+  .dna-cell{background:var(--card);padding:20px 20px 24px}
+  .dna-cell h4{margin:0 0 10px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .dna-demo{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+  .dna-note{margin:9px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.5}
+  .swatchrow{display:flex;gap:6px;margin-top:4px}
+  .swatchrow div{height:30px;flex:1;border-radius:5px;border:1px solid var(--line)}
+  .rulesample{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .rulesample span{height:1px;background:var(--line-2)}
+  .rulesample span:nth-child(2){background:var(--ink);opacity:.5}
+
+  /* two-brand grid */
+  .brands{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,26px)}
+  @media(max-width:840px){.brands{grid-template-columns:1fr}}
+
+  .brand{border:1px solid var(--line-2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:var(--card)}
+  .brand-tag{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .brand-tag .temp{display:flex;align-items:center;gap:7px}
+  .temp .bulb{width:9px;height:9px;border-radius:50%}
+
+  /* fake hero mock inside each brand */
+  .mock{padding:0;position:relative;flex:1;display:flex;flex-direction:column;min-height:430px}
+  .mock-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .wordmark{font-weight:800;letter-spacing:-.03em;font-size:16px;display:flex;align-items:center;gap:8px}
+  .wm-dot{width:10px;height:10px;border-radius:2px}
+  .mock-cta{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.03em;padding:8px 15px;border-radius:7px;border:none;text-decoration:none;white-space:nowrap}
+  .mock-cta.ink{background:var(--ink);color:var(--paper)}
+  .mock-cta.warm{background:var(--yellow);color:var(--ink)}
+  .mock-cta.cool{background:var(--chartreuse);color:var(--ink)}
+  .mock-cta.ghost{background:transparent;border:1px solid var(--line-2);color:var(--ink)}
+
+  .mock-body{padding:clamp(22px,3vw,34px);flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .mock-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+  .mock-h{font-size:clamp(24px,3.4vw,34px);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance;margin:0;position:relative;z-index:2;max-width:15ch}
+  .mock-sub{margin:16px 0 0;font-size:14px;color:var(--ink-2);max-width:34ch;position:relative;z-index:2}
+  .mock-actions{margin-top:24px;display:flex;align-items:center;gap:16px;position:relative;z-index:2}
+  .mock-link{font-size:12px;font-weight:600;color:var(--ink);border-bottom:1.5px solid;padding-bottom:2px;text-decoration:none}
+  .u-chartreuse{box-shadow:inset 0 -.32em 0 rgba(183,214,43,.55)}
+  .u-orange{box-shadow:inset 0 -.32em 0 rgba(238,90,30,.32)}
+
+  /* Motion kinetic orb */
+  .orb{position:absolute;z-index:1;top:-40px;right:-40px;width:230px;height:230px;border-radius:50%;filter:blur(2px);
+    background:
+      radial-gradient(circle at 35% 32%,#FCE39B,transparent 45%),
+      radial-gradient(circle at 62% 42%,#F6B01F,transparent 55%),
+      radial-gradient(circle at 52% 68%,#EE5A1E,transparent 60%),
+      radial-gradient(circle at 30% 70%,#E23C86,transparent 62%);
+    animation:spin 16s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.orb{animation:none}}
+  .mock-metric{position:relative;z-index:2;margin-top:22px;display:flex;align-items:baseline;gap:10px}
+  .mock-metric b{font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--orange);font-variant-numeric:tabular-nums}
+  .mock-metric span{font-size:12px;color:var(--ink-2)}
+
+  /* cohere section */
+  .cohere{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+  @media(max-width:760px){.cohere{grid-template-columns:1fr}}
+  .lockup{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:clamp(24px,3vw,36px);text-align:center}
+  .lockup .root{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1}
+  .lockup .arms{margin-top:20px;display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2)}
+  .lockup .arms b{color:var(--ink);font-weight:700;font-family:var(--sans);letter-spacing:-.01em}
+  .lockup .arms i{font-style:normal}
+  .c-swatch{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+  .cohere-txt h3{margin:0 0 12px;font-size:clamp(19px,2.4vw,26px);letter-spacing:-.02em;font-weight:800;text-wrap:balance}
+  .cohere-txt p{margin:0 0 14px;color:var(--ink-2);font-size:15px}
+  .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+  .flow .node{border:1px solid var(--line-2);border-radius:7px;padding:7px 11px;color:var(--ink);font-weight:600}
+  .flow .arrow{color:var(--orange);font-weight:700}
+
+  /* constants vs variables table */
+  .cv{margin-top:clamp(30px,4vw,44px);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cv-row{display:grid;grid-template-columns:.7fr 1.3fr 1.3fr;border-top:1px solid var(--line)}
+  .cv-row:first-child{border-top:none}
+  @media(max-width:640px){.cv-row{grid-template-columns:1fr}}
+  .cv-cell{padding:14px 16px;font-size:13px;border-left:1px solid var(--line)}
+  .cv-cell:first-child{border-left:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center}
+  .cv-head .cv-cell{background:var(--paper-2);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:600}
+  .cv-cell b{font-weight:700}
+  @media(max-width:640px){.cv-cell{border-left:none;border-top:1px dashed var(--line)}.cv-cell:first-child{border-top:none}}
+
+  /* decision */
+  .decide{margin-top:clamp(30px,5vw,52px);border:1px solid var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px);background:var(--card)}
+  .decide h3{margin:0 0 10px;font-size:clamp(18px,2.3vw,24px);letter-spacing:-.02em;font-weight:800}
+  .decide p{margin:0 0 18px;color:var(--ink-2);font-size:15px;max-width:60ch}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.opts{grid-template-columns:1fr}}
+  .opt{border:1px solid var(--line-2);border-radius:10px;padding:16px 18px}
+  .opt .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+  .opt h4{margin:8px 0 6px;font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .opt p{margin:0;font-size:13px;color:var(--ink-2)}
+  .opt-hero{border:1.5px solid var(--ink);border-radius:11px;padding:18px 20px;margin-bottom:12px;background:var(--paper)}
+  .opt-hero .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600}
+  .opt-hero h4{margin:8px 0 14px;font-size:17px;font-weight:800;letter-spacing:-.015em}
+  .opt-hero p{margin:14px 0 0;font-size:13.5px;color:var(--ink-2)}
+  .cta-demo{display:flex;align-items:center;gap:12px 14px;flex-wrap:wrap}
+  .cta-demo-vs{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:8px}
+  .footnote{margin-top:30px;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.02em;line-height:1.6}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">The Tinkerers Studio · Sistema de marca · v0</div>
+    <h1 class="h-lede">Una casa. Dos marcas. Un solo lenguaje.</h1>
+    <p class="h-sub">Esqueleto editorial blanco y negro compartido — al estilo de la referencia que te gusta (bland.ai): papel cálido, grotesca rotunda, reglas finas, un golpe de color caliente. Lo que cambia entre marcas es la <b>temperatura</b>: B2B Tinkerers piensa (fría, quieta); Motion Tinkerers ejecuta (cálida, en marcha).</p>
+    <div class="h-meta">
+      <span><i class="tick"></i>Sistema compartido</span>
+      <span><i class="tick"></i>2 temperaturas de marca</span>
+      <span><i class="tick"></i>Referencia: bland.ai (espíritu, no copia)</span>
+    </div>
+  </header>
+
+  <div class="rule"></div>
+
+  <!-- SHARED DNA -->
+  <p class="sec-label"><b>ADN compartido</b> · lo que hace que las dos sean familia</p>
+  <div class="dna">
+    <div class="dna-cell">
+      <h4>Fondo · Ground</h4>
+      <div class="swatchrow">
+        <div style="background:#F7F5EF"></div>
+        <div style="background:#FBFAF6"></div>
+        <div style="background:#15140F"></div>
+      </div>
+      <p class="dna-note">Papel cálido, no blanco puro. Negro casi puro para texto. El contraste editorial de siempre.</p>
+    </div>
+    <div class="dna-cell">
+      <h4>Display · Grotesca 800</h4>
+      <div class="dna-demo">Right<br>questions.</div>
+      <p class="dna-note">Titulares pesados, tracking cerrado. Labels en mono mayúsculas para metadatos.</p>
+    </div>
+    <div class="dna-cell">
+      <h4>Reglas · Hairlines</h4>
+      <div class="rulesample"><span></span><span></span><span></span><span></span></div>
+      <p class="dna-note">Líneas de 1px, tarjetas con borde fino, mucho aire. Estructura, no decoración.</p>
+    </div>
+    <div class="dna-cell">
+      <h4>Acento cálido · CTA</h4>
+      <div class="swatchrow">
+        <div style="background:#F6C21A"></div>
+        <div style="background:#F5B301"></div>
+        <div style="background:#EE5A1E"></div>
+      </div>
+      <p class="dna-note">Amarillo para CTA, naranja para datos y cifras. Un solo golpe de calor sobre B&N.</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- TWO BRANDS -->
+  <p class="sec-label"><b>Dos marcas, dos temperaturas</b> · mismo esqueleto, distinta energía</p>
+  <div class="brands">
+
+    <!-- B2B TINKERERS -->
+    <div class="brand">
+      <div class="brand-tag">
+        <span>B2B Tinkerers · el cerebro</span>
+        <span class="temp"><i class="bulb" style="background:var(--chartreuse)"></i>Fría · estrategia</span>
+      </div>
+      <div class="mock">
+        <div class="mock-nav">
+          <div class="wordmark"><span class="wm-dot" style="background:var(--chartreuse)"></span>B2B Tinkerers</div>
+          <a class="mock-cta ghost">Book a call</a>
+        </div>
+        <div class="mock-body">
+          <div class="mock-eyebrow">B2B Marketing Strategy</div>
+          <h3 class="mock-h">No llegamos con respuestas. Llegamos con las <span class="u-chartreuse">preguntas correctas.</span></h3>
+          <p class="mock-sub">Estrategia, posicionamiento y GTM para tech e industria B2B. Criterio humano, no una plantilla de deck.</p>
+          <div class="mock-actions">
+            <a class="mock-cta cool">Book a call</a>
+            <a class="mock-link">Ver enfoque</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOTION TINKERERS -->
+    <div class="brand">
+      <div class="brand-tag">
+        <span>Motion Tinkerers · las manos</span>
+        <span class="temp"><i class="bulb" style="background:var(--orange)"></i>Cálida · ejecución IA</span>
+      </div>
+      <div class="mock">
+        <div class="mock-nav">
+          <div class="wordmark"><span class="wm-dot" style="background:var(--orange)"></span>Motion Tinkerers</div>
+          <a class="mock-cta warm">Deploy your team</a>
+        </div>
+        <div class="mock-body">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="mock-eyebrow">Agentic AI · GTM &amp; Marketing Execution</div>
+          <h3 class="mock-h">El equipo de marketing que <span class="u-orange">no duerme.</span></h3>
+          <p class="mock-sub">Un equipo de marketing agéntico con IA que ejecuta GTM y campañas. Siempre activo, siempre en marcha.</p>
+          <div class="mock-metric"><b>24/7</b><span>en producción, no en un roadmap</span></div>
+          <div class="mock-actions">
+            <a class="mock-cta warm">Deploy your team</a>
+            <a class="mock-link">Verlo en marcha</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- HOW THEY COHERE -->
+  <p class="sec-label"><b>Cómo casan</b> · la marca-casa y el trasvase entre brazos</p>
+  <div class="cohere">
+    <div class="lockup">
+      <div class="root">Tinkerers</div>
+      <div class="arms">
+        <div><span class="c-swatch" style="background:var(--chartreuse)"></span><b>B2B</b> Tinkerers — <i>Strategy</i></div>
+        <div><span class="c-swatch" style="background:var(--orange)"></span><b>Motion</b> Tinkerers — <i>AI Execution</i></div>
+      </div>
+    </div>
+    <div class="cohere-txt">
+      <h3>El apellido compartido es el activo.</h3>
+      <p>"Tinkerers" es el hilo. Mismo wordmark, mismo sistema editorial, misma huella anti-agencia. El cliente entiende al instante que son la misma casa con dos trabajos distintos.</p>
+      <p>Y el trasvase es natural — el embudo se retroalimenta solo:</p>
+      <div class="flow">
+        <span class="node">Estrategia (B2B)</span>
+        <span class="arrow">→</span>
+        <span class="node">Ejecución (Motion)</span>
+        <span class="arrow">↺</span>
+        <span class="node">Dirección (B2B)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSTANTS VS VARIABLES -->
+  <div class="cv">
+    <div class="cv-row cv-head">
+      <div class="cv-cell">Dimensión</div>
+      <div class="cv-cell">Constante (la casa)</div>
+      <div class="cv-cell">Variable (por marca)</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-cell">Sistema</div>
+      <div class="cv-cell">Editorial B&amp;N, papel cálido, grotesca 800, labels mono, reglas de 1px</div>
+      <div class="cv-cell">—</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-cell">Acento</div>
+      <div class="cv-cell">Un golpe de color caliente como firma</div>
+      <div class="cv-cell"><b>B2B:</b> chartreuse frío (guiño a la herencia). <b>Motion:</b> ámbar→naranja</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-cell">Energía</div>
+      <div class="cv-cell">Mucho aire, composición serena</div>
+      <div class="cv-cell"><b>B2B:</b> quieta, lujo silencioso. <b>Motion:</b> cinética, gradiente vivo</div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-cell">Voz</div>
+      <div class="cv-cell">Directa, insider, anti-agencia</div>
+      <div class="cv-cell"><b>B2B:</b> reflexiva. <b>Motion:</b> propulsora, "en marcha"</div>
+    </div>
+  </div>
+
+  <!-- DECISION -->
+  <div class="decide">
+    <h3>El CTA: gramática compartida, color por temperatura</h3>
+    <p>El botón es el momento de marca que más se repite. La solución: <b>misma forma, mismo peso, misma colocación</b> en las dos — eso es la firma Tinkerers — pero el <b>relleno sigue la temperatura</b>. Motion se queda todo el calor; B2B usa su chartreuse. No son iguales, pero se comportan igual.</p>
+    <div class="opt-hero">
+      <div class="n">Vía C · recomendada</div>
+      <h4>Gramática compartida, relleno por marca</h4>
+      <div class="cta-demo">
+        <a class="mock-cta cool">Book a call</a>
+        <span class="cta-demo-vs">B2B · frío</span>
+        <a class="mock-cta warm">Deploy your team</a>
+        <span class="cta-demo-vs">Motion · cálido</span>
+      </div>
+      <p>El calor vive entero en Motion, donde tiene que estar. El CTA chartreuse de B2B es tu botón lime actual evolucionado: herencia + contraste. La firma es la forma, no el color.</p>
+    </div>
+    <div class="opts">
+      <div class="opt">
+        <div class="n">Polo A</div>
+        <h4>CTA cálido en las dos</h4>
+        <p>Máxima unidad, pero inyecta calor en B2B justo donde querías contención.</p>
+      </div>
+      <div class="opt">
+        <div class="n">Polo B</div>
+        <h4>B2B en tinta pura</h4>
+        <p>Máximo contraste, pero pierdes el guiño a tu lime heredado en el momento más visible.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote">v0 · propuesta para reaccionar · tipografías con fuentes de sistema; el sistema real definiría la grotesca (p. ej. Neue Haas Grotesk / GT America) y la mono. bland.ai es referencia de espíritu, no plantilla — nada aquí se copia literalmente.</p>
+
+</div>

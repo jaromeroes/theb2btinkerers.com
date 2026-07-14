@@ -5,6 +5,7 @@ date: 2026-03-05
 tag: "AI & Marketing"
 readTime: "8 min read"
 image: "../../assets/blog/ai-slop-cover.webp"
+translationKey: "ai-slop"
 ---
 
 There is a specific kind of meeting that marketing leaders are having more and more often. Someone from finance, or sales, or the CEO's office shares something they built over a weekend. A full competitive analysis. A product launch brief. A content calendar for the next quarter. It looks complete. It has structure, headings, bullet points. It took them maybe forty minutes.

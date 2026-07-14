@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import { servicesIndex } from '../../i18n/pages/services';
+import { serviceIcons } from '../service-icons';
+import { mirrorAlternates, localizePath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = servicesIndex[lang];
+const p = (path: string) => localizePath(path, lang);
+---
+<Base lang={lang} title={t.seo.title} description={t.seo.description} alternates={mirrorAlternates('/services')}>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-kick">{t.hero.kick}</p>
+    <h1>{t.hero.h1a}<span class="hl">{t.hero.h1accent}</span></h1>
+    <p class="page-hero-sub">{t.hero.sub}</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="sh-grid-section">
+  <div class="sh-grid">
+    {t.cards.map(card => (
+      <a class="sh-card" href={p(`/services/${card.slug}`)}>
+        <Fragment set:html={serviceIcons[card.slug]} />
+        <div class="sh-title">{card.title}</div>
+        <div class="sh-body">{card.body}</div>
+        <span class="sh-more">{t.more}</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="sh-cta">
+  <div class="sh-cta-inner">
+    <h2 class="sh-cta-h2">{t.cta.h2}</h2>
+    <p class="sh-cta-subtitle">{t.cta.sub}</p>
+    <a class="btn-primary" href="#contact">{t.cta.button}</a>
+  </div>
+</section>
+
+</Base>
+
+<style>
+/* GRID */
+.sh-grid-section{padding:clamp(56px,8vw,104px) var(--pad);background:var(--cream)}
+.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(21,20,15,.12);border:1px solid rgba(21,20,15,.12);border-radius:14px;overflow:hidden;max-width:1160px;margin:0 auto}
+@media(max-width:900px){.sh-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.sh-grid{grid-template-columns:1fr}}
+
+/* CARDS — light editorial */
+.sh-card{background:var(--card);padding:clamp(26px,3vw,38px);position:relative;transition:background .2s;text-decoration:none;display:flex;flex-direction:column;min-height:214px}
+.sh-card:hover{background:#fff}
+.sh-card :global(svg){width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:16px}
+.sh-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(16px,2vw,20px);font-weight:800;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px;line-height:1.25}
+.sh-body{font-size:14px;line-height:1.6;color:var(--ink-2);padding-bottom:30px;flex:1}
+.sh-more{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--chartreuse-deep);position:absolute;bottom:24px;left:clamp(26px,3vw,38px)}
+
+/* CTA BANNER */
+.sh-cta{padding:clamp(56px,8vw,104px) var(--pad);background:var(--linen)}
+.sh-cta-inner{max-width:680px;margin:0 auto}
+.sh-cta-h2{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(26px,4vw,50px);font-weight:800;letter-spacing:-0.04em;line-height:1.0;color:var(--ink);margin-bottom:18px;text-wrap:balance}
+.sh-cta-subtitle{font-size:clamp(14px,1.5vw,16px);line-height:1.7;color:var(--ink-2);margin-bottom:32px;max-width:48ch}
+</style>

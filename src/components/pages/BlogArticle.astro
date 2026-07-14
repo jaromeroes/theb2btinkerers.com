@@ -1,0 +1,214 @@
+---
+import Base from '../../layouts/Base.astro';
+import BlogImage from '../BlogImage.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { insights, fmtLongDate, fmtShortDate } from '../../i18n/pages/insights';
+import { localizePath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+interface Props { lang: Lang; post: CollectionEntry<'blog'> }
+const { lang, post } = Astro.props;
+const t = insights[lang].article;
+const p = (path: string) => localizePath(path, lang);
+
+const { Content, headings } = await post.render();
+
+const allPosts = await getCollection('blog');
+
+// Related: same language, same tag.
+const related = allPosts
+  .filter(pp => pp.data.lang === lang && pp.slug !== post.slug && pp.data.tag === post.data.tag)
+  .slice(0, 3);
+
+// hreflang pairing across languages via translationKey.
+const counterpart = post.data.translationKey
+  ? allPosts.find(pp => pp.data.translationKey === post.data.translationKey && pp.data.lang !== lang)
+  : undefined;
+const blogPath = (entry: CollectionEntry<'blog'>) =>
+  entry.data.lang === 'es' ? `/es/insights/${entry.slug}` : `/insights/${entry.slug}`;
+const selfPath = blogPath(post);
+const otherPath = counterpart ? blogPath(counterpart) : null;
+const alternates = lang === 'en'
+  ? { en: selfPath, es: otherPath }
+  : { en: otherPath, es: selfPath };
+
+const formattedDate = fmtLongDate(post.data.date, lang);
+---
+<Base lang={lang} title={post.data.title} description={post.data.excerpt} alternates={alternates}>
+
+<div class="art-hero">
+  <div class="art-hero-inner">
+    <a class="art-back" href={p('/insights')}>{t.back}</a>
+    <span class="art-tag-label">{post.data.tag}</span>
+    <h1 class="art-h1">{post.data.title}</h1>
+    <p class="art-deck">{post.data.excerpt}</p>
+    <div class="art-meta">
+      <div class="art-author">
+        <div class="art-avatar">T</div>
+        <div class="art-author-name">{t.author}</div>
+      </div>
+      <span class="art-date">{formattedDate}</span>
+      {post.data.readTime && <span class="art-readtime">{post.data.readTime}</span>}
+    </div>
+  </div>
+</div>
+
+<div class="art-img-band">
+  {post.data.image && (
+    <BlogImage image={post.data.image} alt={post.data.title} loading="eager" fetchpriority="high" />
+  )}
+</div>
+
+<div class="art-page-wrap">
+  <div class="art-layout">
+
+    {headings.length > 0 && (
+      <div class="art-toc">
+        <div class="art-toc-inner">
+          <span class="toc-label">{t.tocLabel}</span>
+          <ul class="toc-list" id="toc-list">
+            {headings.map(h => (
+              <li class={`toc-item${h.depth === 3 ? ' h3-item' : ''}`}>
+                <a href={`#${h.slug}`} class="toc-link" data-target={h.slug}>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div class="toc-cta">
+            <span class="toc-cta-text">{t.tocCtaText}</span>
+            <a class="toc-cta-btn" href="#contact">{t.tocCtaBtn}</a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <div class="art-body-col">
+      <div class="art-body">
+        <Content/>
+        <div class="art-footer">
+          <div class="art-tags">
+            <span class="art-tag-pill">{post.data.tag}</span>
+          </div>
+          <div class="art-share">{t.shareLabel} <a href="#">{t.shareLinkedin}</a> · <a href="#">{t.shareCopy}</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{related.length > 0 && (
+  <div class="art-related">
+    <div class="art-related-header">
+      <div class="art-related-h">{t.related}</div>
+      <a class="blog-all-link" href={p('/insights')}>{t.allArticles}</a>
+    </div>
+    <div class="art-related-grid">
+      {related.map(rel => (
+        <a class="idx-card" href={p(`/insights/${rel.slug}`)}>
+          <div class="idx-card-body">
+            <span class="idx-tag">{rel.data.tag}</span>
+            <div class="idx-title">{rel.data.title}</div>
+            <div class="idx-footer">
+              <span class="idx-date">{fmtShortDate(rel.data.date, lang)} · {rel.data.readTime ?? t.minRead}</span>
+              <span>→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+</Base>
+
+<script>
+const links = document.querySelectorAll('.toc-link');
+const headingEls: Element[] = [];
+links.forEach(link => {
+  const target = link.getAttribute('data-target');
+  if (target) { const el = document.getElementById(target); if (el) headingEls.push(el); }
+});
+function updateTOC() {
+  const scrollY = window.scrollY + 120;
+  let current = '';
+  for (const el of headingEls) {
+    if ((el as HTMLElement).getBoundingClientRect().top + window.scrollY <= scrollY) current = el.id;
+  }
+  links.forEach(link => { link.classList.toggle('active', link.getAttribute('data-target') === current); });
+}
+window.addEventListener('scroll', updateTOC, { passive: true });
+updateTOC();
+</script>
+
+<style>
+.art-hero{padding:calc(68px + clamp(44px,6vw,72px)) var(--pad) 0;position:relative;overflow:hidden;color:var(--cream);
+  background:#07231A;
+  background-image:
+    radial-gradient(90% 90% at 85% 4%,rgba(183,214,43,.26),transparent 52%),
+    linear-gradient(158deg,#07231A 0%,#0D3324 40%,#175640 74%,#1F7351 100%);}
+.art-hero::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.45;mix-blend-mode:soft-light;background-image:radial-gradient(rgba(255,255,255,.6) .5px,transparent .6px);background-size:3px 3px}
+.art-hero-inner{max-width:720px;padding-bottom:clamp(44px,6vw,72px);position:relative;z-index:1}
+.art-back{font-size:11px;font-weight:600;color:rgba(245,240,232,.35);text-decoration:none;margin-bottom:24px;display:block;transition:color .15s}
+.art-back:hover{color:rgba(245,240,232,.7)}
+.art-tag-label{font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--chartreuse);display:inline-block;margin-bottom:16px}
+.art-h1{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(28px,4.5vw,54px);font-weight:800;letter-spacing:-0.04em;line-height:.97;color:var(--cream);margin-bottom:18px}
+.art-deck{font-size:clamp(15px,1.9vw,18px);line-height:1.7;color:rgba(245,240,232,.55);max-width:580px;margin-bottom:28px}
+.art-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+.art-author{display:flex;align-items:center;gap:10px}
+.art-avatar{width:32px;height:32px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--forest);flex-shrink:0}
+.art-author-name{font-size:12px;font-weight:600;color:rgba(245,240,232,.6)}
+.art-date,.art-readtime{font-size:11px;color:rgba(245,240,232,.3)}
+.art-readtime::before{content:'·';margin-right:8px}
+.art-img-band{background:var(--mid);height:clamp(160px,22vw,280px);overflow:hidden}
+.art-page-wrap{background:var(--cream);padding:0 var(--pad)}
+.art-layout{display:grid;grid-template-columns:220px 1fr;gap:0;max-width:1100px;margin:0 auto}
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}}
+.art-toc{padding:clamp(44px,6vw,72px) 0}
+@media(max-width:900px){.art-toc{display:none}}
+.art-toc-inner{position:sticky;top:calc(68px + 32px);padding-right:32px;border-right:1px solid rgba(28,74,58,0.1)}
+.toc-label{font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--chartreuse-deep);margin-bottom:16px;display:block}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;margin-bottom:24px}
+.toc-link{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.45;color:rgba(28,74,58,0.7);text-decoration:none;padding:6px 0;transition:color .15s;position:relative}
+.toc-link::before{content:'';flex-shrink:0;width:2px;min-height:14px;background:transparent;border-radius:1px;transition:background .2s;margin-top:1px}
+.toc-link:hover{color:rgba(28,74,58,0.9)}
+.toc-link.active{color:var(--forest);font-weight:600}
+.toc-link.active::before{background:var(--lime)}
+.h3-item .toc-link{padding-left:8px;font-size:12.5px}
+.toc-cta{padding:14px 16px;background:var(--forest)}
+.toc-cta-text{font-size:11px;line-height:1.55;color:rgba(245,240,232,0.6);display:block;margin-bottom:10px}
+.toc-cta-btn{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--lime);text-decoration:none;display:block}
+.art-body-col{padding:clamp(44px,6vw,72px) 0 clamp(44px,6vw,72px) clamp(32px,4vw,56px)}
+@media(max-width:900px){.art-body-col{padding:clamp(44px,6vw,72px) 0}}
+.art-body{max-width:680px}
+.art-body :global(h1){display:none}
+.art-body :global(p){font-size:clamp(14px,1.6vw,16px);line-height:1.9;color:rgba(26,26,26,.75);margin-bottom:24px}
+.art-body :global(h2){font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:var(--forest);margin:44px 0 16px;scroll-margin-top:90px}
+.art-body :global(h3){font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:700;letter-spacing:-0.03em;color:var(--forest);margin:28px 0 12px;scroll-margin-top:90px}
+.art-body :global(ul){margin:0 0 24px 0;padding-left:20px}
+.art-body :global(ul li){font-size:clamp(14px,1.6vw,16px);line-height:1.85;color:rgba(26,26,26,.7);margin-bottom:8px}
+.art-body :global(strong){font-weight:700;color:var(--ink)}
+.art-body :global(em){color:rgba(26,26,26,.55);font-style:italic}
+.art-body :global(img){width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;margin:2em 0}
+.art-body :global(hr){border:none;border-top:1px solid rgba(28,74,58,.12);margin:2.5em 0}
+.art-footer{padding:32px 0;border-top:1px solid var(--linen);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:40px}
+.art-tags{display:flex;gap:6px}
+.art-tag-pill{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(28,74,58,.18);color:rgba(28,74,58,.5)}
+.art-share{font-size:11px;color:var(--gray);display:flex;align-items:center;gap:10px}
+.art-share a{font-size:11px;font-weight:600;color:var(--forest);text-decoration:none}
+.art-related{padding:clamp(44px,6vw,72px) var(--pad);background:var(--linen);border-top:1px solid rgba(28,74,58,.08)}
+.art-related-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:clamp(24px,4vw,36px);flex-wrap:wrap;gap:12px}
+.art-related-h{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(18px,2.5vw,26px);font-weight:800;letter-spacing:-0.04em;color:var(--forest)}
+.blog-all-link{font-size:12px;font-weight:600;color:var(--forest);border-bottom:1px solid rgba(28,74,58,0.25);padding-bottom:2px;text-decoration:none}
+.art-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:760px){.art-related-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.art-related-grid{grid-template-columns:1fr}}
+.idx-card{background:var(--cream);text-decoration:none;display:flex;flex-direction:column;transition:background .18s}
+.idx-card:hover{background:#ddd8ce}
+.idx-card-body{padding:clamp(18px,2.5vw,24px);flex:1;display:flex;flex-direction:column}
+.idx-tag{font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--chartreuse-deep);margin-bottom:8px;display:block}
+.idx-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(14px,1.9vw,17px);font-weight:700;line-height:1.22;color:var(--forest);flex:1;margin-bottom:8px}
+.idx-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(28,74,58,.08)}
+.idx-date{font-size:10px;color:rgba(28,74,58,.45)}
+</style>

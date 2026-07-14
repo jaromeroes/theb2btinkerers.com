@@ -1,0 +1,247 @@
+---
+import Base from '../../layouts/Base.astro';
+import BlogImage from '../BlogImage.astro';
+import { getCollection } from 'astro:content';
+import { home } from '../../i18n/pages/home';
+import { ui } from '../../i18n/ui';
+import { serviceIcons } from '../service-icons';
+import { mirrorAlternates, localizePath } from '../../i18n/utils';
+import { fmtShortDate } from '../../i18n/pages/insights';
+import type { Lang } from '../../i18n/config';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = home[lang];
+const p = (path: string) => localizePath(path, lang);
+
+const posts = (await getCollection('blog'))
+  .filter(post => post.data.lang === lang)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+const featured = posts[0];
+const rest = posts.slice(1, 4);
+---
+<Base lang={lang} title={ui[lang].site.name} description={t.seo.description} alternates={mirrorAlternates('/')}>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-kick">{t.hero.kick}</p>
+    <h1 class="hero-h1">{t.hero.h1a}{' '}<span class="hero-accent">{t.hero.h1accent}</span></h1>
+    <p class="hero-body">{t.hero.body}</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#contact">{t.hero.ctaPrimary}</a>
+      <a class="hero-link" href="#work">{t.hero.ctaSecondary}</a>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEF -->
+<section class="sec belief">
+  <div class="sec-in">
+    <div class="section-eyebrow">{t.belief.eyebrow}</div>
+    <h2 class="belief-h">{t.belief.hA}<span class="u-ch">{t.belief.hAccent}</span></h2>
+    <p class="belief-p">{t.belief.p}</p>
+  </div>
+</section>
+
+<!-- THE WORK — six services -->
+<section class="sec sec--line work" id="work">
+  <div class="sec-in">
+    <div class="section-eyebrow">{t.work.eyebrow}</div>
+    <h2 class="section-h2">{t.work.h2}</h2>
+    <div class="work-grid">
+      {t.work.cards.map(card => (
+        <a class="work-card" href={p(`/services/${card.slug}`)}>
+          <Fragment set:html={serviceIcons[card.slug]} />
+          <div class="work-title">{card.title}</div>
+          <div class="work-body">{card.body}</div>
+          <span class="work-more">{t.work.more}</span>
+        </a>
+      ))}
+    </div>
+    <p class="work-foot"><a href={p('/services')}>{t.work.foot}</a></p>
+  </div>
+</section>
+
+<!-- PROOF — anti-agency numbers -->
+<section class="sec sec--line proof">
+  <div class="sec-in">
+    <div class="section-eyebrow">{t.proof.eyebrow}</div>
+    <h2 class="section-h2">{t.proof.h2}</h2>
+    <p class="proof-lead">{t.proof.lead}</p>
+    <div class="proof-grid">
+      {t.proof.items.map(item => (
+        <div class="proof-item">
+          <div class="proof-n" set:html={item.num}></div>
+          <p class="proof-t">{item.text}</p>
+          <span class="proof-src">{item.src}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- THE WAY WE WORK -->
+<section class="sec sec--line howwork">
+  <div class="sec-in howwork-grid">
+    <div>
+      <div class="section-eyebrow">{t.howwork.eyebrow}</div>
+      <h2 class="section-h2">{t.howwork.h2}</h2>
+      <p class="howwork-lead">{t.howwork.lead}</p>
+    </div>
+    <div class="howwork-list">
+      {t.howwork.items.map(item => (
+        <div class="howwork-item">
+          <span class="hw-k">{item.k}</span>
+          <div><h4>{item.h}</h4><p>{item.p}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS — editorial, featured image -->
+<section class="sec sec--line insights" id="insights">
+  <div class="sec-in">
+    <div class="ins-head">
+      <div>
+        <div class="section-eyebrow">{t.insights.eyebrow}</div>
+        <h2 class="section-h2">{t.insights.h2}</h2>
+      </div>
+      <a class="ins-all" href={p('/insights')}>{t.insights.all}</a>
+    </div>
+    {featured ? (
+      <div class="ins-editorial">
+        <a class="ins-feat" href={p(`/insights/${featured.slug}`)}>
+          <div class="ins-feat-img">
+            {featured.data.image && <BlogImage image={featured.data.image} alt={featured.data.title} loading="lazy" />}
+          </div>
+          <div class="ins-feat-body">
+            <span class="ins-tag">{featured.data.tag}</span>
+            <h3 class="ins-feat-title">{featured.data.title}</h3>
+            <p class="ins-feat-ex">{featured.data.excerpt}</p>
+            <span class="ins-meta">{fmtShortDate(featured.data.date, lang)}{featured.data.readTime ? ` · ${featured.data.readTime}` : ''}</span>
+          </div>
+        </a>
+        <div class="ins-list">
+          {rest.map(post => (
+            <a class="ins-row" href={p(`/insights/${post.slug}`)}>
+              <div class="ins-row-img">
+                {post.data.image && <BlogImage image={post.data.image} alt={post.data.title} loading="lazy" />}
+              </div>
+              <div class="ins-row-body">
+                <span class="ins-tag">{post.data.tag}</span>
+                <h4 class="ins-row-title">{post.data.title}</h4>
+                <span class="ins-meta">{fmtShortDate(post.data.date, lang)}{post.data.readTime ? ` · ${post.data.readTime}` : ''}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <div class="ins-empty">{t.insights.empty}</div>
+    )}
+  </div>
+</section>
+
+</Base>
+
+<style>
+/* ===== HERO — cool gradient ===== */
+.hero{min-height:78vh;padding:calc(68px + clamp(56px,9vw,116px)) var(--pad) clamp(72px,11vw,132px);display:flex;align-items:center;position:relative;overflow:hidden;color:var(--cream);
+  background:#07231A;
+  background-image:
+    radial-gradient(95% 85% at 80% 8%,rgba(183,214,43,.30),transparent 52%),
+    radial-gradient(70% 70% at 12% 96%,rgba(53,224,200,.16),transparent 60%),
+    linear-gradient(158deg,#07231A 0%,#0D3324 36%,#175640 70%,#1F7351 100%);}
+.hero-glow{position:absolute;inset:-25% -10% auto auto;width:70%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 70% 20%,rgba(183,214,43,.22),transparent 60%);animation:heroFloat 22s ease-in-out infinite alternate}
+@keyframes heroFloat{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-4%,4%,0)}}
+@media(prefers-reduced-motion:reduce){.hero-glow{animation:none}}
+.hero-grain{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.5;mix-blend-mode:soft-light;background-image:radial-gradient(rgba(255,255,255,.6) .5px,transparent .6px);background-size:3px 3px}
+.hero-content{position:relative;z-index:3;max-width:900px}
+@media(max-width:820px){.hero{min-height:auto;padding-top:calc(68px + 44px)}}
+.hero-kick{font-size:clamp(14px,1.6vw,16px);font-weight:500;color:rgba(245,240,232,.66);margin-bottom:22px}
+.hero-h1{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(40px,7.5vw,84px);font-weight:800;letter-spacing:-0.045em;line-height:.95;color:var(--cream);margin:0;max-width:15ch;text-wrap:balance}
+.hero-accent{color:var(--chartreuse)}
+.hero-body{font-size:clamp(15px,1.8vw,19px);line-height:1.65;color:rgba(245,240,232,0.8);max-width:48ch;margin:28px 0 0}
+.hero-ctas{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin-top:34px}
+.hero-link{font-size:14px;font-weight:600;color:var(--cream);text-decoration:none;border-bottom:1.5px solid rgba(245,240,232,.5);padding-bottom:2px;transition:border-color .15s}
+.hero-link:hover{border-color:var(--cream)}
+
+/* ===== section scaffolding ===== */
+.sec{background:var(--cream);padding:clamp(56px,8vw,104px) var(--pad)}
+.sec-in{max-width:1160px;margin:0 auto}
+.sec--line .sec-in{border-top:1px solid rgba(21,20,15,.12);padding-top:clamp(48px,7vw,84px)}
+.u-ch{box-shadow:inset 0 -.30em 0 rgba(183,214,43,.5)}
+
+/* ===== belief ===== */
+.belief-h{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(30px,5.4vw,60px);line-height:1.0;letter-spacing:-.04em;font-weight:800;color:var(--ink);max-width:17ch;text-wrap:balance;margin:0}
+.belief-p{margin:26px 0 0;color:var(--ink-2);max-width:54ch;font-size:clamp(16px,1.8vw,19px);line-height:1.6}
+
+/* ===== the work ===== */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(21,20,15,.12);border:1px solid rgba(21,20,15,.12);border-radius:14px;overflow:hidden;margin-top:clamp(28px,4vw,44px)}
+@media(max-width:820px){.work-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.work-grid{grid-template-columns:1fr}}
+.work-card{background:var(--card);padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;min-height:200px;text-decoration:none;transition:background .2s}
+.work-card:hover{background:#fff}
+.work-card :global(svg){width:26px;height:26px;color:var(--chartreuse-deep);display:block;margin-bottom:14px}
+.work-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:800;letter-spacing:-.015em;color:var(--ink);margin:0 0 10px;line-height:1.2}
+.work-body{font-size:14px;line-height:1.6;color:var(--ink-2);flex:1}
+.work-more{margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--chartreuse-deep)}
+.work-foot{margin-top:22px;font-size:13px;color:var(--gray)}
+.work-foot a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--chartreuse);text-decoration:none;padding-bottom:1px}
+
+/* ===== proof / numbers ===== */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(24px,3vw,40px)}
+@media(max-width:860px){.proof-grid{grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px)}}
+@media(max-width:480px){.proof-grid{grid-template-columns:1fr;gap:0}}
+.proof-item{padding:26px 0;border-top:2px solid var(--ink)}
+@media(max-width:720px){.proof-item{border-top:1px solid rgba(21,20,15,.12)}.proof-item:first-child{border-top:2px solid var(--ink)}}
+.proof-n{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(42px,6vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.proof-n :global(u){text-decoration:none;box-shadow:inset 0 -.16em 0 rgba(183,214,43,.65)}
+.proof-t{margin:14px 0 0;font-size:14.5px;color:var(--ink-2);max-width:30ch;line-height:1.55}
+.proof-lead{margin:14px 0 0;color:var(--ink-2);font-size:15px;max-width:52ch;line-height:1.6}
+.proof-src{display:block;margin-top:10px;font-size:11px;color:var(--gray);letter-spacing:.02em}
+
+/* ===== the way we work ===== */
+.howwork-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:start}
+@media(max-width:800px){.howwork-grid{grid-template-columns:1fr}}
+.howwork-lead{margin-top:20px;color:var(--ink-2);max-width:34ch;font-size:16px;line-height:1.6}
+.howwork-list{display:flex;flex-direction:column}
+.howwork-item{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 0;border-top:1px solid rgba(21,20,15,.12)}
+.howwork-item:first-child{border-top:none}
+.hw-k{font-family:'DM Mono',ui-monospace,monospace;font-size:13px;color:var(--chartreuse-deep);font-weight:500;padding-top:3px}
+.howwork-item h4{font-family:'Bricolage Grotesque Variable',sans-serif;margin:0 0 7px;font-size:18px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.howwork-item p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.55}
+
+/* ===== insights — editorial, featured image ===== */
+.ins-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(28px,3.5vw,44px)}
+.ins-all{font-size:12px;font-weight:700;color:var(--ink);border:1px solid rgba(21,20,15,.22);border-radius:8px;padding:10px 16px;text-decoration:none;transition:border-color .15s}
+.ins-all:hover{border-color:var(--ink)}
+.ins-editorial{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,54px);align-items:start}
+@media(max-width:840px){.ins-editorial{grid-template-columns:1fr;gap:34px}}
+.ins-tag{font-size:12px;font-weight:600;color:var(--chartreuse-deep);letter-spacing:.01em}
+.ins-meta{font-size:13px;color:var(--gray)}
+
+.ins-feat{text-decoration:none;display:flex;flex-direction:column;gap:20px}
+.ins-feat-img{aspect-ratio:16/10;overflow:hidden;border-radius:14px;border:1px solid rgba(21,20,15,.1)}
+.ins-feat-img :global(img){transition:transform .5s ease}
+.ins-feat:hover .ins-feat-img :global(img){transform:scale(1.03)}
+.ins-feat-body{display:flex;flex-direction:column;gap:12px}
+.ins-feat-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:clamp(22px,2.8vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.12;color:var(--ink);margin:0;text-wrap:balance}
+.ins-feat-ex{font-size:15px;line-height:1.6;color:var(--ink-2);margin:0;max-width:46ch}
+
+.ins-list{display:flex;flex-direction:column}
+.ins-row{display:grid;grid-template-columns:124px 1fr;gap:18px;padding:20px 0;border-top:1px solid rgba(21,20,15,.12);text-decoration:none;align-items:center}
+.ins-row:first-child{border-top:none;padding-top:0}
+@media(max-width:480px){.ins-row{grid-template-columns:92px 1fr;gap:14px}}
+.ins-row-img{aspect-ratio:4/3;overflow:hidden;border-radius:9px;border:1px solid rgba(21,20,15,.1)}
+.ins-row-img :global(img){transition:transform .4s ease}
+.ins-row:hover .ins-row-img :global(img){transform:scale(1.05)}
+.ins-row-body{display:flex;flex-direction:column;gap:7px}
+.ins-row-title{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.25;color:var(--ink);margin:0}
+.ins-empty{padding:48px;text-align:center;font-size:14px;color:var(--gray);background:var(--linen);border-radius:12px}
+</style>
