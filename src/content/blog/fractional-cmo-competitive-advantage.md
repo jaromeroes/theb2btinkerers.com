@@ -5,6 +5,7 @@ date: 2025-12-16
 tag: "Fractional CMO"
 image: "../../assets/blog/fractional-cmo-competitive-advantage.webp"
 readTime: "6 min read"
+translationKey: "fractional-cmo"
 ---
 
 Most B2B companies that hire a fractional CMO do it because they can't afford a full-time one. That's the wrong reason — and it leads to the wrong outcome.

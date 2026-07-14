@@ -5,6 +5,7 @@ date: 2025-12-30
 tag: "AI & Marketing"
 image: "../../assets/blog/ai-b2b-marketing-cover.webp"
 readTime: "10 min read"
+translationKey: "ai-what-works"
 ---
 
 Every B2B marketing team is somewhere on the AI adoption curve. Most are further behind than they think — but not in the way they assume.

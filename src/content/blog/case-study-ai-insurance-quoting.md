@@ -5,6 +5,7 @@ date: 2026-02-25
 tag: "AI"
 readTime: "7 min read"
 image: "../../assets/blog/case-study-insurance-quoting-cover.webp"
+translationKey: "case-insurance-quoting"
 ---
 
 When the client came to us, they were not losing clients to a competitor. They were losing them to the wait.
