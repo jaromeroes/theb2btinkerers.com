@@ -1,0 +1,335 @@
+<title>The B2B Tinkerers — Rebrand · Territorios visuales</title>
+<style>
+  :root{
+    --ground:#0C0F0E;
+    --ground-2:#121815;
+    --panel:#151C18;
+    --line:rgba(237,234,226,0.09);
+    --line-strong:rgba(237,234,226,0.16);
+    --text:#EDEAE2;
+    --text-dim:rgba(237,234,226,0.56);
+    --text-faint:rgba(237,234,226,0.34);
+    --accent:#D4E84A;
+    --maxw:1120px;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--text);
+    font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(120% 80% at 50% -10%,rgba(212,232,74,0.06),transparent 60%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(28px,6vw,80px) clamp(20px,5vw,48px)}
+
+  /* ---- studio header ---- */
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-faint);display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.7}
+  .lede{margin:22px 0 0;font-size:clamp(30px,5.4vw,56px);line-height:1.02;letter-spacing:-.03em;font-weight:680;text-wrap:balance;max-width:16ch}
+  .lede em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
+  .sub{margin:22px 0 0;max-width:52ch;color:var(--text-dim);font-size:clamp(14px,1.6vw,17px)}
+  .meta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint)}
+  .meta-row span{display:flex;align-items:center;gap:8px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  .divider{height:1px;background:var(--line);margin:clamp(40px,7vw,72px) 0}
+
+  /* ---- baseline / current ---- */
+  .now{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+  @media(max-width:640px){.now{grid-template-columns:1fr}}
+  .now-chip{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);border:1px solid var(--line-strong);padding:6px 12px;border-radius:100px;justify-self:start}
+  .now-swatches{display:flex;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);width:100%;max-width:420px;height:64px}
+  .now-swatches div{flex:1}
+  .now-text h3{margin:0 0 6px;font-size:15px;font-weight:640;letter-spacing:-.01em}
+  .now-text p{margin:0;color:var(--text-dim);font-size:14px}
+
+  /* ---- territory panels ---- */
+  .terr{border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:clamp(28px,5vw,40px);background:var(--ground-2)}
+  .terr-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;padding:clamp(20px,3vw,30px) clamp(20px,3.5vw,38px) 0}
+  .terr-num{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--text-faint)}
+  .terr-name{font-size:clamp(22px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;margin:4px 0 0}
+  .terr-tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line-strong);padding:5px 11px;border-radius:100px;white-space:nowrap}
+  .terr-thesis{padding:14px clamp(20px,3.5vw,38px) clamp(20px,3vw,26px);font-size:clamp(16px,2vw,20px);line-height:1.4;max-width:40ch;color:var(--text)}
+  .terr-thesis .q{font-family:var(--serif);font-style:italic;color:var(--accent)}
+
+  /* the gradient showcase */
+  .stage{position:relative;height:clamp(220px,32vw,300px);display:flex;align-items:flex-end;padding:clamp(20px,3.5vw,38px);overflow:hidden}
+  .stage-word{position:relative;z-index:2;font-size:clamp(30px,6vw,64px);line-height:.92;letter-spacing:-.035em;font-weight:760;text-wrap:balance;margin:0}
+
+  /* T0 current — flat, no gradient */
+  .g0{background:#1C4A3A}
+  .g0 .stage-word{color:#F5F0E8;font-weight:750}
+  .g0 .accent{color:#D4E84A}
+  .terr--now{border-color:var(--line-strong)}
+  .terr--now .terr-tag{color:var(--accent);border-color:rgba(212,232,74,.3)}
+
+  /* T1 deep editorial */
+  .g1{background:
+      radial-gradient(90% 120% at 82% 8%,rgba(201,168,76,0.5),transparent 55%),
+      linear-gradient(145deg,#0C2E24 0%,#1C4A3A 44%,#2E7D5B 100%)}
+  .g1 .stage-word{color:#EFE9DA;font-family:var(--serif);font-weight:600;font-style:normal}
+  .g1 .accent{color:#E7C766;font-style:italic}
+
+  /* T2 spectral — the showpiece */
+  .g2{background:#07080B}
+  .g2 .mesh{position:absolute;inset:-20%;z-index:1;filter:blur(6px);
+    background:
+      radial-gradient(38% 46% at 22% 30%,rgba(198,242,78,0.85),transparent 60%),
+      radial-gradient(44% 50% at 78% 26%,rgba(53,224,200,0.8),transparent 62%),
+      radial-gradient(50% 54% at 60% 82%,rgba(108,92,224,0.85),transparent 60%),
+      radial-gradient(40% 40% at 30% 78%,rgba(233,79,140,0.55),transparent 60%);
+    animation:drift 18s ease-in-out infinite alternate}
+  .g2 .grain{position:absolute;inset:0;z-index:1;opacity:.5;mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(255,255,255,.5) .5px,transparent .6px);background-size:3px 3px}
+  .g2 .stage-word{color:#F4F2EC;font-weight:770}
+  .g2 .accent{color:#C6F24E}
+  @keyframes drift{
+    0%{transform:translate3d(0,0,0) scale(1)}
+    50%{transform:translate3d(3%,-2%,0) scale(1.08)}
+    100%{transform:translate3d(-3%,2%,0) scale(1.04)}
+  }
+  @media(prefers-reduced-motion:reduce){.g2 .mesh{animation:none}}
+
+  /* T3 overprint — riso duotone */
+  .g3{background:
+      linear-gradient(155deg,#E86A2C 0%,#C24A2E 42%,#7A2E4A 100%)}
+  .g3 .over{position:absolute;inset:0;z-index:1;mix-blend-mode:multiply;opacity:.55;
+    background:radial-gradient(70% 90% at 20% 110%,#3A1226,transparent 60%)}
+  .g3 .grain{position:absolute;inset:0;z-index:1;opacity:.22;mix-blend-mode:multiply;
+    background-image:radial-gradient(#000 .6px,transparent .7px);background-size:3px 3px}
+  .g3 .stage-word{color:#F6EEDF;font-weight:750}
+  .g3 .accent{color:#1C4A3A}
+
+  /* territory detail grid */
+  .terr-body{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,3.5vw,40px);padding:clamp(22px,3.5vw,34px) clamp(20px,3.5vw,38px) clamp(26px,4vw,38px)}
+  @media(max-width:720px){.terr-body{grid-template-columns:1fr;gap:26px}}
+  .label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px}
+
+  .swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .sw{flex:1 1 0;min-width:64px}
+  .sw-chip{height:52px;border-radius:8px;border:1px solid var(--line);width:100%}
+  .sw-hex{font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-top:7px;letter-spacing:.02em}
+  .sw-name{font-size:11px;color:var(--text-dim);margin-top:1px}
+
+  .type-spec{margin-top:26px}
+  .type-line{font-size:12px;color:var(--text-dim);font-family:var(--mono);letter-spacing:.02em}
+  .type-line b{color:var(--text);font-weight:600}
+
+  .bet{border-left:2px solid var(--accent);padding:2px 0 2px 16px}
+  .bet p{margin:0 0 10px;font-size:14px;color:var(--text-dim);line-height:1.55}
+  .bet p:last-child{margin-bottom:0}
+  .bet b{color:var(--text);font-weight:600}
+  .risk{color:#E8A87C!important}
+
+  .moods{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+  .mood{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line-strong);padding:5px 10px;border-radius:100px}
+
+  /* ---- closing ---- */
+  .close{margin-top:clamp(40px,7vw,72px);border-top:1px solid var(--line);padding-top:clamp(30px,5vw,48px)}
+  .close h2{font-size:clamp(20px,3vw,30px);letter-spacing:-.02em;margin:0 0 14px;font-weight:700;text-wrap:balance}
+  .close p{color:var(--text-dim);max-width:56ch;margin:0 0 20px}
+  .react{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:640px){.react{grid-template-columns:1fr}}
+  .react-item{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .react-item .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+  .react-item p{margin:8px 0 0;font-size:13px;color:var(--text-dim)}
+  .footnote{margin-top:34px;font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.04em}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">The B2B Tinkerers · Rebrand Exploration · v0</div>
+    <h1 class="lede">Tres formas de <em>subir de liga</em> sin perder la raíz.</h1>
+    <p class="sub">Mismo nombre, misma actitud anti-agencia. Lo que cambia es el nivel de acabado: color, tipografía, textura y cómo se siente la marca en la sala. Reacciona a lo que te tire — no busco que elijas hoy, busco saber hacia dónde miras.</p>
+    <div class="meta-row">
+      <span><i class="dot"></i>3 territorios</span>
+      <span><i class="dot"></i>Gradiente · Paleta · Tipografía · La apuesta</span>
+      <span><i class="dot"></i>Para reaccionar, no para decidir</span>
+    </div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- CURRENT / TODAY -->
+  <article class="terr terr--now">
+    <div class="terr-head">
+      <div>
+        <div class="terr-num">Hoy · punto de partida</div>
+        <h2 class="terr-name">Editorial Risograph</h2>
+      </div>
+      <span class="terr-tag">Marca actual</span>
+    </div>
+    <p class="terr-thesis">Plano y honesto. <span class="q">Funciona</span>, pero se lee más “side project bien hecho” que “consultora que cobra 200k”.</p>
+    <div class="stage g0">
+      <h3 class="stage-word">El presupuesto<br>no es el problema.<br><span class="accent">Cómo lo usas, sí.</span></h3>
+    </div>
+    <div class="terr-body">
+      <div>
+        <p class="label">Paleta</p>
+        <div class="swatches">
+          <div class="sw"><div class="sw-chip" style="background:#1C4A3A"></div><div class="sw-hex">#1C4A3A</div><div class="sw-name">Forest</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#2A6B54"></div><div class="sw-hex">#2A6B54</div><div class="sw-name">Mid green</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#D4E84A"></div><div class="sw-hex">#D4E84A</div><div class="sw-name">Lime</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#F5F0E8"></div><div class="sw-hex">#F5F0E8</div><div class="sw-name">Cream</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#E8E3D8"></div><div class="sw-hex">#E8E3D8</div><div class="sw-name">Linen</div></div>
+        </div>
+        <div class="type-spec">
+          <p class="label" style="margin-bottom:8px">Tipografía</p>
+          <p class="type-line">Display · <b>Bricolage Grotesque</b> (800, tracking cerrado)</p>
+          <p class="type-line">Texto · <b>Inter</b> · Labels · <b>DM Mono</b></p>
+        </div>
+        <div class="moods">
+          <span class="mood">Plano</span><span class="mood">Reconocible</span><span class="mood">Honesto</span><span class="mood">Sin profundidad</span>
+        </div>
+      </div>
+      <div class="bet">
+        <p class="label">El techo</p>
+        <p>Color plano, sin gradiente ni textura. La identidad es <b>correcta</b> pero no transmite precio: nada dice “esto cuesta lo que cuesta”.</p>
+        <p>Todos los territorios de abajo <b>parten de aquí</b> y suben el acabado por caminos distintos.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="divider"></div>
+
+  <!-- TERRITORY 01 -->
+  <article class="terr">
+    <div class="terr-head">
+      <div>
+        <div class="terr-num">Territorio 01</div>
+        <h2 class="terr-name">Deep Editorial</h2>
+      </div>
+      <span class="terr-tag">Evolución · menor riesgo</span>
+    </div>
+    <p class="terr-thesis">El verde <span class="q">crece</span>. Misma raíz, tierra más rica. Autoridad senior con calidez, no consultora fría.</p>
+    <div class="stage g1">
+      <h3 class="stage-word">Las preguntas<br>correctas,<br><span class="accent">mejor vestidas.</span></h3>
+    </div>
+    <div class="terr-body">
+      <div>
+        <p class="label">Paleta</p>
+        <div class="swatches">
+          <div class="sw"><div class="sw-chip" style="background:#0C2E24"></div><div class="sw-hex">#0C2E24</div><div class="sw-name">Deep pine</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#1C4A3A"></div><div class="sw-hex">#1C4A3A</div><div class="sw-name">Forest (heredado)</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#2E7D5B"></div><div class="sw-hex">#2E7D5B</div><div class="sw-name">Emerald</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#C9A84C"></div><div class="sw-hex">#C9A84C</div><div class="sw-name">Aged brass</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#E9E3D4"></div><div class="sw-hex">#E9E3D4</div><div class="sw-name">Paper</div></div>
+        </div>
+        <div class="type-spec">
+          <p class="label" style="margin-bottom:8px">Tipografía</p>
+          <p class="type-line">Display · <b>serif moderna</b> (GT Sectra / Signifier)</p>
+          <p class="type-line">Texto · <b>grotesca neutra</b> (Söhne / Suisse Int'l)</p>
+        </div>
+        <div class="moods">
+          <span class="mood">Considerada</span><span class="mood">Senior</span><span class="mood">Editorial</span><span class="mood">Cálida</span><span class="mood">Autoridad</span>
+        </div>
+      </div>
+      <div class="bet">
+        <p class="label">La apuesta</p>
+        <p>Conserva el <b>equity verde</b> que ya has construido y lo eleva con una serif editorial y un latón envejecido. Te separa del “verde corporate frío” por calidez, no por ruptura.</p>
+        <p><b>Ideal si</b> tu comprador es CMO/dirección en industria o servicios financieros, donde la sobriedad vende.</p>
+        <p class="risk"><b>Riesgo:</b> es la más segura. Bien hecha es elegante; mal calibrada puede quedar conservadora.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- TERRITORY 02 -->
+  <article class="terr">
+    <div class="terr-head">
+      <div>
+        <div class="terr-num">Territorio 02</div>
+        <h2 class="terr-name">Spectral</h2>
+      </div>
+      <span class="terr-tag">Ruptura · tech premium</span>
+    </div>
+    <p class="terr-thesis">Para salas llenas de gente que ha visto <span class="q">todos</span> los logos verdes. Este brilla. Gradiente como firma.</p>
+    <div class="stage g2">
+      <div class="mesh"></div><div class="grain"></div>
+      <h3 class="stage-word">No somos<br>otra agencia.<br><span class="accent">Se nota.</span></h3>
+    </div>
+    <div class="terr-body">
+      <div>
+        <p class="label">Paleta</p>
+        <div class="swatches">
+          <div class="sw"><div class="sw-chip" style="background:#07080B"></div><div class="sw-hex">#07080B</div><div class="sw-name">Ink</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#C6F24E"></div><div class="sw-hex">#C6F24E</div><div class="sw-name">Electric lime</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#35E0C8"></div><div class="sw-hex">#35E0C8</div><div class="sw-name">Aqua</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#6C5CE0"></div><div class="sw-hex">#6C5CE0</div><div class="sw-name">Violet</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#F2F0EA"></div><div class="sw-hex">#F2F0EA</div><div class="sw-name">Near-white</div></div>
+        </div>
+        <div class="type-spec">
+          <p class="label" style="margin-bottom:8px">Tipografía</p>
+          <p class="type-line">Display · <b>grotesca contemporánea</b> (PP Neue Montreal / Söhne Breit)</p>
+          <p class="type-line">Texto · <b>neo-grotesca</b> (Inter Display / Söhne)</p>
+        </div>
+        <div class="moods">
+          <span class="mood">Confiada</span><span class="mood">Moderna</span><span class="mood">Alto contraste</span><span class="mood">SaaS-forward</span><span class="mood">Memorable</span>
+        </div>
+      </div>
+      <div class="bet">
+        <p class="label">La apuesta</p>
+        <p>El gradiente <b>es</b> la marca. Fondo tinta, malla espectral viva, tipografía rotunda. Lo más difícil de olvidar y lo más “tech premium”.</p>
+        <p><b>Ideal si</b> quieres jugar en la liga de fundadores tech/SaaS y destacar entre marcas B2B acartonadas.</p>
+        <p class="risk"><b>Riesgo:</b> rompe con la herencia verde y los gradientes envejecen si se abusa. Exige disciplina para no caer en genérico.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- TERRITORY 03 -->
+  <article class="terr">
+    <div class="terr-head">
+      <div>
+        <div class="terr-num">Territorio 03</div>
+        <h2 class="terr-name">Overprint</h2>
+      </div>
+      <span class="terr-tag">Artesanía · anti-agencia auténtica</span>
+    </div>
+    <p class="terr-thesis">Mantiene la <span class="q">huella</span> hecha a mano. Humano, impreso, no manufacturado. Riso llevado a lo premium.</p>
+    <div class="stage g3">
+      <div class="over"></div><div class="grain"></div>
+      <h3 class="stage-word">Hecho por<br>gente, para<br><span class="accent">gente.</span></h3>
+    </div>
+    <div class="terr-body">
+      <div>
+        <p class="label">Paleta</p>
+        <div class="swatches">
+          <div class="sw"><div class="sw-chip" style="background:#14100F"></div><div class="sw-hex">#14100F</div><div class="sw-name">Ink</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#E86A2C"></div><div class="sw-hex">#E86A2C</div><div class="sw-name">Signal amber</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#7A2E4A"></div><div class="sw-hex">#7A2E4A</div><div class="sw-name">Aubergine</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#1C4A3A"></div><div class="sw-hex">#1C4A3A</div><div class="sw-name">Forest (guiño)</div></div>
+          <div class="sw"><div class="sw-chip" style="background:#EDE6D8"></div><div class="sw-hex">#EDE6D8</div><div class="sw-name">Newsprint</div></div>
+        </div>
+        <div class="type-spec">
+          <p class="label" style="margin-bottom:8px">Tipografía</p>
+          <p class="type-line">Display · <b>grotesca condensada</b> (GT America Cond / Druk)</p>
+          <p class="type-line">Texto · <b>sans humanista</b> (Untitled Sans / ABC Diatype)</p>
+        </div>
+        <div class="moods">
+          <span class="mood">Artesanal</span><span class="mood">Honesta</span><span class="mood">Cálida</span><span class="mood">Con tinta</span><span class="mood">Diferente</span>
+        </div>
+      </div>
+      <div class="bet">
+        <p class="label">La apuesta</p>
+        <p>Duotono riso — ámbar señal sobre berenjena, con grano y sobreimpresión. Lo más <b>lejos del B2B acartonado</b> y lo más fiel al alma “anti-agencia”.</p>
+        <p><b>Ideal si</b> quieres que la calidez y lo humano sean la ventaja competitiva frente a consultoras clónicas.</p>
+        <p class="risk"><b>Riesgo:</b> lo cálido/artesanal puede leerse menos “autoridad” para un comprador financiero conservador.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- CLOSING -->
+  <section class="close">
+    <h2>Cómo quiero que reacciones</h2>
+    <p>No elijas “el ganador” todavía. Dime qué te tira y qué te repele — a menudo la dirección buena es un cruce (la calidez de 03 con la autoridad de 01, por ejemplo).</p>
+    <div class="react">
+      <div class="react-item"><span class="n">Visceral</span><p>¿Cuál te para el scroll? ¿Cuál te da vergüenza ajena?</p></div>
+      <div class="react-item"><span class="n">Comprador</span><p>¿Cuál se sienta bien delante del cliente que quieres ganar?</p></div>
+      <div class="react-item"><span class="n">Cruce</span><p>¿Qué robarías de un territorio para meterlo en otro?</p></div>
+    </div>
+    <p class="footnote">v0 · exploración para reaccionar · tipografías mostradas con fuentes de sistema; los nombres reales (GT Sectra, Söhne, PP Neue Montreal…) son la intención a licenciar.</p>
+  </section>
+
+</div>
