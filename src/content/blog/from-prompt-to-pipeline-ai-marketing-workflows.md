@@ -83,4 +83,4 @@ Everyone has the engine. Almost nobody builds the car. That's the whole opportun
 
 ---
 
-*At The B2B Tinkerers, we help B2B teams turn AI from a party trick into pipelines that actually ship work. If you want to operationalize AI instead of just talking about it, see how we [approach AI strategy](/services/ai-strategy), or [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B teams turn AI from a party trick into pipelines that actually ship work. If you want to operationalize AI instead of just talking about it, see how we [approach AI strategy](/services/ai-strategy), or [let's talk](#contact).*

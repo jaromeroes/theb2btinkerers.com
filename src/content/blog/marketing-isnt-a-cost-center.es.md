@@ -76,4 +76,4 @@ Ese replanteamiento es de las primeras cosas que hacemos con clientes. Si market
 
 ---
 
-*En The B2B Tinkerers ayudamos a empresas B2B a replantear marketing: de un coste que se gestiona a una inversión que compone. Si tu presupuesto es lo primero que se cuestiona en cada crisis, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a empresas B2B a replantear marketing: de un coste que se gestiona a una inversión que compone. Si tu presupuesto es lo primero que se cuestiona en cada crisis, [hablemos](#contact).*

@@ -62,4 +62,4 @@ Eso no es un error de redondeo en tu plan. Es de donde sale el crecimiento durad
 
 ---
 
-*En The B2B Tinkerers ayudamos a empresas B2B a equilibrar el marketing que aparece en el dashboard con el marketing que de verdad compone. Si eres todo captura y nada de marca, [hablemos](/contact) — o mira cómo enfocamos la [estrategia de marca](/es/services/brand-strategy).*
+*En The B2B Tinkerers ayudamos a empresas B2B a equilibrar el marketing que aparece en el dashboard con el marketing que de verdad compone. Si eres todo captura y nada de marca, [hablemos](#contact) — o mira cómo enfocamos la [estrategia de marca](/es/services/brand-strategy).*

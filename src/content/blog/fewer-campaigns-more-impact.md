@@ -75,4 +75,4 @@ That decision is the whole job. And it's the one most teams skip.
 
 ---
 
-*At The B2B Tinkerers, we help B2B marketing teams turn a crowded, scattered plan into a focused set of bets that actually move pipeline. If your calendar is full and nothing's landing, our [marketing plan work](/services/marketing-plan) is where we start. [Let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B marketing teams turn a crowded, scattered plan into a focused set of bets that actually move pipeline. If your calendar is full and nothing's landing, our [marketing plan work](/services/marketing-plan) is where we start. [Let's talk](#contact).*

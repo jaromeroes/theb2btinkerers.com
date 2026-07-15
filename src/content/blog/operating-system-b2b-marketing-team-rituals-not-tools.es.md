@@ -72,4 +72,4 @@ Ya está. Todo lo que te venden los proveedores de software se apoya encima de e
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos de marketing B2B a construir el ritmo operativo que los mantiene fuera de los fuegos para siempre. Si tu equipo está organizado pero la calma se siente frágil, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos de marketing B2B a construir el ritmo operativo que los mantiene fuera de los fuegos para siempre. Si tu equipo está organizado pero la calma se siente frágil, [hablemos](#contact).*

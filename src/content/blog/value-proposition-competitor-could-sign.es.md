@@ -78,4 +78,4 @@ Para más sobre posicionamiento y estrategia de marca, echa un vistazo a nuestro
 
 ---
 
-*En The B2B Tinkerers ayudamos a empresas B2B a encontrar la posición que solo ellas pueden ocupar y a decirla en voz alta. Si tu propuesta de valor suena como la de todos los demás, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a empresas B2B a encontrar la posición que solo ellas pueden ocupar y a decirla en voz alta. Si tu propuesta de valor suena como la de todos los demás, [hablemos](#contact).*

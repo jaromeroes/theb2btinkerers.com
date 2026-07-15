@@ -75,4 +75,4 @@ For more on measurement and marketing value, browse the rest of our [insights](/
 
 ---
 
-*At The B2B Tinkerers, we help B2B marketing teams prove their value with measurement that survives scrutiny instead of collapsing under it. If your ROI story only works until someone asks a second question, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B marketing teams prove their value with measurement that survives scrutiny instead of collapsing under it. If your ROI story only works until someone asks a second question, [let's talk](#contact).*

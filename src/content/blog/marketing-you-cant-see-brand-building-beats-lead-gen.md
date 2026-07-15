@@ -61,4 +61,4 @@ That's not a rounding error in your plan. That's where durable growth comes from
 
 ---
 
-*At The B2B Tinkerers, we help B2B companies balance the marketing that shows up on the dashboard with the marketing that actually compounds. If you're all capture and no brand, [let's talk](/contact) — or see how we approach [brand strategy](/services/brand-strategy).*
+*At The B2B Tinkerers, we help B2B companies balance the marketing that shows up on the dashboard with the marketing that actually compounds. If you're all capture and no brand, [let's talk](#contact) — or see how we approach [brand strategy](/services/brand-strategy).*

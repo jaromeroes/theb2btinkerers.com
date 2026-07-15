@@ -68,4 +68,4 @@ Acierta con esa línea y la IA se convierte en lo mejor que le ha pasado nunca a
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos B2B a usar la IA para quitar el esfuerzo penoso sin externalizar el criterio. Si estás intentando averiguar dónde cae esa línea en tu stack, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos B2B a usar la IA para quitar el esfuerzo penoso sin externalizar el criterio. Si estás intentando averiguar dónde cae esa línea en tu stack, [hablemos](#contact).*

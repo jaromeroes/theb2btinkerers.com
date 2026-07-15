@@ -77,4 +77,4 @@ For more on positioning and brand strategy, browse our [insights](/insights).
 
 ---
 
-*At The B2B Tinkerers, we help B2B companies find the position only they can own and say it out loud. If your value proposition sounds like everyone else's, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B companies find the position only they can own and say it out loud. If your value proposition sounds like everyone else's, [let's talk](#contact).*

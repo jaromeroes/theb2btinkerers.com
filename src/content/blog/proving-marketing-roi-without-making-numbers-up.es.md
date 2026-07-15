@@ -76,4 +76,4 @@ Para más sobre medición y valor del marketing, echa un vistazo al resto de nue
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos de marketing B2B a demostrar su valor con una medición que aguanta el escrutinio en lugar de derrumbarse ante él. Si tu historia de ROI solo funciona hasta que alguien hace una segunda pregunta, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos de marketing B2B a demostrar su valor con una medición que aguanta el escrutinio en lugar de derrumbarse ante él. Si tu historia de ROI solo funciona hasta que alguien hace una segunda pregunta, [hablemos](#contact).*

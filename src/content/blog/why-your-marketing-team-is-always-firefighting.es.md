@@ -86,4 +86,4 @@ Tu equipo es capaz de eso. Probablemente no sea un problema de talento, y probab
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos de marketing B2B a cambiar el caos por un sistema que les permita lanzar el trabajo que importa. Si tu equipo se siente permanentemente reactivo, [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos de marketing B2B a cambiar el caos por un sistema que les permita lanzar el trabajo que importa. Si tu equipo se siente permanentemente reactivo, [hablemos](#contact).*

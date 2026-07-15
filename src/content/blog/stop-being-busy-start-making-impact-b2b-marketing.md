@@ -96,4 +96,4 @@ So take an honest look at your calendar this week. How much of what you're doing
 
 ---
 
-*At The B2B Tinkerers, we help B2B companies cut through the noise and build marketing strategies that actually drive revenue. If your marketing feels busy but not impactful, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B companies cut through the noise and build marketing strategies that actually drive revenue. If your marketing feels busy but not impactful, [let's talk](#contact).*

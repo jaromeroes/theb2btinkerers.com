@@ -76,4 +76,4 @@ Esa decisión es el trabajo entero. Y es el que la mayoría de equipos se salta.
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos de marketing B2B a convertir un plan saturado y disperso en un conjunto enfocado de apuestas que de verdad mueven pipeline. Si tu calendario está lleno y nada aterriza, nuestro [trabajo de plan de marketing](/es/services/marketing-plan) es donde empezamos. [Hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos de marketing B2B a convertir un plan saturado y disperso en un conjunto enfocado de apuestas que de verdad mueven pipeline. Si tu calendario está lleno y nada aterriza, nuestro [trabajo de plan de marketing](/es/services/marketing-plan) es donde empezamos. [Hablemos](#contact).*

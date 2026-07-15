@@ -71,4 +71,4 @@ That's it. Everything the software vendors sell you sits on top of that, and non
 
 ---
 
-*At The B2B Tinkerers, we help B2B marketing teams build the operating rhythm that keeps them out of the fires for good. If your team is organized but the calm feels fragile, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B marketing teams build the operating rhythm that keeps them out of the fires for good. If your team is organized but the calm feels fragile, [let's talk](#contact).*

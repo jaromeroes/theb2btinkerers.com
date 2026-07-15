@@ -85,4 +85,4 @@ Your team is capable of that. It's probably not a talent problem, and it's proba
 
 ---
 
-*At The B2B Tinkerers, we help B2B marketing teams trade chaos for a system that lets them ship the work that matters. If your team feels permanently reactive, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B marketing teams trade chaos for a system that lets them ship the work that matters. If your team feels permanently reactive, [let's talk](#contact).*

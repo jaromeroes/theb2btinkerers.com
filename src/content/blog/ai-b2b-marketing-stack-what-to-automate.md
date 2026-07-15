@@ -67,4 +67,4 @@ Get that line right and AI becomes the best thing that ever happened to your tea
 
 ---
 
-*At The B2B Tinkerers, we help B2B teams use AI to remove the toil without outsourcing the taste. If you're trying to figure out where that line sits in your stack, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B teams use AI to remove the toil without outsourcing the taste. If you're trying to figure out where that line sits in your stack, [let's talk](#contact).*

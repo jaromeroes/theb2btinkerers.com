@@ -75,4 +75,4 @@ That reframe is one of the first things we do with clients. If marketing at your
 
 ---
 
-*At The B2B Tinkerers, we help B2B companies reframe marketing from a cost to be managed into an investment that compounds. If your budget is the first thing questioned every downturn, [let's talk](/contact).*
+*At The B2B Tinkerers, we help B2B companies reframe marketing from a cost to be managed into an investment that compounds. If your budget is the first thing questioned every downturn, [let's talk](#contact).*

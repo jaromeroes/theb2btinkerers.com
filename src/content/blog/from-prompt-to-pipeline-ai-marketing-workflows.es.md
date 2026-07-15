@@ -84,4 +84,4 @@ Todos tienen el motor. Casi nadie construye el coche. Ahí está toda la oportun
 
 ---
 
-*En The B2B Tinkerers ayudamos a equipos B2B a convertir la IA de truco de fiesta en pipelines que lanzan trabajo de verdad. Si quieres operacionalizar la IA en vez de solo hablar de ella, mira cómo [enfocamos la estrategia de IA](/es/services/ai-strategy), o [hablemos](/contact).*
+*En The B2B Tinkerers ayudamos a equipos B2B a convertir la IA de truco de fiesta en pipelines que lanzan trabajo de verdad. Si quieres operacionalizar la IA en vez de solo hablar de ella, mira cómo [enfocamos la estrategia de IA](/es/services/ai-strategy), o [hablemos](#contact).*
