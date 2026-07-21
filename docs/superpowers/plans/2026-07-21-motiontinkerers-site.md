@@ -25,7 +25,7 @@
 
 - [ ] **Step 1:** `mkdir -p ~/Developer/theb2btinkerers/motiontinkerers.com && cd` into it; `git init -b main`.
 - [ ] **Step 2:** Write `package.json` (name `motiontinkerers.com`, scripts dev/build/preview, deps: `astro@^5`, `@astrojs/sitemap`, `@fontsource-variable/inter`, `@fontsource-variable/bricolage-grotesque`).
-- [ ] **Step 3:** Write `astro.config.mjs`: `site: 'https://motiontinkerers.com'`, sitemap integration, i18n `{ defaultLocale: 'en', locales: ['en','es'], routing: { prefixDefaultLocale: false } }` (mirror B2B config).
+- [ ] **Step 3:** Write `astro.config.mjs`: `site: 'https://motiontinkerers.com'`, sitemap integration, i18n `{ defaultLocale: 'en', locales: ['en','es'], routing: { prefixDefaultLocale: false } }` (mirror B2B config). **Note: reference repo runs Astro 4.16, this repo targets Astro ^5 — the i18n config shape and `src/i18n/*` utilities are compatible, but if a build error appears on copied code, check the Astro 5 migration notes before assuming a logic bug.**
 - [ ] **Step 4:** Write `.gitignore` (node_modules, dist, .astro, .DS_Store, .env) — do NOT version `dist/` (deliberate divergence from the B2B repo, which regrets it).
 - [ ] **Step 5:** Minimal `src/pages/index.astro` ("Motion Tinkerers — coming to life") + `public/robots.txt` (allow all).
 - [ ] **Step 6:** `npm install` → expect clean install; `npm run build` → expect exit 0, `dist/index.html` exists.
@@ -71,9 +71,9 @@
 **Files:**
 - Create: `src/i18n/pages/services.ts`, `src/components/pages/ServicePage.astro`, `src/components/pages/ServicesIndex.astro`, `src/pages/services/index.astro`, `src/pages/services/[slug].astro`, `src/pages/es/services/index.astro`, `src/pages/es/services/[slug].astro`, `src/components/service-icons.ts`
 
-- [ ] **Step 1:** `services.ts` — `{ en: {...}, es: {...} }` per area with: name, one-liner, outcomes list (what ships), how-it-works (3 steps), pilot block (name + scope + "fixed price", NO amounts), proof reference (per spec §6: content-engine→TB2BT system; brand-studio/creative-studio/web-sprint→Barkers "brand building in progress"; ai-search→own GEO practice), FAQ (2-3 each). AI Search area carries the ⭐ spearhead framing (Pew CTR stat, cited).
+- [ ] **Step 1:** `services.ts` — `{ en: {...}, es: {...} }` per area with: name, one-liner, outcomes list (what ships), **modes block (the two purchase modes per spec §4: `project` — one-off, fixed price — and `subscription` — deliverables/month; copy for both, NO amounts)**, how-it-works (3 steps), pilot block (name + scope + "fixed price", NO amounts), proof reference (per spec §6: content-engine→TB2BT system; brand-studio/creative-studio/web-sprint→Barkers "brand building in progress"; ai-search→own GEO practice), FAQ (2-3 each). AI Search area carries the ⭐ spearhead framing (Pew CTR stat, cited). **Note: `brand-studio` carries TWO sub-offers (Brand application & extension = the strength; Brand Sprint = early-stage with honest framing + studio-partnership line) — model it as two outcome groups within the area, don't flatten (spec §4.5).**
 - [ ] **Step 2:** `service-icons.ts` — 5 inline Lucide-style SVGs (1.5px stroke, currentColor): engine/gears (content), sparkle-search (ai-search), layers/brush (creative), rocket/browser (web), shapes (brand).
-- [ ] **Step 3:** `ServicePage.astro` — one data-driven template (B2B `ServicePage.astro` as structural reference): warm page-hero, outcomes grid (2px gaps), steps, pilot CTA band (yellow), FAQ, cross-links to sibling areas.
+- [ ] **Step 3:** `ServicePage.astro` — one data-driven template (B2B `ServicePage.astro` as structural reference): warm page-hero, outcomes grid (2px gaps), **modes section (project vs subscription, two cards)**, steps, pilot CTA band (yellow), FAQ, cross-links to sibling areas. `ServicesIndex.astro` additionally renders a **"Coming next" strip** with the 3 roadmap areas (Lifecycle, Signal, Research) as non-clickable teasers (spec §4 roadmap, "se anuncian como próximas").
 - [ ] **Step 4:** Routes: `[slug].astro` with `getStaticPaths` over the 5 slugs, EN + ES mirrors passing `lang`.
 - [ ] **Step 5:** `npm run build`; verify: `ls dist/services` shows 5 dirs + index; `ls dist/es/services` same; `grep -q 'precio cerrado' dist/es/services/content-engine/index.html` passes; `grep -rL 'hreflang' dist/services | wc -l` → 0.
 - [ ] **Step 6:** Commit: `feat: five service areas, data-driven template, EN/ES routes`.
@@ -94,7 +94,7 @@
 - Create: `src/i18n/pages/about.ts`, `src/components/pages/About.astro`, `src/pages/about.astro`, `src/pages/es/about.astro`, `src/pages/legal/{aviso-legal,privacidad,cookies}.astro` + ES mirrors (or single Legal.astro template + data)
 
 - [ ] **Step 1:** About: the Tinkerers house story (sister brands, human direction + agentic execution, José as founder — reuse founder-photo rules from brand system: photography only here/contact), the red-line honesty ("what we don't do" section is on-brand challenger move: no enterprise AI consulting, no hourly billing, no author-studio identity — we partner).
-- [ ] **Step 2:** Legal template + 3 pages ES-first legal text (LSSI basics) with EN mirrors, `noindex` on legal.
+- [ ] **Step 2:** Legal template + 3 pages, **slugs in English and identical across locales** (site-wide slug convention): `/legal/legal-notice`, `/legal/privacy`, `/legal/cookies` + `/es/legal/*` mirrors. ES-first legal text (LSSI basics) with EN mirrors, `noindex` on legal.
 - [ ] **Step 3:** `npm run build`; `test -f dist/about/index.html && test -f dist/es/about/index.html` passes.
 - [ ] **Step 4:** Commit: `feat: about and legal pages`.
 
@@ -103,7 +103,7 @@
 **Files:**
 - Create: `public/favicon.svg`, `public/favicon.ico`, `public/apple-touch-icon.png`; Modify: `Base.astro` head
 
-- [ ] **Step 1:** Family favicon: reuse the B2B "T." build script pattern (Bricolage T glyph path already extracted in scratchpad `favicon-b.svg`) with **amber dot** `#F5B301` instead of chartreuse; generate ico + apple-touch via the same sips/PIL pipeline.
+- [ ] **Step 1:** Family favicon from the durable source: copy `/Users/jose/Developer/theb2btinkerers/theb2btinkerers.com/public/favicon.svg` (contains the Bricolage T glyph path on ink with a `#B7D62B` dot) and recolor the dot to **amber `#F5B301`**; generate ico + apple-touch via the same qlmanage/sips/PIL pipeline used for B2B.
 - [ ] **Step 2:** Head links (svg + ico + apple-touch), og:image placeholder (TODO), sitemap check: `grep -q 'motiontinkerers.com/es/' dist/sitemap-0.xml` passes after build.
 - [ ] **Step 3:** Commit: `feat: family favicon (amber) and SEO polish`.
 
