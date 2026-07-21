@@ -40,7 +40,7 @@ empleador actual de José).
 ## 3. Naming (decisión de familia)
 
 **Pareado simétrico sin artículo: "B2B Tinkerers" / "Motion Tinkerers"** bajo la casa "The Tinkerers".
-Resuelve la decisión abierta del brand-system §6.2. Implicación: retocar el wordmark de B2B
+Resuelve la decisión abierta del brand-system §6, punto 2 ("Naming"). Implicación: retocar el wordmark de B2B
 (retirar "The") en logo, web y materiales — cambio menor, sin urgencia, se agenda como tarea.
 
 ## 4. Oferta — cinco áreas núcleo + tres en roadmap
@@ -55,7 +55,7 @@ no diagnosticando.
 ### Núcleo v1
 
 1. **Content Engine** — blog/SEO, social orgánico, newsletter: N piezas/mes con assets visuales
-   incluidos. Extensiones: programmatic SEO y **localización a escala** (EN/ES nativo con voz
+   incluidos *(N se fija junto con el pricing, §8.1 — los tiers concretos son input del spec del sitio)*. Extensiones: programmatic SEO y **localización a escala** (EN/ES nativo con voz
    consistente, ampliable DE/FR) — capacidad ya demostrada en TB2BT.
 2. **AI Search / GEO** ⭐ *punta de lanza comercial* — visibilidad del cliente en ChatGPT,
    Perplexity, Gemini y AI Overviews: audit de visibilidad IA, optimización de entidades,
@@ -100,6 +100,8 @@ qué "agentic" ≠ "el equipo usa ChatGPT" — pero NO estructura la oferta.
    sistema de imagen de 3 registros, distribución. Demuestra: Content Engine + localización.
 2. **Barkers Lab** — marca B2C operada con el stack Motion: aplicación de identidad, web,
    fotografía de producto generada, packaging. Demuestra: Brand Studio + Creative Studio + Web Sprint.
+   *Estado de publicabilidad: pre-lanzamiento (producto sin fabricar). Usable como caso
+   "brand building in progress" desde ya; caso completo cuando José lo autorice tras el lanzamiento.*
 3. **Caso bróker de seguros** (−77% tiempo de cotización; publicado en el blog TB2BT).
    Demuestra: workflows agentic con resultado de negocio.
 
