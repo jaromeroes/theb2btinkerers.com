@@ -7,21 +7,21 @@
 
 ## 1. Brand architecture — one house, two brands
 
-**The Tinkerers** is the master brand (the "studio"). Two arms with a **hard division of labor**:
+**The Tinkerers** is the master brand (the "studio"). Two **sister brands** with a hard division of labor *(framing updated 2026-07-21 — was "brain/hands"; Motion grew from "execution arm" to a full agency. See `docs/superpowers/specs/2026-07-21-motion-tinkerers-definition-design.md` for Motion's full definition)*:
 
 | Brand | Role | Temperature | Sells |
 |---|---|---|---|
-| **B2B Tinkerers** | The brain — strategy | Cool | Marketing strategy, positioning, GTM. Human, senior, advisory. |
-| **Motion Tinkerers** | The hands — AI execution | Warm / kinetic | Agentic AI marketing team that runs GTM & marketing execution. |
+| **B2B Tinkerers** | Human strategy consultancy | Cool | Marketing strategy, positioning, GTM. Human, senior, advisory. B2B only. |
+| **Motion Tinkerers** | AI-native marketing agency | Warm / kinetic | Outcomes, not hours: Content Engine, AI Search/GEO, Creative Studio, Web Sprint, Brand Studio. Sector-agnostic (B2C + B2B); ICP by situation (0-5 person marketing teams). |
 
-**The rule that makes it work:** do **not** transition B2B Tinkerers toward AI *and* run Motion for AI at the same time — they'd collide. Motion **is** the AI move; B2B doubles down as the human strategy brand.
+**The rule that makes it work:** do **not** transition B2B Tinkerers toward AI *and* run Motion for AI at the same time — they'd collide. Motion **is** the AI move; B2B doubles down as the human strategy brand. Motion's own red line: no enterprise AI engineering/transformation consulting (Mimacom territory).
 
 - Shared connective tissue: the "Tinkerers" wordmark family + one editorial visual system.
 - Cross-sell funnel: Strategy (B2B) → Execution (Motion) → Direction (B2B).
 - **Launch staged**, not simultaneous: B2B consolidated first on the new system; Motion built on the same DNA and launched when its offer is real and sellable.
 - Legal entity: **B2B Tinkers SL** (invoicing only; not a market-facing brand name).
 
-**Open naming tension (unresolved):** logo reads "The B2B Tinkerers", but the family pairs cleaner in parallel as "B2B Tinkerers / Motion Tinkerers". Decide before launch. The `B2B Tinkers` rename (to match the SL) was **rejected** — "Tinkerers" (maker/experimenter) is the stronger word; "Tinkers" loses that and carries a slur risk in UK/Ireland.
+**Naming (RESOLVED 2026-07-21):** symmetric pairing without the article — **"B2B Tinkerers" / "Motion Tinkerers"** under "The Tinkerers". Derived task: retouch the B2B wordmark (drop "The") across logo/web/materials — minor, not urgent. The `B2B Tinkers` rename (to match the SL) stays **rejected** — "Tinkerers" (maker/experimenter) is the stronger word; "Tinkers" loses that and carries a slur risk in UK/Ireland.
 
 ---
 
@@ -126,11 +126,11 @@ Direct, insider, honest even when uncomfortable. Challenger. Bold in the headlin
 
 ## 6. Open decisions / next steps
 
-1. **Motion offer** — real capabilities, packaging, pricing, ICP → replace placeholder content on the Motion page.
-2. **Naming** — resolve "The B2B Tinkerers" vs parallel "B2B Tinkerers".
-3. **Motion logo** — commission a proper drawn wordmark.
+1. ~~**Motion offer**~~ **RESOLVED 2026-07-21** — full definition (positioning, 5 core areas + 3 roadmap, ICP, sales narrative, red lines) in `docs/superpowers/specs/2026-07-21-motion-tinkerers-definition-design.md`. Pricing amounts still owned by José.
+2. ~~**Naming**~~ **RESOLVED 2026-07-21** — parallel pairing "B2B Tinkerers / Motion Tinkerers" (see §1). Derived: drop "The" from the B2B wordmark.
+3. **Motion logo** — commission a proper drawn wordmark. A typographic provisional (mirroring B2B's lockup, warm accent) is valid to launch.
 4. **Fonts** — license the display + body faces; replace system placeholders.
-5. **Implementation** — bring the system into Astro (tokens in `global.css`, new hero, imagery pipeline). Version `duotone.py` into the build.
+5. **Implementation** — bring the system into Astro (tokens in `global.css`, new hero, imagery pipeline). Version `duotone.py` into the build. **Next up:** the motiontinkerers.com site (own repo, own spec).
 
 ---
 
