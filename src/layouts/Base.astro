@@ -55,7 +55,9 @@ const langTargets: Record<Lang, string> = {
   <meta property="og:description" content={desc}/>
   <meta property="og:site_name" content={siteName}/>
   <meta property="og:locale" content={htmlLang[lang].replace('-', '_')}/>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <!-- Preconnect to external origins -->
   <link rel="preconnect" href="https://cloud.umami.is" crossorigin/>
   <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin/>
