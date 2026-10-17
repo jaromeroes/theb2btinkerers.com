@@ -106,6 +106,8 @@ The prose problem is **not** vocabulary. It's uniformity of rhythm: the same rhe
 
 Brand claims are exempt: the taglines under **Good examples of tone** and the "30 minutes. No pitch." refrain are assets and stay as written.
 
+Run the `humanizer` skill (`.claude/skills/humanizer/`, blader/humanizer v3.1.0, MIT) on every new or rewritten piece, EN and ES. It catches the tells; the rules above decide the voice where the two differ, including the antithesis budget and the brand claims.
+
 ### Good examples of tone
 
 - "Your marketing budget isn't the problem. How you use it is."
@@ -155,6 +157,8 @@ Editorial risograph style. Clean, structured, professional. Not agency-like or o
 
 Netlify auto-deploys from `main` branch. Config in `netlify.toml`. Sitemap auto-generated at build time.
 
+**Scheduled posts.** A post dated in the future is left out of the build until a build runs on or after its date (`isPublished()` in `src/content/utils.ts`). `.github/workflows/scheduled-publish.yml` runs daily, compares the due posts with the live sitemap through `scripts/due-posts.mjs`, and pings the Netlify build hook (secret `NETLIFY_BUILD_HOOK`) only when one is missing. GitHub disables scheduled workflows in public repos after 60 days without activity, and did so on 2026-10-05, which left the 2026-10-08 post unpublished for nine days; the workflow now pushes an empty commit after 45 idle days. `node scripts/due-posts.mjs` prints the queue at any time.
+
 **Cloudflare sits in front of Netlify** (`server: cloudflare`, `cf-ray` present on every response). This is not configured anywhere in the repo, and it has consequences:
 
 - **Cloudflare injects a "Managed robots.txt" block above `public/robots.txt`.** The served file has Cloudflare's content first (`Content-Signal`, plus `Disallow: /` for AI crawlers: GPTBot, ClaudeBot, CCBot, Google-Extended, Bytespider, Amazonbot, Applebot-Extended, meta-externalagent), then ours. Googlebot is not blocked. Side effect: the served file has two `User-agent: *` groups. Crawlers that merge same-agent groups honour our `Disallow` lines; any that take only the first group would ignore them, which is one reason the client paths also carry `X-Robots-Tag`.
@@ -180,9 +184,13 @@ Setup and rationale: **`docs/seo-monitoring.md`**.
 
 - **Google Search Console** via the `mcp-server-gsc` MCP server (needs a Google service account added as a Search Console user).
 - **Umami** via `scripts/umami-report.mjs`, a dependency-free script against Umami's REST API. Deliberately not an MCP server: the only published one had ~50 downloads/month and a single maintainer, and it would hold a live API key.
-- **DataForSEO** not set up; it is the only paid source and answers what GSC cannot (competitors, volumes, backlinks).
+- **OpenSEO** (hosted, on DataForSEO data) answers what GSC cannot: volumes, live SERPs, backlinks, site audits. Claude Code plugin `openseo@openseo` locally; the content autopilot needs it as a claude.ai connector. Project `e2235b56-48a2-4e45-a3bd-b21feb887f6e`. Research spends prepaid credits; Search Console reads through it are free.
 
 Credentials live outside the repo. `.gitignore` blocks `*service-account*.json` and `*credentials*.json` as a backstop.
+
+## Content autopilot
+
+A weekly Claude Code routine runs **`docs/content-autopilot.md`**: it takes the next topic from **`docs/content-backlog.md`**, checks it against OpenSEO, writes the EN/ES pair, runs the humanizer skill and opens a PR dated on the next fortnightly Thursday. Merging the PR is the approval; the scheduled-publish workflow does the rest. To steer it, reorder, approve or veto entries in the backlog. That file is only the autopilot's queue; the Notion backlog (CNT-xx) stays the place for content strategy.
 
 ## Analytics & Integrations
 

@@ -1,23 +1,47 @@
 name: Scheduled publish
 
-# Rebuilds the site once a day so future-dated blog posts go live on their own
-# date without a manual commit. The date-gate in src/content/utils.ts hides any
-# post whose `date` is still in the future; each rebuild re-evaluates "today" and
-# reveals whatever has come due.
+# Makes future-dated blog posts go live on their own date without a manual
+# commit. The date-gate in src/content/utils.ts leaves a post out of the build
+# until a build runs on or after its `date`. Once a day this job compares the
+# posts that are due with the live sitemap (scripts/due-posts.mjs) and pings the
+# Netlify build hook only when one is missing, so a skipped day heals itself on
+# the next run.
+#
+# GitHub disables scheduled workflows in public repositories after 60 days with
+# no repository activity, without telling anyone. That happened on 2026-10-05:
+# the post dated 2026-10-08 stayed off the site until a manual run on
+# 2026-10-17. The last step pushes an empty commit once main has been idle for
+# 45 days, which counts as activity and keeps this schedule alive.
 
 on:
   schedule:
-    # 06:00 UTC daily (~08:00 Europe/Madrid). Posts are dated at 00:00 UTC, so
-    # they are live a few hours into their publication day.
-    - cron: '0 6 * * *'
-  # Lets you trigger a rebuild by hand from the Actions tab.
-  workflow_dispatch: {}
+    # 05:17 UTC daily (~07:17 Europe/Madrid). Posts are dated at 00:00 UTC.
+    # Off the hour on purpose: GitHub delays top-of-the-hour schedules, at
+    # times by several hours.
+    - cron: '17 5 * * *'
+  # Run it by hand from the Actions tab; tick "force" to rebuild regardless.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild even if every due post is already live
+        type: boolean
+        default: false
+
+permissions:
+  contents: write # only for the keepalive commit
 
 jobs:
-  trigger-rebuild:
+  publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
+
+      - name: Find due posts missing from the live site
+        id: due
+        run: node scripts/due-posts.mjs
+
       - name: Ping Netlify build hook
+        if: steps.due.outputs.missing != '0' || inputs.force
         env:
           NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
         run: |
@@ -26,3 +50,14 @@ jobs:
             exit 1
           fi
           curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"
+
+      - name: Keep the schedule alive
+        run: |
+          idle_days=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          echo "main last changed ${idle_days} days ago"
+          if [ "$idle_days" -ge 45 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "Keep scheduled publishing enabled (main idle for ${idle_days} days)"
+            git push
+          fi

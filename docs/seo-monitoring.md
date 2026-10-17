@@ -6,7 +6,7 @@ Three sources, deliberately set up in different ways. What follows is why, and h
 | --- | --- | --- | --- |
 | Google Search Console | How Google actually sees the site: impressions, clicks, CTR, position, indexing | `mcp-server-gsc` (community MCP) | free |
 | Umami | What visitors do once they arrive | `scripts/umami-report.mjs` (own script) | free |
-| DataForSEO | What GSC can't see: competitors, search volumes, backlinks | not set up yet | paid, per request |
+| OpenSEO (DataForSEO data) | What GSC can't see: competitors, search volumes, live SERPs, backlinks, site audits | Claude Code plugin `openseo@openseo`; claude.ai connector for the content autopilot | prepaid credits |
 
 ## Why Umami is a script and not an MCP server
 
@@ -56,6 +56,8 @@ Reports visitors, visits, pageviews, bounce rate and average visit length with p
 
 ## DataForSEO
 
-Not set up. It is the only paid one of the three, and it answers questions GSC structurally cannot: what competitors rank for, absolute search volumes, backlink profiles. Search Console is the source of truth for your own performance, so start there and add this when there's a concrete question worth paying per request to answer.
+Covered since 2026-10-14 by **OpenSEO**, a hosted service on DataForSEO data, installed as the Claude Code plugin `openseo@openseo` (OAuth, no key in the repo). The first site audit is saved in its project, and the content autopilot (`docs/content-autopilot.md`) uses it through a claude.ai connector. The notes below on the official DataForSEO server still apply if you ever want direct API access.
+
+Originally not set up. It is the only paid one of the three, and it answers questions GSC structurally cannot: what competitors rank for, absolute search volumes, backlink profiles. Search Console is the source of truth for your own performance, so start there and add this when there's a concrete question worth paying per request to answer.
 
 The official server is `dataforseo-mcp-server`, published by DataForSEO from their own repo under Apache-2.0. It needs `DATAFORSEO_USERNAME` and `DATAFORSEO_PASSWORD` — the API credentials from the dashboard, not the web login.
