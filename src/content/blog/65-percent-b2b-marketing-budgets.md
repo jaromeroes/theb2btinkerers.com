@@ -12,25 +12,25 @@ There's a stat that keeps coming up in conversations with B2B marketing leaders:
 
 Most people hear this and nod. Then they go back to their quarterly planning meeting and do exactly what they've always done.
 
-We want to talk about why that is, and what it actually costs.
+We want to talk about why that happens, and what it costs.
 
 ## The alignment problem is a strategy problem
 
-The first thing to get right: misalignment is not a communication problem. It's not fixed by a shared Slack channel, a weekly sync, or a shared dashboard.
+The first thing to get right is that misalignment isn't a communication problem. A shared Slack channel won't fix it, and neither will a weekly sync or a dashboard both teams can see.
 
-Misalignment happens when marketing and sales are optimising for different things. Marketing is measured on MQLs. Sales is measured on closed revenue. Both teams hit their numbers. The business still loses.
+Misalignment happens when marketing and sales are optimizing for different things. Marketing is measured on MQLs and sales on closed revenue, so both teams hit their numbers and the business loses anyway.
 
-This is structural. And it starts with how marketing strategy gets built, usually disconnected from how the business actually makes money.
+The cause is structural, and it starts with how marketing strategy gets built, usually disconnected from how the business makes money.
 
-When we audit a B2B marketing operation, the most common finding is not that the marketing is bad but that it's optimised for the wrong objective. Good content, good campaigns, reasonable spend: all pointed in a direction that doesn't connect to pipeline.
+When we audit a B2B marketing operation, the most common finding is decent marketing optimized for the wrong objective. The content and campaigns are good and the spend is reasonable, but all of it points in a direction that doesn't connect to pipeline.
 
 ![Revenue charts and marketing funnels, two reports that rarely tell the same story](../../assets/blog/65-percent-b2b-marketing-revenue-vs-marketing.webp)
 
-## What misalignment actually costs
+## What misalignment costs
 
 The $1 trillion figure that circulates around sales-marketing misalignment is almost certainly inflated. But the real number doesn't need to be precise to be useful.
 
-Think about it this way: if your marketing team is generating 200 MQLs a month that sales ignores, you're not just wasting the budget that generated those leads. You're wasting the sales capacity that could have been working better leads. You're wasting the time spent in pipeline reviews trying to figure out why conversion is low. You're wasting the goodwill between two teams that should be building something together.
+If your marketing team generates 200 MQLs a month that sales ignores, you've wasted the budget that produced those leads. You've also wasted the sales capacity that could have been working better ones, the time spent in pipeline reviews trying to figure out why conversion is low, and the goodwill between two teams that should be building something together.
 
 The direct cost is easy to calculate. The indirect cost, the drag on the whole commercial operation, is usually much larger.
 
@@ -38,29 +38,27 @@ The direct cost is easy to calculate. The indirect cost, the drag on the whole c
 
 ## Why most fixes don't work
 
-The typical response to misalignment is process. Define a shared lead definition, build an SLA, create a joint dashboard, and review it monthly.
+The typical response to misalignment is process: agree on a shared lead definition, build an SLA, create a joint dashboard, and review it monthly.
 
-These things help at the margin. They almost never fix the underlying problem.
+These things help at the margin, but they almost never fix the underlying problem, which is that marketing doesn't understand what sales needs and sales doesn't trust what marketing produces.
 
-The underlying problem is that marketing doesn't understand what sales needs, and sales doesn't trust what marketing produces. That gap doesn't close with a spreadsheet. It closes when marketing starts building strategy from the revenue backwards, when the question isn't "what content should we produce this quarter" but "what does the business need to achieve, and what does marketing need to do to make that more likely."
+That gap closes when marketing starts building strategy from the revenue backwards, when the question isn't "what content should we produce this quarter" but "what does the business need to achieve, and what does marketing need to do to make that more likely."
 
 ![A hand pulling documents from the table, building strategy from revenue backwards](../../assets/blog/65-percent-b2b-marketing-fixes-dont-work.webp)
 
-That's a different kind of conversation. It requires marketing leadership that is comfortable in a commercial context, not just a creative or digital one. It requires sales leadership that is willing to give marketing the information it needs to be useful, not just complain that the leads are bad.
+That's a different kind of conversation. It requires marketing leadership that is as comfortable in a commercial context as in a creative or digital one, and sales leadership willing to give marketing the information it needs to be useful, which takes more than complaining that the leads are bad.
 
 ## What we've seen work
 
 The companies that get this right tend to share a few characteristics.
 
-First, their marketing leader has a seat at the revenue table, not just the marketing table. They sit in forecast calls and know which deals are at risk and why. They build programs around that reality, not around an editorial calendar.
+First, their marketing leader has a seat at the revenue table as well as the marketing one. They sit in forecast calls, know which deals are at risk and why, and build programs around that reality.
 
-Second, they define success in commercial terms from the start. Not "we'll generate X leads." But "we'll contribute X to pipeline, and here's how we'll measure it."
+Second, they define success in commercial terms from the start. A target like "we'll generate X leads" gets rewritten as "we'll contribute X to pipeline, and here's how we'll measure it."
 
-Third, they treat the first 90 days of any new marketing initiative as a diagnostic, not a production run. Before spending on demand generation, they spend time understanding where the real bottlenecks are. Sometimes it's top of funnel. More often, it's something else entirely.
+Third, they treat the first 90 days of any new marketing initiative as a diagnostic. Before spending on demand generation, they spend time understanding where the real bottlenecks are. Sometimes that's the top of the funnel, but more often it's something else entirely.
 
-None of this is complicated. But it requires a willingness to slow down long enough to understand the problem before buying the solution.
-
-That's harder than it sounds in a world that rewards activity over clarity.
+None of this is complicated. It does take a willingness to slow down long enough to understand the problem before buying the solution, and that's harder than it sounds in a world that rewards activity over clarity.
 
 ---
 

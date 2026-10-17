@@ -31,7 +31,7 @@ export const ui = {
     contact: {
       eyebrow: "Let's talk",
       heading: '30 minutes. No pitch. Just an honest conversation.',
-      body: "Tell us where you're stuck. We'll tell you, straight, whether we can help and how. Reply within 24 hours.",
+      body: "Tell us where you're stuck. We'll tell you, straight, whether we can help and how. We reply within 24 hours.",
       orEmail: 'Or email us directly',
     },
     form: {

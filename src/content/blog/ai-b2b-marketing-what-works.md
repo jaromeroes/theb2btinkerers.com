@@ -10,71 +10,67 @@ translationKey: "ai-what-works"
 
 Every B2B marketing team is somewhere on the AI adoption curve. Most are further behind than they think, but not in the way they assume.
 
-The conversation about AI in marketing has become almost impossible to have clearly. On one side, the hype machine is relentless: AI will replace your team, automate everything, generate infinite content at zero cost. On the other, a scepticism that's understandable but increasingly hard to justify: "we tried ChatGPT and the output was generic."
+The conversation about AI in marketing has become almost impossible to have clearly. On one side, the hype machine is relentless: AI will replace your team, automate everything, generate infinite content at zero cost. On the other, a skepticism that's understandable but increasingly hard to justify: "we tried ChatGPT and the output was generic."
 
-Both positions miss the point.
+Both positions miss what's happening. AI is not replacing B2B marketing teams, but it is already separating teams that know how to use it from those that don't, and that gap is widening faster than most marketing leaders want to admit.
 
-AI is not replacing B2B marketing teams. But it is already separating teams that know how to use it from those that don't, and that gap is widening faster than most marketing leaders want to admit.
-
-## What's actually working right now
+## What's working right now
 
 ![The filter that works, synthesis and guardrails](../../assets/blog/ai-b2b-marketing-what-works.webp)
 
-Let's be specific. The AI use cases generating real, measurable value in B2B marketing today are not the flashy ones.
+The AI use cases generating real, measurable value in B2B marketing today are rarely the flashy ones.
 
-**Research and synthesis.** The ability to process large volumes of information (competitor analysis, customer interview transcripts, market reports, sales call recordings) and extract structured insight is genuinely transformative. Work that took a week now takes an afternoon. The output isn't perfect. But it's a good first draft of something that would have been a blank page.
+In research and synthesis, AI can process large volumes of information (competitor analysis, customer interview transcripts, market reports, sales call recordings) and extract structured insight, so work that took a week now takes an afternoon. The output isn't perfect, but it's a good first draft of something that would otherwise have been a blank page.
 
-**Content at scale, with guardrails.** Not "generate a blog post." That almost never produces anything worth publishing without significant human editing. But "given this brief, this audience, and these three existing examples of our tone, generate five variations of this email subject line" does work. The key is the guardrails: specific inputs, specific constraints, human judgment at the end.
+Content at scale works too, as long as it has guardrails. "Generate a blog post" almost never produces anything worth publishing without significant human editing. "Given this brief, this audience, and these three existing examples of our tone, generate five variations of this email subject line" does work, and the guardrails are the reason: specific inputs, specific constraints, and human judgment at the end.
 
-**Personalisation infrastructure.** B2B buying committees are typically 6 to 10 people. Each of them cares about different things. AI makes it feasible, for the first time, to create genuinely personalised versions of content for different stakeholders at scale, without a team of 20 writers. This is still emerging, but the early results are significant.
+Personalization infrastructure is still emerging, but the early results are significant. B2B buying committees are typically 6 to 10 people, and each of them cares about different things. For the first time, AI makes it feasible to create personalized versions of content for different stakeholders at scale, without a team of 20 writers.
 
-**Faster iteration.** The biggest change for most marketing teams is not the quality of AI output but the speed of the loop. Test an idea, get feedback, iterate: all in hours instead of days. For teams that were constrained by production time rather than ideas, this is genuinely freeing.
+For most marketing teams, though, the biggest change is the speed of the loop. Testing an idea, getting feedback, and iterating now takes hours instead of days, which is freeing for teams that had more ideas than production time.
 
 ## What isn't working
 
 ![The autonomous machine producing noise with no human in the loop](../../assets/blog/ai-b2b-marketing-what-doesnt-work.webp)
 
-**Autonomous content production.** The dream of "set it and run" AI content is not here yet for B2B. The output lacks the specific expertise, the industry nuance, the honest opinion that makes B2B content credible with a senior buyer. You can use AI to produce content faster. You cannot yet use it to produce content without a knowledgeable human in the loop.
+Autonomous content production, the dream of "set it and run" AI content, hasn't arrived for B2B yet. The output lacks the specific expertise, industry nuance, and honest opinion that make B2B content credible with a senior buyer. AI can help you produce content faster, but it can't yet do that without a knowledgeable human in the loop.
 
-**Lead scoring and intent data.** There's a lot of money being spent on AI-powered intent platforms. Some of it is well spent. Most of it is not, because the signal quality is poor, the integration with sales workflows is weak, and the teams using it don't have the operational discipline to act on signals quickly enough to make the data meaningful.
+In lead scoring and intent data, a lot of money is going into AI-powered intent platforms. Some of it is well spent. Most of it isn't, because the signal quality is poor, the integration with sales workflows is weak, and the teams using it don't have the operational discipline to act on signals quickly enough to make the data meaningful.
 
-**AI-generated personalisation without strategy.** Personalisation at scale is only valuable if you have something worth personalising. Teams that have jumped to AI-powered personalisation without a clear segmentation strategy and differentiated messaging for each segment are just automating noise.
+AI-generated personalization fails when there's no strategy behind it. Personalizing at scale is only valuable if you have something worth personalizing, and teams that have jumped to AI-powered personalization without a clear segmentation strategy and differentiated messaging for each segment are just automating noise.
 
 ## The hybrid model
 
 ![The deliberate craftsman, human judgment amplified by AI](../../assets/blog/ai-b2b-marketing-hybrid-model.webp)
 
-The frame we find most useful is this: AI is not a replacement for human judgment in B2B marketing. It's an amplifier of it.
+We find it most useful to think of AI as an amplifier of human judgment in B2B marketing.
 
 A marketer with good judgment, deep customer understanding, and a clear strategic framework becomes dramatically more effective with AI tools. A marketer without those foundations becomes dramatically more efficient at producing the wrong things.
 
-This is why the companies winning with AI in B2B marketing right now are not the ones that have deployed the most tools. They're the ones that have been most deliberate about where human expertise is irreplaceable, and where AI can remove the friction without removing the quality.
+That's why the companies winning with AI in B2B marketing right now are not the ones that have deployed the most tools. They're the ones that have been most deliberate about where human expertise is irreplaceable, and where AI can remove the friction without removing the quality.
 
-The practical version of this looks like: your best strategist spends less time on research and production, and more time on the decisions that require their specific knowledge and judgment. AI handles the grunt work. Humans handle the thinking.
+In practice, your best strategist spends less time on research and production and more on the decisions that require their specific knowledge and judgment, while AI handles the legwork.
 
 ## What to do next quarter
 
-If you're a B2B marketing leader trying to make sense of this practically, here's what we'd suggest:
+For a B2B marketing leader trying to make this practical, we'd suggest five things.
 
-**Audit your current time spend.** Before buying any tools, understand where your team's time actually goes. In our experience, 40-60% of B2B marketing team time is spent on tasks that AI can handle well: research, first drafts, data compilation, reporting, briefing documents. That's your opportunity.
+**Audit your current time spend.** Before buying any tools, understand where your team's time goes. In our experience, 40-60% of B2B marketing team time is spent on tasks that AI can handle well, and those tasks are your opportunity: research, first drafts, data compilation, reporting, briefing documents.
 
-**Start with one workflow, not the whole stack.** Pick the single most time-consuming repeatable task your team does (content briefs, competitive analysis, email sequences, whatever it is) and build a proper AI workflow around it. One workflow done well teaches you more than five done badly.
+**Start with one workflow.** Pick the single most time-consuming repeatable task your team does (content briefs, competitive analysis, email sequences, whatever it is) and build a proper AI workflow around it. One workflow done well teaches you more than five done badly.
 
-**Invest in prompting as a skill.** The quality gap between teams using AI effectively and teams using it poorly is almost entirely explained by how they interact with the tools. Prompting is a skill, it can be taught, and it's worth investing in.
+**Invest in prompting as a skill.** The quality gap between teams using AI effectively and teams using it poorly is almost entirely explained by how they interact with the tools. Prompting can be taught, and it's worth the investment.
 
-**Don't automate what you haven't mastered manually.** If your messaging isn't working, AI-powered distribution will just amplify a problem. If your lead qualification process is broken, AI-powered scoring will make it faster and still broken. Fix the fundamentals first.
+**Don't automate what you haven't mastered manually.** If your messaging isn't working, AI-powered distribution will just get a weak message to more people. If your lead qualification process is broken, AI-powered scoring will make it faster and still broken. Fix the fundamentals before you automate them.
 
-**Build the governance now.** AI-generated content creates legal, brand, and factual accuracy risks that most B2B marketing teams aren't managing properly yet. Build a review process before you scale, not after something goes wrong.
+**Build the governance now.** AI-generated content creates legal, brand, and factual accuracy risks that most B2B marketing teams aren't managing properly yet. Put a review process in place before you scale.
 
-## The honest forecast
+## The forecast
 
-AI will change B2B marketing significantly over the next three years. The teams that are experimenting thoughtfully now (not chasing every new tool, but building real capability in specific areas) will have a meaningful advantage.
+AI will change B2B marketing significantly over the next three years. The teams experimenting thoughtfully now, building real capability in specific areas, will have a meaningful advantage.
 
-The teams that are waiting for it to "settle down" before engaging are already behind. The technology is not going to become simpler or less relevant. The learning curve is only going to get steeper the longer you wait.
+The teams that are waiting for it to "settle down" before engaging are already behind. The technology is not going to become simpler or less relevant, and the learning curve only gets steeper the longer you wait.
 
-Start small. Be specific. Keep the human judgment in the loop. Measure what changes.
-
-That's not a revolutionary approach. But in a space full of hype and confusion, it's the one that actually works.
+Start small and specific, keep human judgment in the loop, and measure what changes. It's a modest approach, but in a space this full of hype and confusion, it's the one that works.
 
 ---
 

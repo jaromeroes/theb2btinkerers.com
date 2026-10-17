@@ -1,7 +1,7 @@
 ---
 title: "Marketing to a Committee: Nine People Have to Say Yes, One Can Kill It"
-description: "In B2B you don't sell to a persona, you sell to a buying committee. Every member can veto, only the group can approve. Here's what marketing should actually produce."
-excerpt: "The demo went great and the deal still died. Not because your champion wasn't convinced, but because eight other people were never given a reason to say yes. You're not marketing to a buyer. You're marketing to a room you'll never be in."
+description: "B2B deals are decided by a buying committee, where any member can veto and only the group can approve. That changes what marketing should produce."
+excerpt: "The demo went great and the deal still died. Your champion was sold, but the eight other people in the decision were never given a reason to say yes. In B2B you're marketing to a room you'll never be in."
 slug: "marketing-to-a-buying-committee"
 author: "The B2B Tinkerers"
 date: 2026-09-24
@@ -11,88 +11,80 @@ image: "../../assets/blog/buying-committee-cover.webp"
 translationKey: "buying-committee"
 ---
 
-The demo went great. Everyone nodded. Your champion said, out loud, "this is exactly what we've been looking for." Then nothing. Three weeks of silence, one rescheduled call, and finally the polite email: they've decided to revisit this next quarter.
+The demo went great and everyone nodded. Your champion said, out loud, "this is exactly what we've been looking for." Then nothing. Three weeks of silence, one rescheduled call, and finally the polite email: they've decided to revisit this next quarter.
 
-You didn't lose to a competitor. You lost to a buying committee.
+You lost to a buying committee. Gartner's widely cited research puts the typical B2B buying group at roughly six to ten people. Your marketing team built one tidy persona, gave her a name, maybe a stock photo and a "day in the life," and wrote everything for her. Meanwhile the decision is happening in a meeting you won't attend, among nine people you've never met, and you never handed any of them an argument.
 
-Because in B2B, you don't sell to a person. You sell to a room. Gartner's widely-cited research puts the typical B2B buying group at roughly six to ten people. Your marketing team built one tidy persona, gave her a name, maybe a stock photo and a "day in the life," and wrote everything for her. Meanwhile the real decision is happening in a meeting you'll never attend, among nine people you've never met, using arguments you never handed anyone.
+## You don't sell to a person. You sell to a room.
 
-## You Don't Sell to a Person. You Sell to a Room.
+The persona document is one of the most comforting artifacts in marketing, and one of the most misleading. It takes a messy, political, multi-headed decision and flattens it into a single agreeable human with a job title and a pain point. That's convenient for writing a landing page and useless for closing a deal.
 
-The persona document is one of the most comforting artifacts in marketing. It's also one of the most misleading. It takes a messy, political, multi-headed decision and flattens it into a single agreeable human with a job title and a pain point. That's convenient for writing a landing page. It's useless for closing a deal.
+Follow what happens after your champion falls in love with your product. They can't sign on their own, so they go and *tell other people about it*. That retelling is a much harder test than the demo ever was, and it's the moment your marketing either works or evaporates. It happens entirely outside your funnel. No form fill or touchpoint records it, and no attribution model captures the Tuesday afternoon when someone in security asked a question your champion couldn't answer.
 
-Look at what actually happens after your champion falls in love with your product. They don't sign. They can't. They go and *tell other people about it*. That's the moment your marketing either works or evaporates, and it happens entirely outside your funnel. There's no form fill for it. No touchpoint. No attribution model that captures the Tuesday afternoon where someone in security asked a question your champion couldn't answer.
+## The asymmetry that breaks everything
 
-The demo was never the hard part. The retelling is.
+Almost nobody designs marketing around this structural fact: **every person in that room can say no, but only the group can say yes.**
 
-## The Asymmetry That Breaks Everything
+The imbalance is enormous. Nine people have to arrive at something like agreement, while one person with one plausible objection, raised in one meeting, can send the deal back to "next quarter" forever.
 
-Here's the structural fact almost nobody designs marketing around: **every person in that room can say no, but only the group can say yes.**
+So the job is to de-risk the decision for the most skeptical person in the room, since nobody there is waiting to be dazzled. Most B2B marketing is built to raise the ceiling by making your champion more excited. The deal is decided at the floor, by how uncomfortable the least enthusiastic participant feels, because their discomfort has veto power and your champion's enthusiasm doesn't.
 
-That's not a small imbalance. It's the whole game. Nine people have to arrive at something like agreement. One person, in one meeting, with one plausible objection, can send the whole thing back to "next quarter" forever. A no needs one voice. A yes needs consensus.
-
-Which means the job isn't persuasion. Nobody in that room is waiting to be dazzled; you're de-risking a decision for the most skeptical person in it. Your ceiling gets set by how uncomfortable the least enthusiastic participant feels rather than by how excited your champion is, because their discomfort has veto power and enthusiasm doesn't.
-
-Most B2B marketing is built to raise the ceiling. The deal is decided at the floor.
-
-## The Cast, and What Each One Is Privately Afraid Of
+## The cast, and what each one is privately afraid of
 
 ![A group of colleagues around a meeting table, one leaning forward mid-argument while the others hold different expressions](../../assets/blog/buying-committee-01.webp)
 
-Committees don't have opinions. People do. And every person in that room is carrying a private fear that has nothing to do with your product and everything to do with their own week, their own reputation, their own boss.
+Every person in that room is carrying a private fear about their own week, their reputation or their boss, and none of those fears is about your product.
 
 ### The champion
 
-They want this. They're already sold. And they're the only person in the process paying a personal price for it, because pushing your product through means spending political capital they can't get back. If this goes badly, it's their judgment on the line, not yours. They're not asking "is this good?" They're asking "will I look stupid in six months for having pushed it?"
+They want this and they're already sold. They're also the only person in the process paying a personal price for it, because pushing your product through means spending political capital they can't get back. If it goes badly, their judgment is on the line. The question they're asking now is "will I look stupid in six months for having pushed it?"
 
 ### The economic buyer
 
-The fear isn't spending $220,000 (€200,000), it's spending it *wrong*. Being the person who approved the thing that didn't work, in a year when three other budgets got cut. What they need from you is a defensible reason, in their own language, for why this was the sane call. The feature list does nothing for that.
+What scares them is spending $220,000 (€200,000) *wrong*: being the person who approved the thing that didn't work, in a year when three other budgets got cut. They need a defensible reason from you, in their own language, for why this was the sane call, and the feature list does nothing for that.
 
 ### The skeptic in IT, security, legal or procurement
 
-The one everyone forgets until week six. They get zero upside if your product is brilliant. They get all the blame if it leaks data, breaks an integration, or violates a clause nobody read. Their incentive is simply to keep the risk off their own desk. That's not obstruction. That's their job, done well.
+Everyone forgets this one until week six. They get zero upside if your product is brilliant and all the blame if it leaks data, breaks an integration, or violates a clause nobody read. Their incentive is simply to keep the risk off their own desk. From the vendor's side that can look like obstruction, but they're doing their job, and doing it well.
 
 ### The end user
 
-They're the one who has to live with it. New login, new workflow, new thing to learn while their targets stay exactly the same. They're quietly asking whether this makes their Tuesday better or just different. And a lukewarm end user is a slow, invisible no that shows up later as "low adoption."
+They're the one who has to live with it: a new login, a new workflow and one more thing to learn while their targets stay exactly the same. The question they won't ask out loud is whether this makes their Tuesday better or just different. A lukewarm end user is a slow, invisible no that shows up later as "low adoption."
 
-Four fears. Four different things needed. And not one of those people is going to have their fear resolved by your top-funnel blog post, your ebook, or your "5 trends for 2026" webinar.
+That's four fears, each needing something different, and none of them gets resolved by your top-funnel blog post, your ebook, or your "5 trends for 2026" webinar.
 
-## Stop Writing Content. Start Producing Ammunition.
+## Start producing ammunition
 
 ![A person at a desk forwarding a document, the screen glow lighting their face in a quiet office after hours](../../assets/blog/buying-committee-02.webp)
 
 If the deal is won in a room you're not in, then the only marketing that matters is the marketing that can travel into that room without you.
 
-That's a different production brief entirely: not awareness or nurture, but **internal ammunition**. Material built to be forwarded, pasted, screenshotted and defended by someone else, in your absence, under questioning.
+That calls for a production brief unlike the usual awareness and nurture work. What you're making is internal ammunition: material built to be forwarded, pasted, screenshotted and defended by someone else, in your absence, under questioning.
 
 What it looks like in practice:
 
-**The one-pager your champion forwards to finance.** Not a brochure. A page in the buyer's language that makes the business case for them, with the numbers they'd have to assemble themselves at 11pm otherwise. If your champion has to translate your material before sending it, you've made them do your job.
+**The one-pager your champion forwards to finance.** A page in the buyer's language that makes the business case for them, with the numbers they'd otherwise have to assemble themselves at 11pm. If your champion has to translate your material before sending it, you've made them do your job.
 
-**The security and compliance answer that unblocks IT.** Published, findable, boring, complete. The fastest way to lose four weeks is to make someone request a document. The fastest way to win an ally in security is to have already answered them before they asked.
+**The security and compliance answer that unblocks IT.** It should be published, findable, complete and as boring as it needs to be. Making someone request a document is the fastest way to lose four weeks, and answering security before they ask is how you win an ally there.
 
-**The proof point that survives procurement.** Specific, sourced, and honest enough to hold up when someone hostile pokes it. Vague claims die in that room. "Trusted by industry leaders" has never de-risked anything for anyone.
+**The proof point that survives procurement.** It has to be specific, sourced and honest enough to hold up when someone hostile pokes it, because vague claims die in that room. "Trusted by industry leaders" has never de-risked anything for anyone.
 
-**The answer to the objection you hate most.** Written down, in public, in your own words. If you don't arm your champion with a response to your biggest weakness, they'll improvise one. It won't be as good as yours.
+**The answer to the objection you hate most.** Write it down in your own words and publish it. If you don't arm your champion with a response to your biggest weakness, they'll improvise one, and it won't be as good as yours.
 
-Notice what none of these are: gated, clever, or designed to generate a lead. Their entire job is to work when you're not in the room. That's also why this belongs in [go-to-market](/services/go-to-market) work rather than in the content calendar. It's less a campaign than the connective tissue between what sales promises and what the committee can actually approve.
+None of these is gated or designed to generate a lead, and none of them needs to be clever. Their entire job is to work when you're not in the room. That's why this is [go-to-market](/services/go-to-market) work, and why the content calendar is the wrong home for it: it connects what sales promises to what the committee can approve.
 
-## Your Real Audience Is the Champion
+## The champion is your audience
 
-Here's the reframe that changes what your team makes on Monday.
+Your champion is a colleague you'll never manage, walking into a meeting you'll never attend to argue your case against objections you won't get the chance to answer. Functionally, they're your salesperson inside the account: unpaid, under-informed and out there alone.
 
-Your champion is not a lead. Your champion is a colleague you'll never manage, going into a meeting you'll never attend, to argue a case you'll never hear, against objections you'll never get a chance to answer. They are, functionally, your salesperson inside the account. Unpaid, under-informed, and out there alone.
+So the question to bring to your team on Monday is **what does this person need in their hands to win that argument on Thursday?**
 
-So the question stops being "what does the buyer need to hear?" and becomes something much more useful: **what does this person need in their hands to win that argument on Thursday?**
+That question kills a surprising amount of the content calendar, and it produces the few assets that move deals. When your champion is standing in front of a committee and someone from IT asks the hard question, they aren't going to remember your thought leadership. Either they have the answer or they don't.
 
-That question kills a surprising amount of the content calendar. It also produces the few assets that actually move deals. Because when your champion is standing in front of a committee and someone from IT asks the hard question, they aren't going to remember your thought leadership. They'll either have the answer or they won't.
+Most marketing teams are optimizing for the wrong moment. They pour effort into the part they can see (the click, the download, the demo request) while the deal is being decided in a conversation with no analytics on it at all. If you want more on the marketing that works where you can't measure it, the rest of our [insights](/insights) dig into it.
 
-Most marketing teams are optimizing for the wrong moment. They're pouring effort into the part they can see, the click, the download, the demo request, while the deal is being decided in a conversation with no analytics on it at all. If you want more on the marketing that works where you can't measure it, the rest of our [insights](/insights) dig into it.
-
-Stop writing for the buyer. Start writing for the person who has to defend you when you're not there. They're the only one in that room who's on your side, and right now, most of them are walking in empty-handed.
+Write for the person who has to defend you when you're not there. They're the only one in that room who's on your side, and right now most of them are walking in empty-handed.
 
 ---
 
-*At The B2B Tinkerers, we help B2B companies build go-to-market that works inside the buying committee, not just at the top of the funnel. If your deals keep dying after a great demo, [let's talk](#contact).*
+*At The B2B Tinkerers, we help B2B companies build go-to-market that keeps working past the top of the funnel, inside the buying committee. If your deals keep dying after a great demo, [let's talk](#contact).*
